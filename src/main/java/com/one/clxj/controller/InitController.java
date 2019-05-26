@@ -2,7 +2,10 @@ package com.one.clxj.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 初始化控制器
@@ -31,4 +34,21 @@ public class InitController {
 
         return "background/system/login/login";
     }
+
+    @RequestMapping(value = "/1")
+    public String hll(HttpServletRequest request,String themeColor,String skinName){
+        if (themeColor==null||skinName==null||"".equals(themeColor)||"".equals(skinName)){
+            request.setAttribute("themeColor","green");
+            request.setAttribute("skinName","grass");
+        }
+        else{
+            request.setAttribute("themeColor",themeColor);
+            request.setAttribute("skinName",skinName);
+        }
+
+        return "redirect:background/system/layout/main.html";
+    }
+
+
+
 }
