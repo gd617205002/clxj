@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格实时更新</title>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="Immediately.js"></script>
+</head>
+<body>
+<table id="t">
+    <caption>用户</caption>
+    <tr>
+        <td>用户名</td>
+        <td>性别</td>
+        <td>密码</td>
+    </tr>
+    <tr sign="100">
+        <td>张三</td>
+        <td>男</td>
+        <td>123</td>
+    </tr>
+    <tr sign="2">
+        <td>李四</td>
+        <td>男</td>
+        <td>123</td>
+    </tr>
+    <tr sign="3">
+        <td>王五</td>
+        <td>男</td>
+        <td>123</td>
+    </tr>
+</table>
+
+<script>
+
+    var immediately = new Immediately("t", "tr", "td", ['name', 'sex', 'ps'], "sign","ws://localhost:8080/socket/user");
+    
+
+
+
+    var inform = new Object();
+    inform.sign = "1";
+    inform.data = {"name": "黄雅军"};
+    var inform2 = new Object();
+    inform2.sign = "2";
+    inform2.data = {"sex": "男", "ps": "1234"};
+
+    immediately.change(inform);
+    immediately.delete(inform2);
+    immediately.add(inform2);
+
+
+    function f1() {
+        alert(1);
+        $.get("/userAddDemo.do","",function () {
+            
+        });
+    }
+    function f2() {
+        $.get("/userChanDemo.do","",function () {
+
+        });
+    }
+    function f3() {
+        $.get("/userDelDemo.do","",function () {
+
+        });
+    }
+</script>
+
+
+<span onclick="f1();">添加</span>
+<span onclick="f2();">修改</span>
+<span onclick="f3();">删除</span>
+</body>
+</html>

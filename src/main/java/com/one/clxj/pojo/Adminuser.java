@@ -2,22 +2,25 @@ package com.one.clxj.pojo;
 
 import java.util.Date;
 
+/**
+ * 管理员实体类
+ */
 public class Adminuser {
-    private Integer id;
+    private Integer id;  //编号
 
-    private String username;
+    private String username; //用户名
 
-    private String pwd;
+    private String pwd; //密码
 
-    private String name;
+    private String name; //真实姓名
 
-    private String mobile;
+    private String mobile; //号码
 
-    private String usertype;
+    private Integer usertype; //管理类型
 
-    private Boolean userflag;
+    private Integer userflag; //用户状态
 
-    private Date regtime;
+    private Date regtime; //添加时间
 
     public Integer getId() {
         return id;
@@ -59,19 +62,19 @@ public class Adminuser {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public String getUsertype() {
+    public Integer getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype == null ? null : usertype.trim();
+    public void setUsertype(Integer usertype) {
+        this.usertype = usertype;
     }
 
-    public Boolean getUserflag() {
+    public Integer getUserflag() {
         return userflag;
     }
 
-    public void setUserflag(Boolean userflag) {
+    public void setUserflag(Integer userflag) {
         this.userflag = userflag;
     }
 
@@ -81,5 +84,19 @@ public class Adminuser {
 
     public void setRegtime(Date regtime) {
         this.regtime = regtime;
+    }
+
+    @Override
+    public String toString() {
+        return "Adminuser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", usertype=" + usertype +
+                ", userflag=" + userflag +
+                ", regtime=" + regtime +
+                '}';
     }
 }

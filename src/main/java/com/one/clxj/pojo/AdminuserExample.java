@@ -11,6 +11,27 @@ public class AdminuserExample {
 
     protected List<Criteria> oredCriteria;
 
+
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
     public AdminuserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -455,62 +476,52 @@ public class AdminuserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeEqualTo(String value) {
+        public Criteria andUsertypeEqualTo(Integer value) {
             addCriterion("usertype =", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotEqualTo(String value) {
+        public Criteria andUsertypeNotEqualTo(Integer value) {
             addCriterion("usertype <>", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThan(String value) {
+        public Criteria andUsertypeGreaterThan(Integer value) {
             addCriterion("usertype >", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThanOrEqualTo(String value) {
+        public Criteria andUsertypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("usertype >=", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThan(String value) {
+        public Criteria andUsertypeLessThan(Integer value) {
             addCriterion("usertype <", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThanOrEqualTo(String value) {
+        public Criteria andUsertypeLessThanOrEqualTo(Integer value) {
             addCriterion("usertype <=", value, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLike(String value) {
-            addCriterion("usertype like", value, "usertype");
-            return (Criteria) this;
-        }
-
-        public Criteria andUsertypeNotLike(String value) {
-            addCriterion("usertype not like", value, "usertype");
-            return (Criteria) this;
-        }
-
-        public Criteria andUsertypeIn(List<String> values) {
+        public Criteria andUsertypeIn(List<Integer> values) {
             addCriterion("usertype in", values, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotIn(List<String> values) {
+        public Criteria andUsertypeNotIn(List<Integer> values) {
             addCriterion("usertype not in", values, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeBetween(String value1, String value2) {
+        public Criteria andUsertypeBetween(Integer value1, Integer value2) {
             addCriterion("usertype between", value1, value2, "usertype");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotBetween(String value1, String value2) {
+        public Criteria andUsertypeNotBetween(Integer value1, Integer value2) {
             addCriterion("usertype not between", value1, value2, "usertype");
             return (Criteria) this;
         }
@@ -525,52 +536,52 @@ public class AdminuserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserflagEqualTo(Boolean value) {
+        public Criteria andUserflagEqualTo(Integer value) {
             addCriterion("userflag =", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagNotEqualTo(Boolean value) {
+        public Criteria andUserflagNotEqualTo(Integer value) {
             addCriterion("userflag <>", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagGreaterThan(Boolean value) {
+        public Criteria andUserflagGreaterThan(Integer value) {
             addCriterion("userflag >", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andUserflagGreaterThanOrEqualTo(Integer value) {
             addCriterion("userflag >=", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagLessThan(Boolean value) {
+        public Criteria andUserflagLessThan(Integer value) {
             addCriterion("userflag <", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagLessThanOrEqualTo(Boolean value) {
+        public Criteria andUserflagLessThanOrEqualTo(Integer value) {
             addCriterion("userflag <=", value, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagIn(List<Boolean> values) {
+        public Criteria andUserflagIn(List<Integer> values) {
             addCriterion("userflag in", values, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagNotIn(List<Boolean> values) {
+        public Criteria andUserflagNotIn(List<Integer> values) {
             addCriterion("userflag not in", values, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagBetween(Boolean value1, Boolean value2) {
+        public Criteria andUserflagBetween(Integer value1, Integer value2) {
             addCriterion("userflag between", value1, value2, "userflag");
             return (Criteria) this;
         }
 
-        public Criteria andUserflagNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andUserflagNotBetween(Integer value1, Integer value2) {
             addCriterion("userflag not between", value1, value2, "userflag");
             return (Criteria) this;
         }

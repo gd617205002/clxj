@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.one.clxj.mapper.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Organization" >
+    <id column="org_id" property="org_id" jdbcType="INTEGER" />
+    <result column="org_name" property="org_name" jdbcType="VARCHAR" />
+    <result column="org_description" property="org_description" jdbcType="VARCHAR" />
+    <result column="org_manager" property="org_manager" jdbcType="VARCHAR" />
+    <result column="org_phone" property="org_phone" jdbcType="VARCHAR" />
+    <result column="org_parentid" property="org_parentid" jdbcType="INTEGER" />
+    <result column="org_establishTime" property="org_establishTime" jdbcType="TIMESTAMP" />
+    <result column="org_path" property="org_path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    org_id, org_name, org_description, org_manager, org_phone, org_parentid, org_establishTime, 
+    org_path
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.OrganizationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where org_id = #{org_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organization
+    where org_id = #{org_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.OrganizationExample" >
+    delete from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.one.clxj.pojo.Organization" >
+    insert into organization (org_id, org_name, org_description, 
+      org_manager, org_phone, org_parentid, 
+      org_establishTime, org_path)
+    values (#{org_id,jdbcType=INTEGER}, #{org_name,jdbcType=VARCHAR}, #{org_description,jdbcType=VARCHAR}, 
+      #{org_manager,jdbcType=VARCHAR}, #{org_phone,jdbcType=VARCHAR}, #{org_parentid,jdbcType=INTEGER}, 
+      #{org_establishTime,jdbcType=TIMESTAMP}, #{org_path,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Organization" >
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="org_id != null" >
+        org_id,
+      </if>
+      <if test="org_name != null" >
+        org_name,
+      </if>
+      <if test="org_description != null" >
+        org_description,
+      </if>
+      <if test="org_manager != null" >
+        org_manager,
+      </if>
+      <if test="org_phone != null" >
+        org_phone,
+      </if>
+      <if test="org_parentid != null" >
+        org_parentid,
+      </if>
+      <if test="org_establishTime != null" >
+        org_establishTime,
+      </if>
+      <if test="org_path != null" >
+        org_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="org_id != null" >
+        #{org_id,jdbcType=INTEGER},
+      </if>
+      <if test="org_name != null" >
+        #{org_name,jdbcType=VARCHAR},
+      </if>
+      <if test="org_description != null" >
+        #{org_description,jdbcType=VARCHAR},
+      </if>
+      <if test="org_manager != null" >
+        #{org_manager,jdbcType=VARCHAR},
+      </if>
+      <if test="org_phone != null" >
+        #{org_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="org_parentid != null" >
+        #{org_parentid,jdbcType=INTEGER},
+      </if>
+      <if test="org_establishTime != null" >
+        #{org_establishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="org_path != null" >
+        #{org_path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.one.clxj.pojo.OrganizationExample" resultType="java.lang.Integer" >
+    select count(*) from organization
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update organization
+    <set >
+      <if test="record.org_id != null" >
+        org_id = #{record.org_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.org_name != null" >
+        org_name = #{record.org_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.org_description != null" >
+        org_description = #{record.org_description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.org_manager != null" >
+        org_manager = #{record.org_manager,jdbcType=VARCHAR},
+      </if>
+      <if test="record.org_phone != null" >
+        org_phone = #{record.org_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.org_parentid != null" >
+        org_parentid = #{record.org_parentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.org_establishTime != null" >
+        org_establishTime = #{record.org_establishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.org_path != null" >
+        org_path = #{record.org_path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update organization
+    set org_id = #{record.org_id,jdbcType=INTEGER},
+      org_name = #{record.org_name,jdbcType=VARCHAR},
+      org_description = #{record.org_description,jdbcType=VARCHAR},
+      org_manager = #{record.org_manager,jdbcType=VARCHAR},
+      org_phone = #{record.org_phone,jdbcType=VARCHAR},
+      org_parentid = #{record.org_parentid,jdbcType=INTEGER},
+      org_establishTime = #{record.org_establishTime,jdbcType=TIMESTAMP},
+      org_path = #{record.org_path,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Organization" >
+    update organization
+    <set >
+      <if test="org_name != null" >
+        org_name = #{org_name,jdbcType=VARCHAR},
+      </if>
+      <if test="org_description != null" >
+        org_description = #{org_description,jdbcType=VARCHAR},
+      </if>
+      <if test="org_manager != null" >
+        org_manager = #{org_manager,jdbcType=VARCHAR},
+      </if>
+      <if test="org_phone != null" >
+        org_phone = #{org_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="org_parentid != null" >
+        org_parentid = #{org_parentid,jdbcType=INTEGER},
+      </if>
+      <if test="org_establishTime != null" >
+        org_establishTime = #{org_establishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="org_path != null" >
+        org_path = #{org_path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where org_id = #{org_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.one.clxj.pojo.Organization" >
+    update organization
+    set org_name = #{org_name,jdbcType=VARCHAR},
+      org_description = #{org_description,jdbcType=VARCHAR},
+      org_manager = #{org_manager,jdbcType=VARCHAR},
+      org_phone = #{org_phone,jdbcType=VARCHAR},
+      org_parentid = #{org_parentid,jdbcType=INTEGER},
+      org_establishTime = #{org_establishTime,jdbcType=TIMESTAMP},
+      org_path = #{org_path,jdbcType=VARCHAR}
+    where org_id = #{org_id,jdbcType=INTEGER}
+  </update>
+</mapper>

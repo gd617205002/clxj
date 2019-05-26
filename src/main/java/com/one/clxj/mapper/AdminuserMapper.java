@@ -1,12 +1,14 @@
 package com.one.clxj.mapper;
 
+import java.util.List;
+
 import com.one.clxj.pojo.Adminuser;
 import com.one.clxj.pojo.AdminuserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import tk.mybatis.mapper.common.Mapper;
 
-public interface AdminuserMapper {
-    int countByExample(AdminuserExample example);
+public interface AdminuserMapper extends Mapper<Adminuser> {
+  /*  int countByExample(AdminuserExample example);
 
     int deleteByExample(AdminuserExample example);
 
@@ -26,5 +28,5 @@ public interface AdminuserMapper {
 
     int updateByPrimaryKeySelective(Adminuser record);
 
-    int updateByPrimaryKey(Adminuser record);
+    int updateByPrimaryKey(Adminuser record);*/
 }

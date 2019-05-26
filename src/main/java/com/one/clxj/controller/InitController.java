@@ -34,21 +34,4 @@ public class InitController {
 
         return "background/system/login/login";
     }
-
-    @RequestMapping(value = "/1")
-    public String hll(HttpServletRequest request,String themeColor,String skinName){
-        if (themeColor==null||skinName==null||"".equals(themeColor)||"".equals(skinName)){
-            request.setAttribute("themeColor","green");
-            request.setAttribute("skinName","grass");
-        }
-        else{
-            request.setAttribute("themeColor",themeColor);
-            request.setAttribute("skinName",skinName);
-        }
-
-        return "redirect:background/system/layout/main.html";
-    }
-
-
-
 }
