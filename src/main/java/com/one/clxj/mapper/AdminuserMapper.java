@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface AdminuserMapper extends Mapper<Adminuser> {
-  /*  int countByExample(AdminuserExample example);
+ int countByExample(AdminuserExample example);
 
     int deleteByExample(AdminuserExample example);
 
@@ -28,5 +28,5 @@ public interface AdminuserMapper extends Mapper<Adminuser> {
 
     int updateByPrimaryKeySelective(Adminuser record);
 
-    int updateByPrimaryKey(Adminuser record);*/
+    int updateByPrimaryKey(Adminuser record);
 }

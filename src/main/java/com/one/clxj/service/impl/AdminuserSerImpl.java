@@ -11,11 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminuserSerImpl extends SuperServiceImpl<Adminuser> implements AdminuserSer {
 
-    @Autowired
+   /* @Autowired
     private AdminuserMapper adminuserMapper;
-
 
     public void init(){
        super.mapper = adminuserMapper;
-    }
+    }*/
 }
