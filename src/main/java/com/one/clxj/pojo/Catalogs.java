@@ -1,6 +1,9 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
 public class Catalogs {
+    @Id
     private Integer id;
 
     private String catalogid;

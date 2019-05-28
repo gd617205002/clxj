@@ -10,6 +10,27 @@ public class CitygroupExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public CitygroupExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -175,52 +196,52 @@ public class CitygroupExample {
         }
 
         public Criteria andCidEqualTo(Integer value) {
-            addCriterion("cid =", value, "cid");
+            addCriterion("cid =", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotEqualTo(Integer value) {
-            addCriterion("cid <>", value, "cid");
+            addCriterion("cid <>", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidGreaterThan(Integer value) {
-            addCriterion("cid >", value, "cid");
+            addCriterion("cid >", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cid >=", value, "cid");
+            addCriterion("cid >=", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidLessThan(Integer value) {
-            addCriterion("cid <", value, "cid");
+            addCriterion("cid <", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidLessThanOrEqualTo(Integer value) {
-            addCriterion("cid <=", value, "cid");
+            addCriterion("cid <=", value, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidIn(List<Integer> values) {
-            addCriterion("cid in", values, "cid");
+            addCriterion("cid in", values, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotIn(List<Integer> values) {
-            addCriterion("cid not in", values, "cid");
+            addCriterion("cid not in", values, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidBetween(Integer value1, Integer value2) {
-            addCriterion("cid between", value1, value2, "cid");
+            addCriterion("cid between", value1, value2, "city.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotBetween(Integer value1, Integer value2) {
-            addCriterion("cid not between", value1, value2, "cid");
+            addCriterion("cid not between", value1, value2, "city.id");
             return (Criteria) this;
         }
 
@@ -235,52 +256,52 @@ public class CitygroupExample {
         }
 
         public Criteria andGidEqualTo(Integer value) {
-            addCriterion("gid =", value, "gid");
+            addCriterion("gid =", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidNotEqualTo(Integer value) {
-            addCriterion("gid <>", value, "gid");
+            addCriterion("gid <>", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidGreaterThan(Integer value) {
-            addCriterion("gid >", value, "gid");
+            addCriterion("gid >", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("gid >=", value, "gid");
+            addCriterion("gid >=", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidLessThan(Integer value) {
-            addCriterion("gid <", value, "gid");
+            addCriterion("gid <", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidLessThanOrEqualTo(Integer value) {
-            addCriterion("gid <=", value, "gid");
+            addCriterion("gid <=", value, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidIn(List<Integer> values) {
-            addCriterion("gid in", values, "gid");
+            addCriterion("gid in", values, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidNotIn(List<Integer> values) {
-            addCriterion("gid not in", values, "gid");
+            addCriterion("gid not in", values, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidBetween(Integer value1, Integer value2) {
-            addCriterion("gid between", value1, value2, "gid");
+            addCriterion("gid between", value1, value2, "grouping.id");
             return (Criteria) this;
         }
 
         public Criteria andGidNotBetween(Integer value1, Integer value2) {
-            addCriterion("gid not between", value1, value2, "gid");
+            addCriterion("gid not between", value1, value2, "grouping.id");
             return (Criteria) this;
         }
     }

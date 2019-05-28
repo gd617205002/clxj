@@ -11,6 +11,27 @@ public class FreeExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public FreeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -176,52 +197,52 @@ public class FreeExample {
         }
 
         public Criteria andConfessionidEqualTo(Integer value) {
-            addCriterion("confessionid =", value, "confessionid");
+            addCriterion("confessionid =", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidNotEqualTo(Integer value) {
-            addCriterion("confessionid <>", value, "confessionid");
+            addCriterion("confessionid <>", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidGreaterThan(Integer value) {
-            addCriterion("confessionid >", value, "confessionid");
+            addCriterion("confessionid >", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("confessionid >=", value, "confessionid");
+            addCriterion("confessionid >=", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidLessThan(Integer value) {
-            addCriterion("confessionid <", value, "confessionid");
+            addCriterion("confessionid <", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidLessThanOrEqualTo(Integer value) {
-            addCriterion("confessionid <=", value, "confessionid");
+            addCriterion("confessionid <=", value, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidIn(List<Integer> values) {
-            addCriterion("confessionid in", values, "confessionid");
+            addCriterion("confessionid in", values, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidNotIn(List<Integer> values) {
-            addCriterion("confessionid not in", values, "confessionid");
+            addCriterion("confessionid not in", values, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidBetween(Integer value1, Integer value2) {
-            addCriterion("confessionid between", value1, value2, "confessionid");
+            addCriterion("confessionid between", value1, value2, "confession.id");
             return (Criteria) this;
         }
 
         public Criteria andConfessionidNotBetween(Integer value1, Integer value2) {
-            addCriterion("confessionid not between", value1, value2, "confessionid");
+            addCriterion("confessionid not between", value1, value2, "confession.id");
             return (Criteria) this;
         }
 

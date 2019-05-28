@@ -1,6 +1,9 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
 public class ClxjmainWithBLOBs extends Clxjmain {
+    @Id
     private String introduction;
 
     private String abbotresume;

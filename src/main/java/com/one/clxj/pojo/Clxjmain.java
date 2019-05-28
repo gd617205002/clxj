@@ -1,47 +1,54 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 丛林闲居信息实体类
+ */
 public class Clxjmain {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private String name;
+    private String name; //名称
 
-    private Integer type1;
+    private Integer type1; //地址类型
 
-    private Integer type2;
+    private Integer type2; //住址类型
 
-    private String belong_city;
+    private String belong_city; //地址
 
-    private String first_img_big;
+    private String first_img_big; //大图片
 
-    private String first_img_min;
+    private String first_img_min; //小图片
 
-    private String carousel_img;
+    private String carousel_img; //轮播图
 
-    private Double price;
+    private Double price; //价格
 
-    private String address;
+    private String address; //中文地址
 
-    private String longitude;
+    private String longitude; //经度
 
-    private String latitude;
+    private String latitude; //维度
 
-    private Integer reserve_num;
+    private Integer reserve_num; //预定数量
 
-    private Integer recommend;
+    private Integer recommend; //推荐状态
 
-    private Integer joinid;
+    private Adminuser adminuser; //添加人
 
-    private Integer checkStatus;
+    private Integer checkStatus; //审核状体
 
-    private String abbot;
+    private String abbot; //主持人
 
-    private Date opentime;
+    private String abbotresume;//主持人简介
 
-    private Date createtime;
+    private Date opentime; //开启时间
 
-    private String mobile;
+    private Date createtime; //添加时间
+
+    private String mobile; //联系电话
 
     public Integer getId() {
         return id;
@@ -155,12 +162,13 @@ public class Clxjmain {
         this.recommend = recommend;
     }
 
-    public Integer getJoinid() {
-        return joinid;
+
+    public String getAbbotresume() {
+        return abbotresume;
     }
 
-    public void setJoinid(Integer joinid) {
-        this.joinid = joinid;
+    public void setAbbotresume(String abbotresume) {
+        this.abbotresume = abbotresume;
     }
 
     public Integer getCheckStatus() {
@@ -201,5 +209,40 @@ public class Clxjmain {
 
     public void setMobile(String mobile) {
         this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public Adminuser getAdminuser() {
+        return adminuser;
+    }
+
+    public void setAdminuser(Adminuser adminuser) {
+        this.adminuser = adminuser;
+    }
+
+    @Override
+    public String toString() {
+        return "Clxjmain{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type1=" + type1 +
+                ", type2=" + type2 +
+                ", belong_city='" + belong_city + '\'' +
+                ", first_img_big='" + first_img_big + '\'' +
+                ", first_img_min='" + first_img_min + '\'' +
+                ", carousel_img='" + carousel_img + '\'' +
+                ", price=" + price +
+                ", address='" + address + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", reserve_num=" + reserve_num +
+                ", recommend=" + recommend +
+                ", adminuser=" + adminuser +
+                ", checkStatus=" + checkStatus +
+                ", abbot='" + abbot + '\'' +
+                ", abbotresume='" + abbotresume + '\'' +
+                ", opentime=" + opentime +
+                ", createtime=" + createtime +
+                ", mobile='" + mobile + '\'' +
+                '}';
     }
 }

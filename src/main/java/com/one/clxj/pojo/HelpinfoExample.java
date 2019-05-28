@@ -10,6 +10,27 @@ public class HelpinfoExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public HelpinfoExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -161,76 +182,6 @@ public class HelpinfoExample {
 
         public Criteria andIdNotBetween(Integer value1, Integer value2) {
             addCriterion("id not between", value1, value2, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardIsNull() {
-            addCriterion("idcard is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardIsNotNull() {
-            addCriterion("idcard is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardEqualTo(String value) {
-            addCriterion("idcard =", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardNotEqualTo(String value) {
-            addCriterion("idcard <>", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardGreaterThan(String value) {
-            addCriterion("idcard >", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardGreaterThanOrEqualTo(String value) {
-            addCriterion("idcard >=", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardLessThan(String value) {
-            addCriterion("idcard <", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardLessThanOrEqualTo(String value) {
-            addCriterion("idcard <=", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardLike(String value) {
-            addCriterion("idcard like", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardNotLike(String value) {
-            addCriterion("idcard not like", value, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardIn(List<String> values) {
-            addCriterion("idcard in", values, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardNotIn(List<String> values) {
-            addCriterion("idcard not in", values, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardBetween(String value1, String value2) {
-            addCriterion("idcard between", value1, value2, "idcard");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdcardNotBetween(String value1, String value2) {
-            addCriterion("idcard not between", value1, value2, "idcard");
             return (Criteria) this;
         }
 
@@ -421,6 +372,76 @@ public class HelpinfoExample {
 
         public Criteria andAgeNotBetween(Integer value1, Integer value2) {
             addCriterion("age not between", value1, value2, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardIsNull() {
+            addCriterion("idcard is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardIsNotNull() {
+            addCriterion("idcard is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardEqualTo(String value) {
+            addCriterion("idcard =", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotEqualTo(String value) {
+            addCriterion("idcard <>", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardGreaterThan(String value) {
+            addCriterion("idcard >", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardGreaterThanOrEqualTo(String value) {
+            addCriterion("idcard >=", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLessThan(String value) {
+            addCriterion("idcard <", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLessThanOrEqualTo(String value) {
+            addCriterion("idcard <=", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardLike(String value) {
+            addCriterion("idcard like", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotLike(String value) {
+            addCriterion("idcard not like", value, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardIn(List<String> values) {
+            addCriterion("idcard in", values, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotIn(List<String> values) {
+            addCriterion("idcard not in", values, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardBetween(String value1, String value2) {
+            addCriterion("idcard between", value1, value2, "idcard");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdcardNotBetween(String value1, String value2) {
+            addCriterion("idcard not between", value1, value2, "idcard");
             return (Criteria) this;
         }
 
@@ -1155,52 +1176,52 @@ public class HelpinfoExample {
         }
 
         public Criteria andUidEqualTo(Integer value) {
-            addCriterion("uid =", value, "uid");
+            addCriterion("uid =", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotEqualTo(Integer value) {
-            addCriterion("uid <>", value, "uid");
+            addCriterion("uid <>", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThan(Integer value) {
-            addCriterion("uid >", value, "uid");
+            addCriterion("uid >", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("uid >=", value, "uid");
+            addCriterion("uid >=", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThan(Integer value) {
-            addCriterion("uid <", value, "uid");
+            addCriterion("uid <", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThanOrEqualTo(Integer value) {
-            addCriterion("uid <=", value, "uid");
+            addCriterion("uid <=", value, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidIn(List<Integer> values) {
-            addCriterion("uid in", values, "uid");
+            addCriterion("uid in", values, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotIn(List<Integer> values) {
-            addCriterion("uid not in", values, "uid");
+            addCriterion("uid not in", values, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidBetween(Integer value1, Integer value2) {
-            addCriterion("uid between", value1, value2, "uid");
+            addCriterion("uid between", value1, value2, "reguser.id.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotBetween(Integer value1, Integer value2) {
-            addCriterion("uid not between", value1, value2, "uid");
+            addCriterion("uid not between", value1, value2, "reguser.id.id");
             return (Criteria) this;
         }
 

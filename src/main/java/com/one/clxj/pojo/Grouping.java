@@ -1,9 +1,15 @@
 package com.one.clxj.pojo;
 
-public class Grouping {
-    private Integer id;
+import javax.persistence.Id;
 
-    private String type;
+/**
+ * 城市分组类型表
+ */
+public class Grouping {
+    @Id
+    private Integer id; //编号
+
+    private String type; //分数类型
 
     public Integer getId() {
         return id;

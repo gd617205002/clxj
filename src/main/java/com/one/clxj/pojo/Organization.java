@@ -1,8 +1,10 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Organization {
+    @Id
     private Integer org_id;
 
     private String org_name;

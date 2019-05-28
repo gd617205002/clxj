@@ -1,21 +1,26 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 忏悔实体类
+ */
 public class Confession {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private Boolean type;
+    private Boolean type; //忏悔类型
 
-    private String content;
+    private String content; //内容
 
-    private String pwd;
+    private String pwd; //查看密码
 
-    private Date ctime;
+    private Date ctime; //忏悔时间
 
-    private Integer returnflag;
+    private Integer returnflag; //回复状态
 
-    private Integer returnuid;
+    private Integer returnuid; //回复人
 
     public Integer getId() {
         return id;

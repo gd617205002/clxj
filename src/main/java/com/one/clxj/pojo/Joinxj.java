@@ -1,37 +1,43 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
+/**
+ * 闲居加盟实体类
+ */
 public class Joinxj {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private String xjname;
+    private String xjname; //闲居户主名称
 
-    private String houseno;
+    private String houseno; //房屋产权证号
 
-    private String address;
+    private String address; //地址
 
-    private String postcode;
+    private String postcode; //邮编
 
-    private String houseidcard;
+    private String houseidcard; //户主身份证号
 
-    private String housephone;
+    private String housephone; //手机号
 
-    private String housemobile;
+    private String housemobile; //固定电话
 
-    private String houseperson;
+    private String houseperson; //房屋共有人名字
 
-    private String idcard;
+    private String idcard; //身份证号
 
-    private String phone;
+    private String phone; //电话
 
-    private String message;
+    private String message; //介绍
 
-    private Integer uid;
+    private Reguser reguser; //用户编号
 
-    private String jointime;
+    private String jointime; //加入时间
 
-    private Integer joinstatus;
+    private Integer joinstatus; //审核状态
 
-    private String fileurl;
+    private String fileurl; //长传合同
 
     public Integer getId() {
         return id;
@@ -129,13 +135,6 @@ public class Joinxj {
         this.message = message == null ? null : message.trim();
     }
 
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public String getJointime() {
         return jointime;
@@ -159,5 +158,35 @@ public class Joinxj {
 
     public void setFileurl(String fileurl) {
         this.fileurl = fileurl == null ? null : fileurl.trim();
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Joinxj{" +
+                "id=" + id +
+                ", xjname='" + xjname + '\'' +
+                ", houseno='" + houseno + '\'' +
+                ", address='" + address + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", houseidcard='" + houseidcard + '\'' +
+                ", housephone='" + housephone + '\'' +
+                ", housemobile='" + housemobile + '\'' +
+                ", houseperson='" + houseperson + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", phone='" + phone + '\'' +
+                ", message='" + message + '\'' +
+                ", reguser=" + reguser +
+                ", jointime='" + jointime + '\'' +
+                ", joinstatus=" + joinstatus +
+                ", fileurl='" + fileurl + '\'' +
+                '}';
     }
 }

@@ -1,19 +1,24 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 忏悔解脱实体类
+ */
 public class Free {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private Integer confessionid;
+    private Confession confession; //忏悔编号
 
-    private Integer type;
+    private Integer type; //解脱类型
 
-    private String content;
+    private String content; //内容
 
-    private Date ftime;
+    private Date ftime; // 时间
 
-    private Integer readnum;
+    private Integer readnum; //阅读数量
 
     public Integer getId() {
         return id;
@@ -23,13 +28,7 @@ public class Free {
         this.id = id;
     }
 
-    public Integer getConfessionid() {
-        return confessionid;
-    }
 
-    public void setConfessionid(Integer confessionid) {
-        this.confessionid = confessionid;
-    }
 
     public Integer getType() {
         return type;
@@ -61,5 +60,25 @@ public class Free {
 
     public void setReadnum(Integer readnum) {
         this.readnum = readnum;
+    }
+
+    public Confession getConfession() {
+        return confession;
+    }
+
+    public void setConfession(Confession confession) {
+        this.confession = confession;
+    }
+
+    @Override
+    public String toString() {
+        return "Free{" +
+                "id=" + id +
+                ", confession=" + confession +
+                ", type=" + type +
+                ", content='" + content + '\'' +
+                ", ftime=" + ftime +
+                ", readnum=" + readnum +
+                '}';
     }
 }

@@ -1,41 +1,47 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
+/**
+ * 加盟车辆信息实体类
+ */
 public class Joincar {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private String theowner;
+    private String theowner; //车主姓名
 
-    private String idcard;
+    private String idcard; //身份证号
 
-    private String address;
+    private String address; //地址
 
-    private String carname;
+    private String carname; //车牌名称/型号
 
-    private String travelnumber;
+    private String travelnumber; //行驶证号
 
-    private String travelrun;
+    private String travelrun; //已行驶里程
 
-    private String drivername;
+    private String drivername; //指定驾驶员姓名
 
-    private String drivernumber;
+    private String drivernumber; //驾驶证号
 
-    private String driverphone;
+    private String driverphone; //指定驾驶员电话
 
-    private String insurancename;
+    private String insurancename; //车辆保险公司
 
-    private String insurancenumber;
+    private String insurancenumber; //保险证号
 
-    private String insurancephone;
+    private String insurancephone; //车辆保险公司电话
 
-    private String message;
+    private String message; //简介
 
-    private Integer uid;
+    private Reguser reguser; //用户编号
 
-    private String jointime;
+    private String jointime; //加入时间
 
-    private Integer joinstatus;
+    private Integer joinstatus; //审核状态
 
-    private String fileurl;
+    private String fileurl; //长传合同路径
 
     public Integer getId() {
         return id;
@@ -149,13 +155,6 @@ public class Joincar {
         this.message = message == null ? null : message.trim();
     }
 
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public String getJointime() {
         return jointime;
@@ -179,5 +178,37 @@ public class Joincar {
 
     public void setFileurl(String fileurl) {
         this.fileurl = fileurl == null ? null : fileurl.trim();
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Joincar{" +
+                "id=" + id +
+                ", theowner='" + theowner + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", address='" + address + '\'' +
+                ", carname='" + carname + '\'' +
+                ", travelnumber='" + travelnumber + '\'' +
+                ", travelrun='" + travelrun + '\'' +
+                ", drivername='" + drivername + '\'' +
+                ", drivernumber='" + drivernumber + '\'' +
+                ", driverphone='" + driverphone + '\'' +
+                ", insurancename='" + insurancename + '\'' +
+                ", insurancenumber='" + insurancenumber + '\'' +
+                ", insurancephone='" + insurancephone + '\'' +
+                ", message='" + message + '\'' +
+                ", reguser=" + reguser +
+                ", jointime='" + jointime + '\'' +
+                ", joinstatus=" + joinstatus +
+                ", fileurl='" + fileurl + '\'' +
+                '}';
     }
 }

@@ -11,6 +11,27 @@ public class ClxjcommentExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public ClxjcommentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -176,52 +197,52 @@ public class ClxjcommentExample {
         }
 
         public Criteria andCidEqualTo(Integer value) {
-            addCriterion("cid =", value, "cid");
+            addCriterion("cid =", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotEqualTo(Integer value) {
-            addCriterion("cid <>", value, "cid");
+            addCriterion("cid <>", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidGreaterThan(Integer value) {
-            addCriterion("cid >", value, "cid");
+            addCriterion("cid >", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cid >=", value, "cid");
+            addCriterion("cid >=", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidLessThan(Integer value) {
-            addCriterion("cid <", value, "cid");
+            addCriterion("cid <", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidLessThanOrEqualTo(Integer value) {
-            addCriterion("cid <=", value, "cid");
+            addCriterion("cid <=", value, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidIn(List<Integer> values) {
-            addCriterion("cid in", values, "cid");
+            addCriterion("cid in", values, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotIn(List<Integer> values) {
-            addCriterion("cid not in", values, "cid");
+            addCriterion("cid not in", values, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidBetween(Integer value1, Integer value2) {
-            addCriterion("cid between", value1, value2, "cid");
+            addCriterion("cid between", value1, value2, "clxjmain.id");
             return (Criteria) this;
         }
 
         public Criteria andCidNotBetween(Integer value1, Integer value2) {
-            addCriterion("cid not between", value1, value2, "cid");
+            addCriterion("cid not between", value1, value2, "clxjmain.id");
             return (Criteria) this;
         }
 
@@ -236,52 +257,52 @@ public class ClxjcommentExample {
         }
 
         public Criteria andUidEqualTo(Integer value) {
-            addCriterion("uid =", value, "uid");
+            addCriterion("uid =", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotEqualTo(Integer value) {
-            addCriterion("uid <>", value, "uid");
+            addCriterion("uid <>", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThan(Integer value) {
-            addCriterion("uid >", value, "uid");
+            addCriterion("uid >", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("uid >=", value, "uid");
+            addCriterion("uid >=", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThan(Integer value) {
-            addCriterion("uid <", value, "uid");
+            addCriterion("uid <", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThanOrEqualTo(Integer value) {
-            addCriterion("uid <=", value, "uid");
+            addCriterion("uid <=", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidIn(List<Integer> values) {
-            addCriterion("uid in", values, "uid");
+            addCriterion("uid in", values, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotIn(List<Integer> values) {
-            addCriterion("uid not in", values, "uid");
+            addCriterion("uid not in", values, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidBetween(Integer value1, Integer value2) {
-            addCriterion("uid between", value1, value2, "uid");
+            addCriterion("uid between", value1, value2, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotBetween(Integer value1, Integer value2) {
-            addCriterion("uid not between", value1, value2, "uid");
+            addCriterion("uid not between", value1, value2, "reguser.id");
             return (Criteria) this;
         }
 

@@ -1,252 +1,330 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>丛林闲居管理后台</title>
-<!--框架必需start-->
-<link href="/libs/css/import_basic.css" rel="stylesheet" type="text/css"/>
-<!--/*@thymesVar id="themeColor" type="templates"*/-->
-<link href="/libs/skins/green/style.css" rel="stylesheet" type="text/css" th:href="@{libs/skins/{themeColor}/style.css(themeColor=${themeColor})}">
-<link href="/system/layout/skin/style.css" rel="stylesheet" type="text/css" th:href="@{system/layout/{skinName}/style.css(skinName=${skinName})}">
-<script type="text/javascript" src="/libs/js/jquery.js"></script>
-<script type="text/javascript" src="/libs/js/main.js"></script>
-<!--框架必需end-->
-
-<!--引入弹窗组件start-->
-<script type="text/javascript" src="/libs/js/popup/drag.js"></script>
-<script type="text/javascript" src="/libs/js/popup/dialog.js"></script>
-<!--引入弹窗组件end-->
-
-<!--分隔条start-->
-<script type="text/javascript" src="/libs/js/nav/spliter.js"></script>
-<!--分隔条end-->
-<script>
-function bookmarksite(title, url){
-    if (window.sidebar) // firefox
-        window.sidebar.addPanel(title, url, "");
-    else 
-        if (window.opera && window.print) { // opera
-            var elem = document.createElement('a');
-            elem.setAttribute('href', url);
-            elem.setAttribute('title', title);
-            elem.setAttribute('rel', 'sidebar');
-            elem.click();
-        }
-        else 
-            if (document.all)// ie
-                window.external.AddFavorite(url, title);
-}
-function exitHandler(){
-
-	top.Dialog.confirm("确定要退出系统吗",function(){});
-}
-function lockScreen(){
-	top.Dialog.confirm("确定要锁屏吗，锁屏后只有重新输入密码才能解除。",function(){
-		openLockWindow();
-	});
-}
-//修改密码
-function updatePwd(){
-	var diag = new top.Dialog();
-	diag.Title = "修改密码";
-	diag.ID = "pwd";
-	diag.URL="background/system/layout/updatepwd.html";
-	diag.Width=350; 
-	diag.Height=230;            
-	diag.ShowCloseButton=false;
-	diag.ShowCancelButton=false;
-	diag.ShowOkButton=false;
-	diag.ButtonAlign="center";
-	diag.AllowChangeIndex=false;
-	diag.show();  
-	diag.addButton("btn3","取消",function(){
-		Dialog.getInstance('pwd').close();  
-	});     
-	diag.addButton("btn4","修改",function(){    
-		top.document.getElementById("_DialogFrame_pwd").contentWindow.validateForm();  
-	}); 
-}  
-/*function openLockWindow(){
-	var diag = new top.Dialog();
-		diag.Title = "系统锁屏";
-		diag.ID = "a1";
-		diag.URL="/system/layout/lock.jsp";
-		diag.Width=350;
-		diag.Height=150;
-		diag.ShowCloseButton=false;
-		diag.ShowCancelButton=false;
-		diag.ShowOkButton=false;
-		diag.ButtonAlign="center";
-		diag.AllowChangeIndex=false;
-		diag.show();
-		diag.addButton("btn1","注销系统",function(){
-			top.Dialog.confirm("确定要退出系统吗",function(){window.location="/adminusers!logout.action"});
-		})
-		diag.addButton("btn2","确定解锁",function(){
-			top.document.getElementById("_DialogFrame_a1").contentWindow.validateForm();
-		})
-		$.post("/adminusers!lockScreen.action");
-}*/
-
-function validate(){
-	// <s:if test="%{#session.isLockScreen != null && #session.isLockScreen}">
-	openLockWindow();
-	// </s:if>
-}
-function changeSkin(themeColor,skinName){
-	top.Dialog.confirm("确定应用该皮肤吗？",function(){
-		document.getElementById("sessionSkin").src="background/system/layout/skin.html?&skinName="+skinName+"&themeColor="+themeColor;})
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carbon - Admin Template</title>
+    <link rel="stylesheet" href="temp/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="temp/css/styles.css">
+    <link rel="stylesheet" href="temp/css/style-clxj.css">
 </head>
-<body>
-<div id="mainFrame">
-<!--头部与导航start-->
-<div id="hbox">
-	<div id="bs_bannercenter">
-	<div id="bs_bannerleft">
-	<div id="bs_bannerright">
-	</div>
-	</div>
-	</div>
-	<div id="bs_navcenter">
-	<div id="bs_navleft">
-	<div id="bs_navright">
-		<div class="bs_nav">
-			<div class="bs_navleft">
-				<li class="fontTitle">字号:</li>
-				<li class="fontChange"><span><a href="javascript:;" setFont="16">大</a></span></li>
-				<li class="fontChange"><span><a href="javascript:;" setFont="14">中</a></span></li>
-				<li class="fontChange"><span><a href="javascript:;" setFont="12">小</a></span></li>
-				<div class="clear"></div>
-			</div>
-			<div class="float_left padding_top2 padding_left5">
-				【今天是
-				<script>
-					var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
-					var now = new Date();
-				    var year=now.getFullYear();
-					var month=now.getMonth()+1;
-					var day=now.getDate()
-				    var currentime = year+"年"+month+"月"+day+"日 "+weekDayLabels[now.getDay()]
-					document.write(currentime)
-				</script>】
-			</div>
-			<div class="float_right padding_top2 padding_right5">
-				<div class="float_left padding_right5 padding_left3">切换风格</div>
-				<div class="float_left colorList padding_top7">
-					<ul>
-					<li onclick="changeSkin('green','grass')" class="color2"></li>
-					<li onclick="changeSkin('lightBlue','ext')" class="color3"></li>
-					<li onclick="changeSkin('blue','skin')" class="color1"></li>
-					<div class="clear"></div>
-					</ul>
-					<div class="clear"></div>
-				</div>
-				<span class="icon_fullscreen hand" id="fullSrceen" hideNav="true">开启全屏</span>
-				<span class="icon_lock hand" onclick="lockScreen()">系统锁屏</span>
-				<span class="icon_attention hand" onclick="updatePwd()">修改密码</span>
-				<span class="icon_exit hand" onclick='top.Dialog.confirm("确定要退出系统吗",function(){window.location="/adminusers!logout.action"});'>退出系统</span>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-	</div>
-	</div>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="temp/imgs/logo.png" alt="logo">
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none" style="margin-right: 550px">
+                <script>
+                    var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                    var now = new Date();
+                    var year=now.getFullYear();
+                    var month=now.getMonth()+1;
+                    var day=now.getDate()
+                    var currentime = year+"年"+month+"月"+day+"日 "+weekDayLabels[now.getDay()]
+                    document.write(currentime)
+                </script>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="temp/imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">admin</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Account</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人信息
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 修改密码
+                    </a>
+
+                    <div class="dropdown-header">Settings</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">Navigation</li>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <i class="icon icon-speedometer"></i> 系统首页
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-target"></i> 管理员后台管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="layouts-normal.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 注册用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="layouts-fixed-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 后台用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="layouts-fixed-header.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 丛林审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="layouts-hidden-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 用车审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="layouts-hidden-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 求助信息管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="layouts-hidden-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 爱心捐赠管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="layouts-hidden-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 月底支出管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="layouts-hidden-sidebar.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 款物发放管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 加盟信息管理<i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="alerts.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 丛林加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="buttons.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 闲居加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="cards.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 用车加盟管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-graph"></i> 订单管理 <i class="fa fa-caret-left"></i>
+                        </a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="404.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 404
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="500.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 500
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="forms.html" class="nav-link">
+                            <i class="icon icon-puzzle"></i> apk版本管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="forms.html" class="nav-link">
+                            <i class="icon icon-puzzle"></i> 广告管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="tables.html" class="nav-link">
+                            <i class="icon icon-grid"></i> 城市管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-umbrella"></i> Pages <i class="fa fa-caret-left"></i>
+                        </a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="404.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 404
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="500.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 500
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">54</span>
+                                    <span class="font-weight-light">Total Users</span>
+                                </div>
+
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-people"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">$32,400</span>
+                                    <span class="font-weight-light">Income</span>
+                                </div>
+
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-wallet"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">900</span>
+                                    <span class="font-weight-light">Downloads</span>
+                                </div>
+
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-cloud-download"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card p-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="h4 d-block font-weight-normal mb-2">32s</span>
+                                    <span class="font-weight-light">Time</span>
+                                </div>
+
+                                <div class="h2 text-muted">
+                                    <i class="icon icon-clock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Total Users
+                            </div>
+
+                            <div class="card-body p-0">
+                                <div class="p-4">
+                                    <canvas id="line-chart" width="100%" height="20"></canvas>
+                                </div>
+
+                                <div class="justify-content-around mt-4 p-4 bg-light d-flex border-top d-md-down-none">
+                                    <div class="text-center">
+                                        <div class="text-muted small">Total Traffic</div>
+                                        <div>12,457 Users (40%)</div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <div class="text-muted small">Banned Users</div>
+                                        <div>95,333 Users (5%)</div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <div class="text-muted small">Page Views</div>
+                                        <div>957,565 Pages (50%)</div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <div class="text-muted small">Total Downloads</div>
+                                        <div>957,565 Files (100 TB)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!--头部与导航end-->
-
-<table width="100%" cellpadding="0" cellspacing="0" class="table_border0">
-	<tr>
-		<!--左侧区域start-->
-		<td id="hideCon" class="ver01 ali01">
-							<div id="lbox">
-								<div id="lbox_topcenter">
-								<div id="lbox_topleft">
-								<div id="lbox_topright">
-								</div>
-								</div>
-								</div>
-								<div id="lbox_middlecenter">
-								<div id="lbox_middleleft">
-								<div id="lbox_middleright">
-										<div id="bs_left">
-										<IFRAME height="100%" width="100%"  frameBorder=0 id=frmleft name=frmleft src="left.html"  allowTransparency="true"></IFRAME>
-										</div>
-										<!--更改左侧栏的宽度需要修改id="bs_left"的样式-->
-								</div>
-								</div>
-								</div>
-								<div id="lbox_bottomcenter">
-								<div id="lbox_bottomleft">
-								<div id="lbox_bottomright">
-									<div class="lbox_foot"></div>
-								</div>
-								</div>
-								</div>
-							</div>
-		</td>
-		<!--左侧区域end-->
-		
-		<!--分隔栏区域start-->
-		<td class="spliter main_shutiao" targetId="hideCon" beforeClickTip="收缩面板" afterClickTip="展开面板" beforeClickClass="bs_leftArr" afterClickClass="bs_rightArr">
-		</td>
-		<!--分隔栏区域end-->
-		
-		<!--右侧区域start-->
-		<td class="ali01 ver01"  width="100%">
-							<div id="rbox">
-								<div id="rbox_topcenter">
-								<div id="rbox_topleft">
-								<div id="rbox_topright">
-								</div>
-								</div>
-								</div>
-								<div id="rbox_middlecenter">
-								<div id="rbox_middleleft">
-								<div id="rbox_middleright">
-									<div id="bs_right">
-									       <IFRAME height="100%"  width="100%" frameBorder=0 id=frmright name=frmright src="open.html"  allowTransparency="true"></IFRAME>
-									</div>
-								</div>
-								</div>
-								</div>
-								<div id="rbox_bottomcenter" >
-								<div id="rbox_bottomleft">
-								<div id="rbox_bottomright">
-
-								</div>
-								</div>
-								</div>
-							</div>
-		</td>
-		<!--右侧区域end-->
-	</tr>
-</table>
-
-<!--尾部区域start-->
-<div id="fbox">
-	<div id="bs_footcenter">
-	<div id="bs_footleft">
-	<div id="bs_footright">
-		版权所有：
-	</div>
-	</div>
-	</div>
-</div>
-</div>
-<!--尾部区域end-->
-
-<!--窗口任务栏区域start-->
-<div id="dialogTask" class="dialogTaskBg" style="display:none;"></div>
-<!--窗口任务栏区域end-->
-
-<!--浏览器resize事件修正start-->
-<div id="resizeFix"></div>
-<!--浏览器resize事件修正end-->
-
-<!--载进度条start-->
-<div class="progressBg" id="progress" style="display:none;"><div class="progressBar"></div></div>
-<!--载进度条end-->
-<iframe id="sessionSkin" src="" width="0" height="0" style="display:none;"></iframe>
+<script src="temp/vendor/jquery/jquery.min.js"></script>
+<script src="temp/vendor/popper.js/popper.min.js"></script>
+<script src="temp/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="temp/vendor/chart.js/chart.min.js"></script>
+<script src="temp/js/carbon.js"></script>
+<script src="temp/js/demo.js"></script>
 </body>
 </html>

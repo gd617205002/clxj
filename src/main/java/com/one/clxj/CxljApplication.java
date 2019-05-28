@@ -14,6 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class CxljApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(CxljApplication.class, args);
     }
 

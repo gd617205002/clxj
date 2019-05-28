@@ -175,52 +175,52 @@ public class CarinfoExample {
         }
 
         public Criteria andClxjmainIdEqualTo(Integer value) {
-            addCriterion("clxjmainId =", value, "clxjmainId");
+            addCriterion("clxjmainId =", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdNotEqualTo(Integer value) {
-            addCriterion("clxjmainId <>", value, "clxjmainId");
+            addCriterion("clxjmainId <>", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdGreaterThan(Integer value) {
-            addCriterion("clxjmainId >", value, "clxjmainId");
+            addCriterion("clxjmainId >", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("clxjmainId >=", value, "clxjmainId");
+            addCriterion("clxjmainId >=", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdLessThan(Integer value) {
-            addCriterion("clxjmainId <", value, "clxjmainId");
+            addCriterion("clxjmainId <", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdLessThanOrEqualTo(Integer value) {
-            addCriterion("clxjmainId <=", value, "clxjmainId");
+            addCriterion("clxjmainId <=", value, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdIn(List<Integer> values) {
-            addCriterion("clxjmainId in", values, "clxjmainId");
+            addCriterion("clxjmainId in", values, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdNotIn(List<Integer> values) {
-            addCriterion("clxjmainId not in", values, "clxjmainId");
+            addCriterion("clxjmainId not in", values, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdBetween(Integer value1, Integer value2) {
-            addCriterion("clxjmainId between", value1, value2, "clxjmainId");
+            addCriterion("clxjmainId between", value1, value2, "clxjmains.id");
             return (Criteria) this;
         }
 
         public Criteria andClxjmainIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("clxjmainId not between", value1, value2, "clxjmainId");
+            addCriterion("clxjmainId not between", value1, value2, "clxjmains.id");
             return (Criteria) this;
         }
 
@@ -505,52 +505,52 @@ public class CarinfoExample {
         }
 
         public Criteria andJoinidEqualTo(Integer value) {
-            addCriterion("joinid =", value, "joinid");
+            addCriterion("joinid =", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotEqualTo(Integer value) {
-            addCriterion("joinid <>", value, "joinid");
+            addCriterion("joinid <>", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidGreaterThan(Integer value) {
-            addCriterion("joinid >", value, "joinid");
+            addCriterion("joinid >", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("joinid >=", value, "joinid");
+            addCriterion("joinid >=", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidLessThan(Integer value) {
-            addCriterion("joinid <", value, "joinid");
+            addCriterion("joinid <", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidLessThanOrEqualTo(Integer value) {
-            addCriterion("joinid <=", value, "joinid");
+            addCriterion("joinid <=", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidIn(List<Integer> values) {
-            addCriterion("joinid in", values, "joinid");
+            addCriterion("joinid in", values, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotIn(List<Integer> values) {
-            addCriterion("joinid not in", values, "joinid");
+            addCriterion("joinid not in", values, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidBetween(Integer value1, Integer value2) {
-            addCriterion("joinid between", value1, value2, "joinid");
+            addCriterion("joinid between", value1, value2, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotBetween(Integer value1, Integer value2) {
-            addCriterion("joinid not between", value1, value2, "joinid");
+            addCriterion("joinid not between", value1, value2, "adminuser.id");
             return (Criteria) this;
         }
 

@@ -1,6 +1,9 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
 public class HelpinfoKey {
+    @Id
     private Integer id;
 
     private String idcard;

@@ -1,49 +1,67 @@
 package com.one.clxj.pojo;
 
-public class Helpinfo extends HelpinfoKey {
-    private String name;
+import javax.persistence.Id;
 
-    private Integer sex;
+/**
+ * 求助信息实体类
+ */
+public class Helpinfo {
+    @Id
+    private Integer id; //编号
 
-    private Integer age;
+    private String name; //联系人姓名
 
-    private String phonenum;
+    private Integer sex; //性别
 
-    private String email;
+    private Integer age; //年龄
 
-    private String address;
+    private String idcard; //身份证号
 
-    private Double income;
+    private String phonenum; //联系电话
 
-    private Integer basicliving;
+    private String email; //联系邮箱
 
-    private Double applymoney;
+    private String address; //住址或单位
 
-    private String fileurl;
+    private Double income; //家庭年收入
 
-    private String applycontent;
+    private Integer basicliving; //是否享受低保
 
-    private Integer applystatus;
+    private Double applymoney; //拟申请求助金额
 
-    private Integer applytype;
+    private String fileurl; //上传文件
 
-    private String time;
+    private String applycontent; //困难概要
 
-    private Integer uid;
+    private Integer applystatus; //审核状态
 
-    private String applymoneyusertime;
+    private Integer applytype; //求助类型
 
-    private String vouchname;
+    private String time; //求助时间
 
-    private String vouchidcard;
+    private Reguser reguser; //求助人
 
-    private String vouchaddress;
+    private String applymoneyusertime; //申请资金使用期限
 
-    private String vouchcompany;
+    private String vouchname; //担保人姓名
 
-    private String vouchphonenum;
+    private String vouchidcard; //身份证号码
 
-    private String vouchmobile;
+    private String vouchaddress; //地址
+
+    private String vouchcompany; //工作单位
+
+    private String vouchphonenum; //单位固定电话
+
+    private String vouchmobile; //个人联系电话
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -67,6 +85,14 @@ public class Helpinfo extends HelpinfoKey {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard == null ? null : idcard.trim();
     }
 
     public String getPhonenum() {
@@ -157,13 +183,6 @@ public class Helpinfo extends HelpinfoKey {
         this.time = time == null ? null : time.trim();
     }
 
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public String getApplymoneyusertime() {
         return applymoneyusertime;
@@ -219,5 +238,43 @@ public class Helpinfo extends HelpinfoKey {
 
     public void setVouchmobile(String vouchmobile) {
         this.vouchmobile = vouchmobile == null ? null : vouchmobile.trim();
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Helpinfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", idcard='" + idcard + '\'' +
+                ", phonenum='" + phonenum + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", income=" + income +
+                ", basicliving=" + basicliving +
+                ", applymoney=" + applymoney +
+                ", fileurl='" + fileurl + '\'' +
+                ", applycontent='" + applycontent + '\'' +
+                ", applystatus=" + applystatus +
+                ", applytype=" + applytype +
+                ", time='" + time + '\'' +
+                ", reguser=" + reguser +
+                ", applymoneyusertime='" + applymoneyusertime + '\'' +
+                ", vouchname='" + vouchname + '\'' +
+                ", vouchidcard='" + vouchidcard + '\'' +
+                ", vouchaddress='" + vouchaddress + '\'' +
+                ", vouchcompany='" + vouchcompany + '\'' +
+                ", vouchphonenum='" + vouchphonenum + '\'' +
+                ", vouchmobile='" + vouchmobile + '\'' +
+                '}';
     }
 }

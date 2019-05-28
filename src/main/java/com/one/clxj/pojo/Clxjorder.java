@@ -1,31 +1,36 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 丛林闲居订单实体类
+ */
 public class Clxjorder {
-    private String oid;
+    @Id
+    private String oid; //订单号
 
-    private Integer cid;
+    private Clxjmain clxjmain; //丛林闲居编号
 
-    private Integer uid;
+    private Reguser reguser; //用户编号
 
-    private Date checkstartdate;
+    private Date checkstartdate; //入住开始时间
 
-    private Date checkenddate;
+    private Date checkenddate; //入住结束时间
 
-    private Double total;
+    private Double total; //总价
 
-    private String checkperson;
+    private String checkperson; //入住人
 
-    private String relperson;
+    private String relperson; //联系人
 
-    private String relphone;
+    private String relphone; //联系电话
 
-    private String relemail;
+    private String relemail; //邮箱
 
-    private Integer state;
+    private Integer state; //交易状态
 
-    private Date reservetime;
+    private Date reservetime; //交易时间
 
     public String getOid() {
         return oid;
@@ -33,22 +38,6 @@ public class Clxjorder {
 
     public void setOid(String oid) {
         this.oid = oid == null ? null : oid.trim();
-    }
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
     }
 
     public Date getCheckstartdate() {
@@ -121,5 +110,39 @@ public class Clxjorder {
 
     public void setReservetime(Date reservetime) {
         this.reservetime = reservetime;
+    }
+
+    public Clxjmain getClxjmain() {
+        return clxjmain;
+    }
+
+    public void setClxjmain(Clxjmain clxjmain) {
+        this.clxjmain = clxjmain;
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Clxjorder{" +
+                "oid='" + oid + '\'' +
+                ", clxjmain=" + clxjmain +
+                ", reguser=" + reguser +
+                ", checkstartdate=" + checkstartdate +
+                ", checkenddate=" + checkenddate +
+                ", total=" + total +
+                ", checkperson='" + checkperson + '\'' +
+                ", relperson='" + relperson + '\'' +
+                ", relphone='" + relphone + '\'' +
+                ", relemail='" + relemail + '\'' +
+                ", state=" + state +
+                ", reservetime=" + reservetime +
+                '}';
     }
 }

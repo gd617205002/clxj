@@ -1,21 +1,27 @@
 package com.one.clxj.pojo;
 
+import javax.persistence.Id;
+
+/**
+ * 车辆信息实体类
+ */
 public class Carinfo {
-    private Integer id;
+    @Id
+    private Integer id; //编号
 
-    private Integer clxjmainId;
+    private Clxjmain clxjmains; //丛林闲居名称
 
-    private String cartitle;
+    private String cartitle; //车名
 
-    private String carouselImg;
+    private String carouselImg; //图片
 
-    private Long price;
+    private Long price; //价格
 
-    private String licence;
+    private String licence; //车牌号
 
-    private Integer joinid;
+    private Adminuser adminuser; //添加人
 
-    private Integer checkstatus;
+    private Integer checkstatus; //审核状态
 
     public Integer getId() {
         return id;
@@ -25,13 +31,7 @@ public class Carinfo {
         this.id = id;
     }
 
-    public Integer getClxjmainId() {
-        return clxjmainId;
-    }
 
-    public void setClxjmainId(Integer clxjmainId) {
-        this.clxjmainId = clxjmainId;
-    }
 
     public String getCartitle() {
         return cartitle;
@@ -65,12 +65,20 @@ public class Carinfo {
         this.licence = licence == null ? null : licence.trim();
     }
 
-    public Integer getJoinid() {
-        return joinid;
+    public Clxjmain getClxjmains() {
+        return clxjmains;
     }
 
-    public void setJoinid(Integer joinid) {
-        this.joinid = joinid;
+    public void setClxjmains(Clxjmain clxjmains) {
+        this.clxjmains = clxjmains;
+    }
+
+    public Adminuser getAdminuser() {
+        return adminuser;
+    }
+
+    public void setAdminuser(Adminuser adminuser) {
+        this.adminuser = adminuser;
     }
 
     public Integer getCheckstatus() {
@@ -85,12 +93,12 @@ public class Carinfo {
     public String toString() {
         return "Carinfo{" +
                 "id=" + id +
-                ", clxjmainId=" + clxjmainId +
+                ", clxjmains=" + clxjmains +
                 ", cartitle='" + cartitle + '\'' +
                 ", carouselImg='" + carouselImg + '\'' +
                 ", price=" + price +
                 ", licence='" + licence + '\'' +
-                ", joinid=" + joinid +
+                ", adminuser=" + adminuser +
                 ", checkstatus=" + checkstatus +
                 '}';
     }
