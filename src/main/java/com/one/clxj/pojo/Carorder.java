@@ -2,32 +2,35 @@ package com.one.clxj.pojo;
 
 import java.util.Date;
 
+/**
+ * 用车订单实体类
+ */
 public class Carorder {
-    private String oid;
+    private String oid; //订单编号
 
-    private Integer cid;
+    private Carinfo carinfo; //车辆编号
 
-    private String startplace;
+    private String startplace; //出发地点
 
-    private String endplace;
+    private String endplace; //目的地点
 
-    private Double total;
+    private Double total; //总价
 
-    private String checkperson;
+    private String checkperson; //用车人员姓名
 
-    private String checkphone;
+    private String checkphone; //联系人电话
 
-    private Date usetime;
+    private Date usetime; //使用时间
 
-    private Integer useroption;
+    private Integer useroption; //
 
-    private String message;
+    private String message; //留言
 
-    private Integer uid;
+    private Reguser reguser; //下单用户
 
-    private Integer state;
+    private Integer state; //状态
 
-    private Date reservetime;
+    private Date reservetime; //下单时间
 
     public String getOid() {
         return oid;
@@ -37,13 +40,7 @@ public class Carorder {
         this.oid = oid == null ? null : oid.trim();
     }
 
-    public Integer getCid() {
-        return cid;
-    }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
 
     public String getStartplace() {
         return startplace;
@@ -109,13 +106,7 @@ public class Carorder {
         this.message = message == null ? null : message.trim();
     }
 
-    public Integer getUid() {
-        return uid;
-    }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public Integer getState() {
         return state;
@@ -131,5 +122,40 @@ public class Carorder {
 
     public void setReservetime(Date reservetime) {
         this.reservetime = reservetime;
+    }
+
+    public Carinfo getCarinfo() {
+        return carinfo;
+    }
+
+    public void setCarinfo(Carinfo carinfo) {
+        this.carinfo = carinfo;
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Carorder{" +
+                "oid='" + oid + '\'' +
+                ", carinfo=" + carinfo +
+                ", startplace='" + startplace + '\'' +
+                ", endplace='" + endplace + '\'' +
+                ", total=" + total +
+                ", checkperson='" + checkperson + '\'' +
+                ", checkphone='" + checkphone + '\'' +
+                ", usetime=" + usetime +
+                ", useroption=" + useroption +
+                ", message='" + message + '\'' +
+                ", reguser=" + reguser +
+                ", state=" + state +
+                ", reservetime=" + reservetime +
+                '}';
     }
 }

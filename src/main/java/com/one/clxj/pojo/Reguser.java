@@ -2,28 +2,31 @@ package com.one.clxj.pojo;
 
 import java.util.Date;
 
+/**
+ * 前台注册表
+ */
 public class Reguser {
-    private Integer id;
+    private Integer id; //编号
 
-    private String username;
+    private String username; //用户名称
 
-    private String mobile;
+    private String mobile; //手机号码
 
-    private String email;
+    private String email; //邮箱
 
-    private String pwd;
+    private String pwd; //密码
 
-    private Integer sex;
+    private Integer sex; //性别
 
-    private String realname;
+    private String realname; //真实姓名
 
-    private String idcard;
+    private String idcard; //身份证号
 
-    private Integer city;
+    private City citys; //所在城市编号
 
-    private Date regtime;
+    private Date regtime; //注册时间
 
-    private Integer enableflag;
+    private Integer enableflag; //用户状态
 
     public Integer getId() {
         return id;
@@ -89,13 +92,6 @@ public class Reguser {
         this.idcard = idcard == null ? null : idcard.trim();
     }
 
-    public Integer getCity() {
-        return city;
-    }
-
-    public void setCity(Integer city) {
-        this.city = city;
-    }
 
     public Date getRegtime() {
         return regtime;
@@ -111,5 +107,30 @@ public class Reguser {
 
     public void setEnableflag(Integer enableflag) {
         this.enableflag = enableflag;
+    }
+
+    public City getCitys() {
+        return citys;
+    }
+
+    public void setCitys(City citys) {
+        this.citys = citys;
+    }
+
+    @Override
+    public String toString() {
+        return "Reguser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", sex=" + sex +
+                ", realname='" + realname + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", citys=" + citys +
+                ", regtime=" + regtime +
+                ", enableflag=" + enableflag +
+                '}';
     }
 }

@@ -3,11 +3,12 @@
 <mapper namespace="com.one.clxj.mapper.FreeMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Free" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="confessionid" property="confessionid" jdbcType="INTEGER" />
+    <!--<result column="confessionid" property="confession.id" jdbcType="INTEGER" />-->
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="ftime" property="ftime" jdbcType="TIMESTAMP" />
     <result column="readnum" property="readnum" jdbcType="INTEGER" />
+    <association property="confession" column="confessionid" select="com.one.clxj.mapper.ConfessionMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, confessionid, type, content, ftime, readnum
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.FreeExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.FreeExample" >
     select
     <if test="distinct" >
       distinct
@@ -83,18 +84,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+      <if test="currPage != null and limit != null">
+          limit ${currPage},${limit}
+      </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from free
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
     delete from free
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.FreeExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.FreeExample" >
     delete from free
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -114,7 +118,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="confessionid != null" >
+      <if test="confession.id != null" >
         confessionid,
       </if>
       <if test="type != null" >
@@ -134,7 +138,7 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="confessionid != null" >
+      <if test="confession.id != null" >
         #{confessionid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >
@@ -157,13 +161,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update free
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.confessionid != null" >
+      <if test="record.confession.id != null" >
         confessionid = #{record.confessionid,jdbcType=INTEGER},
       </if>
       <if test="record.type != null" >
@@ -183,7 +187,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update free
     set id = #{record.id,jdbcType=INTEGER},
       confessionid = #{record.confessionid,jdbcType=INTEGER},
@@ -198,7 +202,7 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Free" >
     update free
     <set >
-      <if test="confessionid != null" >
+      <if test="confession.id != null" >
         confessionid = #{confessionid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >

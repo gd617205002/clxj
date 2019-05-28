@@ -8,9 +8,9 @@ import java.util.Date;
 public class Carcomment {
     private Integer id; //编号
 
-    private Carinfo cid; //车辆信息
+    private Carinfo carinfo; //车辆信息
 
-    private Reguser uid; //用户信息
+    private Reguser reguser; //用户信息
 
     private Integer cflag; //推荐状态
 
@@ -26,20 +26,20 @@ public class Carcomment {
         this.id = id;
     }
 
-    public Carinfo getCid() {
-        return cid;
+    public Carinfo getCarinfo() {
+        return carinfo;
     }
 
-    public void setCid(Carinfo cid) {
-        this.cid = cid;
+    public void setCarinfo(Carinfo carinfo) {
+        this.carinfo = carinfo;
     }
 
-    public Reguser getUid() {
-        return uid;
+    public Reguser getReguser() {
+        return reguser;
     }
 
-    public void setUid(Reguser uid) {
-        this.uid = uid;
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
     }
 
     public Integer getCflag() {
@@ -70,8 +70,8 @@ public class Carcomment {
     public String toString() {
         return "Carcomment{" +
                 "id=" + id +
-                ", cid=" + cid +
-                ", uid=" + uid +
+                ", carinfo=" + carinfo +
+                ", reguser=" + reguser +
                 ", cflag=" + cflag +
                 ", content='" + content + '\'' +
                 ", commenttime=" + commenttime +

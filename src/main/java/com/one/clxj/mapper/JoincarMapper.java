@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface JoincarMapper extends Mapper<Joincar> {
     int countByExample(JoincarExample example);
 
-    int deleteByExample(JoincarExample example);
+    int deleteByExample2(JoincarExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Joincar record);
 
     int insertSelective(Joincar record);
 
-    List<Joincar> selectByExample(JoincarExample example);
+    List<Joincar> selectByExample2(JoincarExample example);
 
-    Joincar selectByPrimaryKey(Integer id);
+    Joincar selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Joincar record, @Param("example") JoincarExample example);
+    int updateByExampleSelective2(@Param("record") Joincar record, @Param("example") JoincarExample example);
 
-    int updateByExample(@Param("record") Joincar record, @Param("example") JoincarExample example);
+    int updateByExample2(@Param("record") Joincar record, @Param("example") JoincarExample example);
 
     int updateByPrimaryKeySelective(Joincar record);
 

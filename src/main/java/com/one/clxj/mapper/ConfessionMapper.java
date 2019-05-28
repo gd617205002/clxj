@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface ConfessionMapper  extends Mapper<Confession> {
     int countByExample(ConfessionExample example);
 
-    int deleteByExample(ConfessionExample example);
+    int deleteByExample2(ConfessionExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Confession record);
 
     int insertSelective(Confession record);
 
-    List<Confession> selectByExample(ConfessionExample example);
+    List<Confession> selectByExample2(ConfessionExample example);
 
-    Confession selectByPrimaryKey(Integer id);
+    Confession selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Confession record, @Param("example") ConfessionExample example);
+    int updateByExampleSelective2(@Param("record") Confession record, @Param("example") ConfessionExample example);
 
-    int updateByExample(@Param("record") Confession record, @Param("example") ConfessionExample example);
+    int updateByExample2(@Param("record") Confession record, @Param("example") ConfessionExample example);
 
     int updateByPrimaryKeySelective(Confession record);
 

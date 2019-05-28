@@ -11,6 +11,27 @@ public class ClxjmainExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public ClxjmainExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -695,6 +716,76 @@ public class ClxjmainExample {
             return (Criteria) this;
         }
 
+        public Criteria andIntroductionIsNull() {
+            addCriterion("introduction is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionIsNotNull() {
+            addCriterion("introduction is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionEqualTo(String value) {
+            addCriterion("introduction =", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionNotEqualTo(String value) {
+            addCriterion("introduction <>", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionGreaterThan(String value) {
+            addCriterion("introduction >", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionGreaterThanOrEqualTo(String value) {
+            addCriterion("introduction >=", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionLessThan(String value) {
+            addCriterion("introduction <", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionLessThanOrEqualTo(String value) {
+            addCriterion("introduction <=", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionLike(String value) {
+            addCriterion("introduction like", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionNotLike(String value) {
+            addCriterion("introduction not like", value, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionIn(List<String> values) {
+            addCriterion("introduction in", values, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionNotIn(List<String> values) {
+            addCriterion("introduction not in", values, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionBetween(String value1, String value2) {
+            addCriterion("introduction between", value1, value2, "introduction");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntroductionNotBetween(String value1, String value2) {
+            addCriterion("introduction not between", value1, value2, "introduction");
+            return (Criteria) this;
+        }
+
         public Criteria andAddressIsNull() {
             addCriterion("address is null");
             return (Criteria) this;
@@ -1036,52 +1127,52 @@ public class ClxjmainExample {
         }
 
         public Criteria andJoinidEqualTo(Integer value) {
-            addCriterion("joinid =", value, "joinid");
+            addCriterion("joinid =", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotEqualTo(Integer value) {
-            addCriterion("joinid <>", value, "joinid");
+            addCriterion("joinid <>", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidGreaterThan(Integer value) {
-            addCriterion("joinid >", value, "joinid");
+            addCriterion("joinid >", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("joinid >=", value, "joinid");
+            addCriterion("joinid >=", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidLessThan(Integer value) {
-            addCriterion("joinid <", value, "joinid");
+            addCriterion("joinid <", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidLessThanOrEqualTo(Integer value) {
-            addCriterion("joinid <=", value, "joinid");
+            addCriterion("joinid <=", value, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidIn(List<Integer> values) {
-            addCriterion("joinid in", values, "joinid");
+            addCriterion("joinid in", values, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotIn(List<Integer> values) {
-            addCriterion("joinid not in", values, "joinid");
+            addCriterion("joinid not in", values, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidBetween(Integer value1, Integer value2) {
-            addCriterion("joinid between", value1, value2, "joinid");
+            addCriterion("joinid between", value1, value2, "adminuser.id");
             return (Criteria) this;
         }
 
         public Criteria andJoinidNotBetween(Integer value1, Integer value2) {
-            addCriterion("joinid not between", value1, value2, "joinid");
+            addCriterion("joinid not between", value1, value2, "adminuser.id");
             return (Criteria) this;
         }
 
@@ -1212,6 +1303,76 @@ public class ClxjmainExample {
 
         public Criteria andAbbotNotBetween(String value1, String value2) {
             addCriterion("abbot not between", value1, value2, "abbot");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeIsNull() {
+            addCriterion("abbotresume is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeIsNotNull() {
+            addCriterion("abbotresume is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeEqualTo(String value) {
+            addCriterion("abbotresume =", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeNotEqualTo(String value) {
+            addCriterion("abbotresume <>", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeGreaterThan(String value) {
+            addCriterion("abbotresume >", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeGreaterThanOrEqualTo(String value) {
+            addCriterion("abbotresume >=", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeLessThan(String value) {
+            addCriterion("abbotresume <", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeLessThanOrEqualTo(String value) {
+            addCriterion("abbotresume <=", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeLike(String value) {
+            addCriterion("abbotresume like", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeNotLike(String value) {
+            addCriterion("abbotresume not like", value, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeIn(List<String> values) {
+            addCriterion("abbotresume in", values, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeNotIn(List<String> values) {
+            addCriterion("abbotresume not in", values, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeBetween(String value1, String value2) {
+            addCriterion("abbotresume between", value1, value2, "abbotresume");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbbotresumeNotBetween(String value1, String value2) {
+            addCriterion("abbotresume not between", value1, value2, "abbotresume");
             return (Criteria) this;
         }
 

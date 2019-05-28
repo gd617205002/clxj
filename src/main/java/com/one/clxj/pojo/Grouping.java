@@ -1,9 +1,12 @@
 package com.one.clxj.pojo;
 
+/**
+ * 城市分组类型表
+ */
 public class Grouping {
-    private Integer id;
+    private Integer id; //编号
 
-    private String type;
+    private String type; //分数类型
 
     public Integer getId() {
         return id;

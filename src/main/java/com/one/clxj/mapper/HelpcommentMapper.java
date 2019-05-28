@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface HelpcommentMapper extends Mapper<Helpcomment> {
     int countByExample(HelpcommentExample example);
 
-    int deleteByExample(HelpcommentExample example);
+    int deleteByExample2(HelpcommentExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Helpcomment record);
 
     int insertSelective(Helpcomment record);
 
-    List<Helpcomment> selectByExample(HelpcommentExample example);
+    List<Helpcomment> selectByExample2(HelpcommentExample example);
 
-    Helpcomment selectByPrimaryKey(Integer id);
+    Helpcomment selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Helpcomment record, @Param("example") HelpcommentExample example);
+    int updateByExampleSelective2(@Param("record") Helpcomment record, @Param("example") HelpcommentExample example);
 
-    int updateByExample(@Param("record") Helpcomment record, @Param("example") HelpcommentExample example);
+    int updateByExample2(@Param("record") Helpcomment record, @Param("example") HelpcommentExample example);
 
     int updateByPrimaryKeySelective(Helpcomment record);
 

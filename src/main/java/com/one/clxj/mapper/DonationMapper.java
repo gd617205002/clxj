@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface DonationMapper extends Mapper<Donation> {
     int countByExample(DonationExample example);
 
-    int deleteByExample(DonationExample example);
+    int deleteByExample2(DonationExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Donation record);
 
     int insertSelective(Donation record);
 
-    List<Donation> selectByExample(DonationExample example);
+    List<Donation> selectByExample2(DonationExample example);
 
-    Donation selectByPrimaryKey(Integer id);
+    Donation selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Donation record, @Param("example") DonationExample example);
+    int updateByExampleSelective2(@Param("record") Donation record, @Param("example") DonationExample example);
 
-    int updateByExample(@Param("record") Donation record, @Param("example") DonationExample example);
+    int updateByExample2(@Param("record") Donation record, @Param("example") DonationExample example);
 
     int updateByPrimaryKeySelective(Donation record);
 

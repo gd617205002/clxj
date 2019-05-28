@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface OrganizationMapper extends Mapper<Organization> {
     int countByExample(OrganizationExample example);
 
-    int deleteByExample(OrganizationExample example);
+    int deleteByExample2(OrganizationExample example);
 
-    int deleteByPrimaryKey(Integer org_id);
+    int deleteByPrimaryKey2(Integer org_id);
 
     int insert(Organization record);
 
     int insertSelective(Organization record);
 
-    List<Organization> selectByExample(OrganizationExample example);
+    List<Organization> selectByExample2(OrganizationExample example);
 
-    Organization selectByPrimaryKey(Integer org_id);
+    Organization selectByPrimaryKey2(Integer org_id);
 
-    int updateByExampleSelective(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExampleSelective2(@Param("record") Organization record, @Param("example") OrganizationExample example);
 
-    int updateByExample(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExample2(@Param("record") Organization record, @Param("example") OrganizationExample example);
 
     int updateByPrimaryKeySelective(Organization record);
 

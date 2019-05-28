@@ -2,22 +2,25 @@ package com.one.clxj.pojo;
 
 import java.util.Date;
 
+/**
+ * 款物发放实体类
+ */
 public class Grant {
-    private Integer id;
+    private Integer id; //编号
 
-    private String donationname;
+    private String donationname; //捐款人
 
-    private String goods;
+    private String goods; //物品
 
-    private Integer num;
+    private Integer num; //数量
 
-    private Double worthless;
+    private Double worthless; //价值
 
-    private String useto;
+    private String useto; //使用捐向
 
-    private String recipients;
+    private String recipients; //受助人
 
-    private Date donationTime;
+    private Date donationTime; //捐赠时间
 
     public Integer getId() {
         return id;

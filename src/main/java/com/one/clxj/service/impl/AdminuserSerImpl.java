@@ -15,7 +15,7 @@ public class AdminuserSerImpl extends SuperServiceImpl<Adminuser> implements Adm
     private AdminuserMapper adminuserMapper;
 
 
-    public void init(){
+   /* public void init(){
        super.mapper = adminuserMapper;
-    }
+    }*/
 }

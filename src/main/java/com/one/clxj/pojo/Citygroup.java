@@ -1,11 +1,14 @@
 package com.one.clxj.pojo;
 
+/**
+ * 城市分组实体类
+ */
 public class Citygroup {
-    private Integer id;
+    private Integer id; //编号
 
-    private Integer cid;
+    private City city; //城市编号
 
-    private Integer gid;
+    private Grouping grouping; //城市分组编号
 
     public Integer getId() {
         return id;
@@ -15,19 +18,28 @@ public class Citygroup {
         this.id = id;
     }
 
-    public Integer getCid() {
-        return cid;
+    public City getCity() {
+        return city;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setCity(City city) {
+        this.city = city;
     }
 
-    public Integer getGid() {
-        return gid;
+    public Grouping getGrouping() {
+        return grouping;
     }
 
-    public void setGid(Integer gid) {
-        this.gid = gid;
+    public void setGrouping(Grouping grouping) {
+        this.grouping = grouping;
+    }
+
+    @Override
+    public String toString() {
+        return "Citygroup{" +
+                "id=" + id +
+                ", city=" + city +
+                ", grouping=" + grouping +
+                '}';
     }
 }

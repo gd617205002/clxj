@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface JoinclMapper  extends Mapper<Joincl> {
     int countByExample(JoinclExample example);
 
-    int deleteByExample(JoinclExample example);
+    int deleteByExample2(JoinclExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Joincl record);
 
     int insertSelective(Joincl record);
 
-    List<Joincl> selectByExample(JoinclExample example);
+    List<Joincl> selectByExample2(JoinclExample example);
 
-    Joincl selectByPrimaryKey(Integer id);
+    Joincl selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Joincl record, @Param("example") JoinclExample example);
+    int updateByExampleSelective2(@Param("record") Joincl record, @Param("example") JoinclExample example);
 
-    int updateByExample(@Param("record") Joincl record, @Param("example") JoinclExample example);
+    int updateByExample2(@Param("record") Joincl record, @Param("example") JoinclExample example);
 
     int updateByPrimaryKeySelective(Joincl record);
 

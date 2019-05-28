@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.one.clxj.mapper.UserinforMapper" >
+  <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Userinfor" >
+    <id column="user_id" property="user_id" jdbcType="INTEGER" />
+    <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+    <result column="user_sex" property="user_sex" jdbcType="BIT" />
+    <result column="user_work" property="user_work" jdbcType="VARCHAR" />
+    <result column="user_contact" property="user_contact" jdbcType="VARCHAR" />
+    <result column="user_address" property="user_address" jdbcType="VARCHAR" />
+    <result column="user_marriage" property="user_marriage" jdbcType="BIT" />
+    <result column="user_department" property="user_department" jdbcType="INTEGER" />
+    <result column="user_employTime" property="user_employTime" jdbcType="TIMESTAMP" />
+    <result column="user_password" property="user_password" jdbcType="VARCHAR" />
+    <result column="user_education" property="user_education" jdbcType="VARCHAR" />
+    <result column="user_loginName" property="user_loginName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_sex, user_work, user_contact, user_address, user_marriage, 
+    user_department, user_employTime, user_password, user_education, user_loginName
+  </sql>
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.UserinforExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfor
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
+    delete from userinfor
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.UserinforExample" >
+    delete from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.one.clxj.pojo.Userinfor" >
+    insert into userinfor (user_id, user_name, user_sex, 
+      user_work, user_contact, user_address, 
+      user_marriage, user_department, user_employTime, 
+      user_password, user_education, user_loginName
+      )
+    values (#{user_id,jdbcType=INTEGER}, #{user_name,jdbcType=VARCHAR}, #{user_sex,jdbcType=BIT}, 
+      #{user_work,jdbcType=VARCHAR}, #{user_contact,jdbcType=VARCHAR}, #{user_address,jdbcType=VARCHAR}, 
+      #{user_marriage,jdbcType=BIT}, #{user_department,jdbcType=INTEGER}, #{user_employTime,jdbcType=TIMESTAMP}, 
+      #{user_password,jdbcType=VARCHAR}, #{user_education,jdbcType=VARCHAR}, #{user_loginName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Userinfor" >
+    insert into userinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        user_id,
+      </if>
+      <if test="user_name != null" >
+        user_name,
+      </if>
+      <if test="user_sex != null" >
+        user_sex,
+      </if>
+      <if test="user_work != null" >
+        user_work,
+      </if>
+      <if test="user_contact != null" >
+        user_contact,
+      </if>
+      <if test="user_address != null" >
+        user_address,
+      </if>
+      <if test="user_marriage != null" >
+        user_marriage,
+      </if>
+      <if test="user_department != null" >
+        user_department,
+      </if>
+      <if test="user_employTime != null" >
+        user_employTime,
+      </if>
+      <if test="user_password != null" >
+        user_password,
+      </if>
+      <if test="user_education != null" >
+        user_education,
+      </if>
+      <if test="user_loginName != null" >
+        user_loginName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        #{user_id,jdbcType=INTEGER},
+      </if>
+      <if test="user_name != null" >
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        #{user_sex,jdbcType=BIT},
+      </if>
+      <if test="user_work != null" >
+        #{user_work,jdbcType=VARCHAR},
+      </if>
+      <if test="user_contact != null" >
+        #{user_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        #{user_address,jdbcType=VARCHAR},
+      </if>
+      <if test="user_marriage != null" >
+        #{user_marriage,jdbcType=BIT},
+      </if>
+      <if test="user_department != null" >
+        #{user_department,jdbcType=INTEGER},
+      </if>
+      <if test="user_employTime != null" >
+        #{user_employTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_password != null" >
+        #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_education != null" >
+        #{user_education,jdbcType=VARCHAR},
+      </if>
+      <if test="user_loginName != null" >
+        #{user_loginName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.one.clxj.pojo.UserinforExample" resultType="java.lang.Integer" >
+    select count(*) from userinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective2" parameterType="map" >
+    update userinfor
+    <set >
+      <if test="record.user_id != null" >
+        user_id = #{record.user_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.user_name != null" >
+        user_name = #{record.user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_sex != null" >
+        user_sex = #{record.user_sex,jdbcType=BIT},
+      </if>
+      <if test="record.user_work != null" >
+        user_work = #{record.user_work,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_contact != null" >
+        user_contact = #{record.user_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_address != null" >
+        user_address = #{record.user_address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_marriage != null" >
+        user_marriage = #{record.user_marriage,jdbcType=BIT},
+      </if>
+      <if test="record.user_department != null" >
+        user_department = #{record.user_department,jdbcType=INTEGER},
+      </if>
+      <if test="record.user_employTime != null" >
+        user_employTime = #{record.user_employTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.user_password != null" >
+        user_password = #{record.user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_education != null" >
+        user_education = #{record.user_education,jdbcType=VARCHAR},
+      </if>
+      <if test="record.user_loginName != null" >
+        user_loginName = #{record.user_loginName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample2" parameterType="map" >
+    update userinfor
+    set user_id = #{record.user_id,jdbcType=INTEGER},
+      user_name = #{record.user_name,jdbcType=VARCHAR},
+      user_sex = #{record.user_sex,jdbcType=BIT},
+      user_work = #{record.user_work,jdbcType=VARCHAR},
+      user_contact = #{record.user_contact,jdbcType=VARCHAR},
+      user_address = #{record.user_address,jdbcType=VARCHAR},
+      user_marriage = #{record.user_marriage,jdbcType=BIT},
+      user_department = #{record.user_department,jdbcType=INTEGER},
+      user_employTime = #{record.user_employTime,jdbcType=TIMESTAMP},
+      user_password = #{record.user_password,jdbcType=VARCHAR},
+      user_education = #{record.user_education,jdbcType=VARCHAR},
+      user_loginName = #{record.user_loginName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Userinfor" >
+    update userinfor
+    <set >
+      <if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        user_sex = #{user_sex,jdbcType=BIT},
+      </if>
+      <if test="user_work != null" >
+        user_work = #{user_work,jdbcType=VARCHAR},
+      </if>
+      <if test="user_contact != null" >
+        user_contact = #{user_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        user_address = #{user_address,jdbcType=VARCHAR},
+      </if>
+      <if test="user_marriage != null" >
+        user_marriage = #{user_marriage,jdbcType=BIT},
+      </if>
+      <if test="user_department != null" >
+        user_department = #{user_department,jdbcType=INTEGER},
+      </if>
+      <if test="user_employTime != null" >
+        user_employTime = #{user_employTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_password != null" >
+        user_password = #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_education != null" >
+        user_education = #{user_education,jdbcType=VARCHAR},
+      </if>
+      <if test="user_loginName != null" >
+        user_loginName = #{user_loginName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.one.clxj.pojo.Userinfor" >
+    update userinfor
+    set user_name = #{user_name,jdbcType=VARCHAR},
+      user_sex = #{user_sex,jdbcType=BIT},
+      user_work = #{user_work,jdbcType=VARCHAR},
+      user_contact = #{user_contact,jdbcType=VARCHAR},
+      user_address = #{user_address,jdbcType=VARCHAR},
+      user_marriage = #{user_marriage,jdbcType=BIT},
+      user_department = #{user_department,jdbcType=INTEGER},
+      user_employTime = #{user_employTime,jdbcType=TIMESTAMP},
+      user_password = #{user_password,jdbcType=VARCHAR},
+      user_education = #{user_education,jdbcType=VARCHAR},
+      user_loginName = #{user_loginName,jdbcType=VARCHAR}
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface JoinsMapper extends Mapper<Joins> {
     int countByExample(JoinsExample example);
 
-    int deleteByExample(JoinsExample example);
+    int deleteByExample2(JoinsExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Joins record);
 
     int insertSelective(Joins record);
 
-    List<Joins> selectByExample(JoinsExample example);
+    List<Joins> selectByExample2(JoinsExample example);
 
-    Joins selectByPrimaryKey(Integer id);
+    Joins selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Joins record, @Param("example") JoinsExample example);
+    int updateByExampleSelective2(@Param("record") Joins record, @Param("example") JoinsExample example);
 
-    int updateByExample(@Param("record") Joins record, @Param("example") JoinsExample example);
+    int updateByExample2(@Param("record") Joins record, @Param("example") JoinsExample example);
 
     int updateByPrimaryKeySelective(Joins record);
 

@@ -16,10 +16,11 @@
     <result column="insurancenumber" property="insurancenumber" jdbcType="VARCHAR" />
     <result column="insurancephone" property="insurancephone" jdbcType="VARCHAR" />
     <result column="message" property="message" jdbcType="VARCHAR" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <!--<result column="uid" property="reguser.id" jdbcType="INTEGER" />-->
     <result column="jointime" property="jointime" jdbcType="VARCHAR" />
     <result column="joinstatus" property="joinstatus" jdbcType="INTEGER" />
     <result column="fileurl" property="fileurl" jdbcType="VARCHAR" />
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,7 +85,7 @@
     driverphone, insurancename, insurancenumber, insurancephone, message, uid, jointime, 
     joinstatus, fileurl
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.JoincarExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.JoincarExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,18 +98,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from joincar
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
     delete from joincar
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.JoincarExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.JoincarExample" >
     delete from joincar
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -175,7 +179,7 @@
       <if test="message != null" >
         message,
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid,
       </if>
       <if test="jointime != null" >
@@ -231,7 +235,7 @@
       <if test="message != null" >
         #{message,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="jointime != null" >
@@ -251,7 +255,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update joincar
     <set >
       <if test="record.id != null" >
@@ -296,7 +300,7 @@
       <if test="record.message != null" >
         message = #{record.message,jdbcType=VARCHAR},
       </if>
-      <if test="record.uid != null" >
+      <if test="record.reguser.id != null" >
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
       <if test="record.jointime != null" >
@@ -313,7 +317,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update joincar
     set id = #{record.id,jdbcType=INTEGER},
       theowner = #{record.theowner,jdbcType=VARCHAR},
@@ -379,7 +383,7 @@
       <if test="message != null" >
         message = #{message,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="jointime != null" >

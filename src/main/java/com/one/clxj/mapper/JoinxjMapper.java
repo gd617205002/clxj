@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface JoinxjMapper  extends Mapper<Joinxj> {
     int countByExample(JoinxjExample example);
 
-    int deleteByExample(JoinxjExample example);
+    int deleteByExample2(JoinxjExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Joinxj record);
 
     int insertSelective(Joinxj record);
 
-    List<Joinxj> selectByExample(JoinxjExample example);
+    List<Joinxj> selectByExample2(JoinxjExample example);
 
-    Joinxj selectByPrimaryKey(Integer id);
+    Joinxj selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Joinxj record, @Param("example") JoinxjExample example);
+    int updateByExampleSelective2(@Param("record") Joinxj record, @Param("example") JoinxjExample example);
 
-    int updateByExample(@Param("record") Joinxj record, @Param("example") JoinxjExample example);
+    int updateByExample2(@Param("record") Joinxj record, @Param("example") JoinxjExample example);
 
     int updateByPrimaryKeySelective(Joinxj record);
 

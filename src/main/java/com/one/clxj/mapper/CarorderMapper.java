@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface CarorderMapper extends Mapper<Carorder> {
     int countByExample(CarorderExample example);
 
-    int deleteByExample(CarorderExample example);
+    int deleteByExample2(CarorderExample example);
 
-    int deleteByPrimaryKey(String oid);
+    int deleteByPrimaryKey2(String oid);
 
     int insert(Carorder record);
 
     int insertSelective(Carorder record);
 
-    List<Carorder> selectByExample(CarorderExample example);
+    List<Carorder> selectByExample2(CarorderExample example);
 
-    Carorder selectByPrimaryKey(String oid);
+    Carorder selectByPrimaryKey2(String oid);
 
-    int updateByExampleSelective(@Param("record") Carorder record, @Param("example") CarorderExample example);
+    int updateByExampleSelective2(@Param("record") Carorder record, @Param("example") CarorderExample example);
 
-    int updateByExample(@Param("record") Carorder record, @Param("example") CarorderExample example);
+    int updateByExample2(@Param("record") Carorder record, @Param("example") CarorderExample example);
 
     int updateByPrimaryKeySelective(Carorder record);
 

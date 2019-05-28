@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface ClxjorderMapper extends Mapper<Clxjorder> {
     int countByExample(ClxjorderExample example);
 
-    int deleteByExample(ClxjorderExample example);
+    int deleteByExample2(ClxjorderExample example);
 
-    int deleteByPrimaryKey(String oid);
+    int deleteByPrimaryKey2(String oid);
 
     int insert(Clxjorder record);
 
     int insertSelective(Clxjorder record);
 
-    List<Clxjorder> selectByExample(ClxjorderExample example);
+    List<Clxjorder> selectByExample2(ClxjorderExample example);
 
-    Clxjorder selectByPrimaryKey(String oid);
+    Clxjorder selectByPrimaryKey2(String oid);
 
-    int updateByExampleSelective(@Param("record") Clxjorder record, @Param("example") ClxjorderExample example);
+    int updateByExampleSelective2(@Param("record") Clxjorder record, @Param("example") ClxjorderExample example);
 
-    int updateByExample(@Param("record") Clxjorder record, @Param("example") ClxjorderExample example);
+    int updateByExample2(@Param("record") Clxjorder record, @Param("example") ClxjorderExample example);
 
     int updateByPrimaryKeySelective(Clxjorder record);
 

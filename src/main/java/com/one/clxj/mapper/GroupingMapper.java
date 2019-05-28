@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface GroupingMapper extends Mapper<Grouping> {
     int countByExample(GroupingExample example);
 
-    int deleteByExample(GroupingExample example);
+    int deleteByExample2(GroupingExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Grouping record);
 
     int insertSelective(Grouping record);
 
-    List<Grouping> selectByExample(GroupingExample example);
+    List<Grouping> selectByExample2(GroupingExample example);
 
-    Grouping selectByPrimaryKey(Integer id);
+    Grouping selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Grouping record, @Param("example") GroupingExample example);
+    int updateByExampleSelective2(@Param("record") Grouping record, @Param("example") GroupingExample example);
 
-    int updateByExample(@Param("record") Grouping record, @Param("example") GroupingExample example);
+    int updateByExample2(@Param("record") Grouping record, @Param("example") GroupingExample example);
 
     int updateByPrimaryKeySelective(Grouping record);
 

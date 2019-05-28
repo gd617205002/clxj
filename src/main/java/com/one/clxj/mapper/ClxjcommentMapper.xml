@@ -3,12 +3,14 @@
 <mapper namespace="com.one.clxj.mapper.ClxjcommentMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Clxjcomment" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <!--<result column="cid" property="clxjmain.id" jdbcType="INTEGER" />-->
+    <!--<result column="uid" property="reguser.id" jdbcType="INTEGER" />-->
     <result column="cflag" property="cflag" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="photo" property="photo" jdbcType="VARCHAR" />
     <result column="commenttime" property="commenttime" jdbcType="TIMESTAMP" />
+    <association property="clxjmain" column="cid" select="com.one.clxj.mapper.ClxjmainMapper.selectByPrimaryKey2"/>
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +73,7 @@
   <sql id="Base_Column_List" >
     id, cid, uid, cflag, content, photo, commenttime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
     select
     <if test="distinct" >
       distinct
@@ -84,18 +86,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from clxjcomment
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
     delete from clxjcomment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
     delete from clxjcomment
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -115,10 +120,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         cid,
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid,
       </if>
       <if test="cflag != null" >
@@ -138,10 +143,10 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         #{cid,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="cflag != null" >
@@ -164,16 +169,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update clxjcomment
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cid != null" >
+      <if test="record.clxjmain.id != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
-      <if test="record.uid != null" >
+      <if test="record.reguser.id != null" >
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
       <if test="record.cflag != null" >
@@ -193,7 +198,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update clxjcomment
     set id = #{record.id,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
@@ -209,10 +214,10 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Clxjcomment" >
     update clxjcomment
     <set >
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         cid = #{cid,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="cflag != null" >

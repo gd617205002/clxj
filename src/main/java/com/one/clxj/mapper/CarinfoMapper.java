@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface CarinfoMapper  extends Mapper<Carinfo> {
     int countByExample(CarinfoExample example);
 
-    int deleteByExample(CarinfoExample example);
+    int deleteByExample2(CarinfoExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Carinfo record);
 
     int insertSelective(Carinfo record);
 
-    List<Carinfo> selectByExample(CarinfoExample example);
+    List<Carinfo> selectByExample2(CarinfoExample example);
 
-    Carinfo selectByPrimaryKey(Integer id);
+    Carinfo selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Carinfo record, @Param("example") CarinfoExample example);
+    int updateByExampleSelective2(@Param("record") Carinfo record, @Param("example") CarinfoExample example);
 
-    int updateByExample(@Param("record") Carinfo record, @Param("example") CarinfoExample example);
+    int updateByExample2(@Param("record") Carinfo record, @Param("example") CarinfoExample example);
 
     int updateByPrimaryKeySelective(Carinfo record);
 

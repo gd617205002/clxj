@@ -3,8 +3,8 @@
 <mapper namespace="com.one.clxj.mapper.ClxjorderMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Clxjorder" >
     <id column="oid" property="oid" jdbcType="VARCHAR" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <!--<result column="cid" property="clxjmain.id" jdbcType="INTEGER" />-->
+    <!--<result column="uid" property="reguser.id" jdbcType="INTEGER" />-->
     <result column="checkstartdate" property="checkstartdate" jdbcType="DATE" />
     <result column="checkenddate" property="checkenddate" jdbcType="DATE" />
     <result column="total" property="total" jdbcType="DOUBLE" />
@@ -14,6 +14,8 @@
     <result column="relemail" property="relemail" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="reservetime" property="reservetime" jdbcType="TIMESTAMP" />
+    <association property="clxjmain" column="cid" select="com.one.clxj.mapper.ClxjmainMapper.selectByPrimaryKey2"/>
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +79,7 @@
     oid, cid, uid, checkstartdate, checkenddate, total, checkperson, relperson, relphone, 
     relemail, state, reservetime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjorderExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjorderExample" >
     select
     <if test="distinct" >
       distinct
@@ -90,18 +92,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from clxjorder
     where oid = #{oid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.String" >
     delete from clxjorder
     where oid = #{oid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.ClxjorderExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.ClxjorderExample" >
     delete from clxjorder
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -125,10 +130,10 @@
       <if test="oid != null" >
         oid,
       </if>
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         cid,
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid,
       </if>
       <if test="checkstartdate != null" >
@@ -163,10 +168,10 @@
       <if test="oid != null" >
         #{oid,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         #{cid,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="checkstartdate != null" >
@@ -204,16 +209,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update clxjorder
     <set >
       <if test="record.oid != null" >
         oid = #{record.oid,jdbcType=VARCHAR},
       </if>
-      <if test="record.cid != null" >
+      <if test="record.clxjmain.id != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
-      <if test="record.uid != null" >
+      <if test="record.reguser.id != null" >
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
       <if test="record.checkstartdate != null" >
@@ -248,7 +253,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update clxjorder
     set oid = #{record.oid,jdbcType=VARCHAR},
       cid = #{record.cid,jdbcType=INTEGER},
@@ -269,10 +274,10 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Clxjorder" >
     update clxjorder
     <set >
-      <if test="cid != null" >
+      <if test="clxjmain.id != null" >
         cid = #{cid,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="checkstartdate != null" >

@@ -1,15 +1,18 @@
 package com.one.clxj.pojo;
 
+/**
+ * 城市信息实体类
+ */
 public class City {
-    private Integer id;
+    private Integer id; //编号
 
-    private String chinese;
+    private String chinese; //城市名称
 
-    private String pinyin;
+    private String pinyin; //拼音
 
-    private String abbreviations;
+    private String abbreviations; //缩写
 
-    private Integer status;
+    private Integer status; //状态
 
     public Integer getId() {
         return id;
@@ -49,5 +52,16 @@ public class City {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", chinese='" + chinese + '\'' +
+                ", pinyin='" + pinyin + '\'' +
+                ", abbreviations='" + abbreviations + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

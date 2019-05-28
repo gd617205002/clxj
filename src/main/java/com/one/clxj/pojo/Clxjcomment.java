@@ -2,20 +2,23 @@ package com.one.clxj.pojo;
 
 import java.util.Date;
 
+/**
+ * 丛林闲居留言实体类
+ */
 public class Clxjcomment {
-    private Integer id;
+    private Integer id; //编号
 
-    private Integer cid;
+    private Clxjmain clxjmain; //丛林闲居编号
 
-    private Integer uid;
+    private Reguser reguser; //用户编号
 
-    private Integer cflag;
+    private Integer cflag; //是否推荐
 
-    private String content;
+    private String content; //内容
 
     private String photo;
 
-    private Date commenttime;
+    private Date commenttime; //留言时间
 
     public Integer getId() {
         return id;
@@ -25,21 +28,7 @@ public class Clxjcomment {
         this.id = id;
     }
 
-    public Integer getCid() {
-        return cid;
-    }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public Integer getCflag() {
         return cflag;
@@ -71,5 +60,34 @@ public class Clxjcomment {
 
     public void setCommenttime(Date commenttime) {
         this.commenttime = commenttime;
+    }
+
+    public Clxjmain getClxjmain() {
+        return clxjmain;
+    }
+
+    public void setClxjmain(Clxjmain clxjmain) {
+        this.clxjmain = clxjmain;
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Clxjcomment{" +
+                "id=" + id +
+                ", clxjmain=" + clxjmain +
+                ", reguser=" + reguser +
+                ", cflag=" + cflag +
+                ", content='" + content + '\'' +
+                ", photo='" + photo + '\'' +
+                ", commenttime=" + commenttime +
+                '}';
     }
 }

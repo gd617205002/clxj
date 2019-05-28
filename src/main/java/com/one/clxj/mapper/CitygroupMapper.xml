@@ -3,8 +3,10 @@
 <mapper namespace="com.one.clxj.mapper.CitygroupMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Citygroup" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
-    <result column="gid" property="gid" jdbcType="INTEGER" />
+    <!--<result column="cid" property="city.id" jdbcType="INTEGER" />-->
+    <!--<result column="gid" property="grouping.id" jdbcType="INTEGER" />-->
+    <association property="city" column="cid" select="com.one.clxj.mapper.CityMapper.selectByPrimaryKey2"/>
+    <association property="grouping" column="gid" select="com.one.clxj.mapper.GroupingMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +69,7 @@
   <sql id="Base_Column_List" >
     id, cid, gid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CitygroupExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CitygroupExample" >
     select
     <if test="distinct" >
       distinct
@@ -80,18 +82,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from citygroup
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
     delete from citygroup
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.CitygroupExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.CitygroupExample" >
     delete from citygroup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -107,10 +112,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="cid != null" >
+      <if test="city.id != null" >
         cid,
       </if>
-      <if test="gid != null" >
+      <if test="grouping.id != null" >
         gid,
       </if>
     </trim>
@@ -118,10 +123,10 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="cid != null" >
+      <if test="city.id != null" >
         #{cid,jdbcType=INTEGER},
       </if>
-      <if test="gid != null" >
+      <if test="grouping.id != null" >
         #{gid,jdbcType=INTEGER},
       </if>
     </trim>
@@ -132,16 +137,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update citygroup
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cid != null" >
+      <if test="record.city.id != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
-      <if test="record.gid != null" >
+      <if test="record.grouping.id != null" >
         gid = #{record.gid,jdbcType=INTEGER},
       </if>
     </set>
@@ -149,7 +154,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update citygroup
     set id = #{record.id,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
@@ -161,10 +166,10 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Citygroup" >
     update citygroup
     <set >
-      <if test="cid != null" >
+      <if test="city.id != null" >
         cid = #{cid,jdbcType=INTEGER},
       </if>
-      <if test="gid != null" >
+      <if test="grouping.id != null" >
         gid = #{gid,jdbcType=INTEGER},
       </if>
     </set>

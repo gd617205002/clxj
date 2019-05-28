@@ -10,29 +10,26 @@ import tk.mybatis.mapper.common.Mapper;
 public interface AfluserMapper extends Mapper<Afluser> {
     int countByExample(AfluserExample example);
 
-    int deleteByExample(AfluserExample example);
+    int deleteByExample2(AfluserExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Afluser record);
 
     int insertSelective(Afluser record);
 
-    List<Afluser> selectByExampleWithBLOBs(AfluserExample example);
 
-    List<Afluser> selectByExample(AfluserExample example);
+    List<Afluser> selectByExample2(AfluserExample example);
 
-    Afluser selectByPrimaryKey(Integer id);
+    Afluser selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Afluser record, @Param("example") AfluserExample example);
+    int updateByExampleSelective2(@Param("record") Afluser record, @Param("example") AfluserExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Afluser record, @Param("example") AfluserExample example);
 
-    int updateByExample(@Param("record") Afluser record, @Param("example") AfluserExample example);
+    int updateByExample2(@Param("record") Afluser record, @Param("example") AfluserExample example);
 
     int updateByPrimaryKeySelective(Afluser record);
 
-    int updateByPrimaryKeyWithBLOBs(Afluser record);
 
     int updateByPrimaryKey(Afluser record);
 }

@@ -10,6 +10,27 @@ public class HelpcommentExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public HelpcommentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -175,52 +196,52 @@ public class HelpcommentExample {
         }
 
         public Criteria andHelpidEqualTo(Integer value) {
-            addCriterion("helpid =", value, "helpid");
+            addCriterion("helpid =", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidNotEqualTo(Integer value) {
-            addCriterion("helpid <>", value, "helpid");
+            addCriterion("helpid <>", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidGreaterThan(Integer value) {
-            addCriterion("helpid >", value, "helpid");
+            addCriterion("helpid >", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("helpid >=", value, "helpid");
+            addCriterion("helpid >=", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidLessThan(Integer value) {
-            addCriterion("helpid <", value, "helpid");
+            addCriterion("helpid <", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidLessThanOrEqualTo(Integer value) {
-            addCriterion("helpid <=", value, "helpid");
+            addCriterion("helpid <=", value, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidIn(List<Integer> values) {
-            addCriterion("helpid in", values, "helpid");
+            addCriterion("helpid in", values, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidNotIn(List<Integer> values) {
-            addCriterion("helpid not in", values, "helpid");
+            addCriterion("helpid not in", values, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidBetween(Integer value1, Integer value2) {
-            addCriterion("helpid between", value1, value2, "helpid");
+            addCriterion("helpid between", value1, value2, "helpinfo.id");
             return (Criteria) this;
         }
 
         public Criteria andHelpidNotBetween(Integer value1, Integer value2) {
-            addCriterion("helpid not between", value1, value2, "helpid");
+            addCriterion("helpid not between", value1, value2, "helpinfo.id");
             return (Criteria) this;
         }
 
@@ -235,52 +256,52 @@ public class HelpcommentExample {
         }
 
         public Criteria andUidEqualTo(Integer value) {
-            addCriterion("uid =", value, "uid");
+            addCriterion("uid =", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotEqualTo(Integer value) {
-            addCriterion("uid <>", value, "uid");
+            addCriterion("uid <>", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThan(Integer value) {
-            addCriterion("uid >", value, "uid");
+            addCriterion("uid >", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("uid >=", value, "uid");
+            addCriterion("uid >=", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThan(Integer value) {
-            addCriterion("uid <", value, "uid");
+            addCriterion("uid <", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidLessThanOrEqualTo(Integer value) {
-            addCriterion("uid <=", value, "uid");
+            addCriterion("uid <=", value, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidIn(List<Integer> values) {
-            addCriterion("uid in", values, "uid");
+            addCriterion("uid in", values, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotIn(List<Integer> values) {
-            addCriterion("uid not in", values, "uid");
+            addCriterion("uid not in", values, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidBetween(Integer value1, Integer value2) {
-            addCriterion("uid between", value1, value2, "uid");
+            addCriterion("uid between", value1, value2, "reguser.id");
             return (Criteria) this;
         }
 
         public Criteria andUidNotBetween(Integer value1, Integer value2) {
-            addCriterion("uid not between", value1, value2, "uid");
+            addCriterion("uid not between", value1, value2, "reguser.id");
             return (Criteria) this;
         }
 

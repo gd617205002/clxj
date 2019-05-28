@@ -1,15 +1,18 @@
 package com.one.clxj.pojo;
 
+/**
+ * 求助评论实体类
+ */
 public class Helpcomment {
-    private Integer id;
+    private Integer id; //编号
 
-    private Integer helpid;
+    private Helpinfo helpinfo; //求助编号
 
-    private Integer uid;
+    private Reguser reguser; //救助评论人
 
-    private String content;
+    private String content; //内容
 
-    private String time;
+    private String time; //时间
 
     public Integer getId() {
         return id;
@@ -19,21 +22,6 @@ public class Helpcomment {
         this.id = id;
     }
 
-    public Integer getHelpid() {
-        return helpid;
-    }
-
-    public void setHelpid(Integer helpid) {
-        this.helpid = helpid;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
 
     public String getContent() {
         return content;
@@ -49,5 +37,32 @@ public class Helpcomment {
 
     public void setTime(String time) {
         this.time = time == null ? null : time.trim();
+    }
+
+    public Helpinfo getHelpinfo() {
+        return helpinfo;
+    }
+
+    public void setHelpinfo(Helpinfo helpinfo) {
+        this.helpinfo = helpinfo;
+    }
+
+    public Reguser getReguser() {
+        return reguser;
+    }
+
+    public void setReguser(Reguser reguser) {
+        this.reguser = reguser;
+    }
+
+    @Override
+    public String toString() {
+        return "Helpcomment{" +
+                "id=" + id +
+                ", helpinfo=" + helpinfo +
+                ", reguser=" + reguser +
+                ", content='" + content + '\'' +
+                ", time='" + time + '\'' +
+                '}';
     }
 }

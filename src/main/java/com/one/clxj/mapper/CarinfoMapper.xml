@@ -3,13 +3,15 @@
 <mapper namespace="com.one.clxj.mapper.CarinfoMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Carinfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="clxjmainId" property="clxjmainId" jdbcType="INTEGER" />
+    <!--<result column="clxjmainId" property="clxjmains.id" jdbcType="INTEGER" />-->
     <result column="cartitle" property="cartitle" jdbcType="VARCHAR" />
     <result column="carouselImg" property="carouselImg" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="licence" property="licence" jdbcType="VARCHAR" />
-    <result column="joinid" property="joinid" jdbcType="INTEGER" />
+    <!--<result column="joinid" property="adminuser.id" jdbcType="INTEGER" />-->
     <result column="checkstatus" property="checkstatus" jdbcType="INTEGER" />
+    <association property="clxjmains" column="clxjmainId" select="com.one.clxj.mapper.ClxjmainMapper.selectByPrimaryKey2"/>
+    <association property="adminuser" column="joinid" select="com.one.clxj.mapper.AdminuserMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +74,7 @@
   <sql id="Base_Column_List" >
     id, clxjmainId, cartitle, carouselImg, price, licence, joinid, checkstatus
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CarinfoExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CarinfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -86,17 +88,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from carinfo
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
     delete from carinfo
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.CarinfoExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.CarinfoExample" >
     delete from carinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -116,7 +118,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="clxjmainId != null" >
+      <if test="clxjmains.id != null" >
         clxjmainId,
       </if>
       <if test="cartitle != null" >
@@ -131,7 +133,7 @@
       <if test="licence != null" >
         licence,
       </if>
-      <if test="joinid != null" >
+      <if test="adminuser.id != null" >
         joinid,
       </if>
       <if test="checkstatus != null" >
@@ -142,7 +144,7 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="clxjmainId != null" >
+      <if test="clxjmains.id != null" >
         #{clxjmainId,jdbcType=INTEGER},
       </if>
       <if test="cartitle != null" >
@@ -157,7 +159,7 @@
       <if test="licence != null" >
         #{licence,jdbcType=VARCHAR},
       </if>
-      <if test="joinid != null" >
+      <if test="adminuser.id != null" >
         #{joinid,jdbcType=INTEGER},
       </if>
       <if test="checkstatus != null" >
@@ -171,13 +173,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update carinfo
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.clxjmainId != null" >
+      <if test="record.clxjmains.id != null" >
         clxjmainId = #{record.clxjmainId,jdbcType=INTEGER},
       </if>
       <if test="record.cartitle != null" >
@@ -192,7 +194,7 @@
       <if test="record.licence != null" >
         licence = #{record.licence,jdbcType=VARCHAR},
       </if>
-      <if test="record.joinid != null" >
+      <if test="record.adminuser.id != null" >
         joinid = #{record.joinid,jdbcType=INTEGER},
       </if>
       <if test="record.checkstatus != null" >
@@ -203,7 +205,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update carinfo
     set id = #{record.id,jdbcType=INTEGER},
       clxjmainId = #{record.clxjmainId,jdbcType=INTEGER},
@@ -220,7 +222,7 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Carinfo" >
     update carinfo
     <set >
-      <if test="clxjmainId != null" >
+      <if test="clxjmains.id != null" >
         clxjmainId = #{clxjmainId,jdbcType=INTEGER},
       </if>
       <if test="cartitle != null" >
@@ -235,7 +237,7 @@
       <if test="licence != null" >
         licence = #{licence,jdbcType=VARCHAR},
       </if>
-      <if test="joinid != null" >
+      <if test="adminuser.id != null" >
         joinid = #{joinid,jdbcType=INTEGER},
       </if>
       <if test="checkstatus != null" >

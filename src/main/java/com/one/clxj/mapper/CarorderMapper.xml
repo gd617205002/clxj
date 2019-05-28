@@ -3,7 +3,7 @@
 <mapper namespace="com.one.clxj.mapper.CarorderMapper" >
   <resultMap id="BaseResultMap" type="com.one.clxj.pojo.Carorder" >
     <id column="oid" property="oid" jdbcType="VARCHAR" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <!--<result column="cid" property="carinfo.id" jdbcType="INTEGER" />-->
     <result column="startplace" property="startplace" jdbcType="VARCHAR" />
     <result column="endplace" property="endplace" jdbcType="VARCHAR" />
     <result column="total" property="total" jdbcType="DOUBLE" />
@@ -12,9 +12,11 @@
     <result column="usetime" property="usetime" jdbcType="TIMESTAMP" />
     <result column="useroption" property="useroption" jdbcType="INTEGER" />
     <result column="message" property="message" jdbcType="VARCHAR" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <!--<result column="uid" property="reguser.id" jdbcType="INTEGER" />-->
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="reservetime" property="reservetime" jdbcType="TIMESTAMP" />
+    <association property="carinfo" column="cid" select="com.one.clxj.mapper.CarinfoMapper.selectByPrimaryKey2"/>
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +80,7 @@
     oid, cid, startplace, endplace, total, checkperson, checkphone, usetime, useroption, 
     message, uid, state, reservetime
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CarorderExample" >
+  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.CarorderExample" >
     select
     <if test="distinct" >
       distinct
@@ -91,18 +93,21 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from carorder
     where oid = #{oid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.String" >
     delete from carorder
     where oid = #{oid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.CarorderExample" >
+  <delete id="deleteByExample2" parameterType="com.one.clxj.pojo.CarorderExample" >
     delete from carorder
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -126,7 +131,7 @@
       <if test="oid != null" >
         oid,
       </if>
-      <if test="cid != null" >
+      <if test="carinfo.id != null" >
         cid,
       </if>
       <if test="startplace != null" >
@@ -153,7 +158,7 @@
       <if test="message != null" >
         message,
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid,
       </if>
       <if test="state != null" >
@@ -167,7 +172,7 @@
       <if test="oid != null" >
         #{oid,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null" >
+      <if test="carinfo.id != null" >
         #{cid,jdbcType=INTEGER},
       </if>
       <if test="startplace != null" >
@@ -194,7 +199,7 @@
       <if test="message != null" >
         #{message,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
@@ -211,13 +216,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective2" parameterType="map" >
     update carorder
     <set >
       <if test="record.oid != null" >
         oid = #{record.oid,jdbcType=VARCHAR},
       </if>
-      <if test="record.cid != null" >
+      <if test="record.carinfo.id != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
       <if test="record.startplace != null" >
@@ -244,7 +249,7 @@
       <if test="record.message != null" >
         message = #{record.message,jdbcType=VARCHAR},
       </if>
-      <if test="record.uid != null" >
+      <if test="record.reguser.id != null" >
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
       <if test="record.state != null" >
@@ -258,7 +263,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample2" parameterType="map" >
     update carorder
     set oid = #{record.oid,jdbcType=VARCHAR},
       cid = #{record.cid,jdbcType=INTEGER},
@@ -280,7 +285,7 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Carorder" >
     update carorder
     <set >
-      <if test="cid != null" >
+      <if test="carinfo.id != null" >
         cid = #{cid,jdbcType=INTEGER},
       </if>
       <if test="startplace != null" >
@@ -307,7 +312,7 @@
       <if test="message != null" >
         message = #{message,jdbcType=VARCHAR},
       </if>
-      <if test="uid != null" >
+      <if test="reguser.id != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="state != null" >

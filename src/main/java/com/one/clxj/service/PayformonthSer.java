@@ -1,0 +1,6 @@
+package com.one.clxj.service;
+
+import com.one.clxj.pojo.Afluser;
+import com.one.clxj.pojo.Payformonth;
+
+public  interface PayformonthSer extends SuperService<Payformonth>{}

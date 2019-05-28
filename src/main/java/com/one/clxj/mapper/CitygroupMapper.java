@@ -10,21 +10,21 @@ import tk.mybatis.mapper.common.Mapper;
 public interface CitygroupMapper extends Mapper<Citygroup> {
     int countByExample(CitygroupExample example);
 
-    int deleteByExample(CitygroupExample example);
+    int deleteByExample2(CitygroupExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Citygroup record);
 
     int insertSelective(Citygroup record);
 
-    List<Citygroup> selectByExample(CitygroupExample example);
+    List<Citygroup> selectByExample2(CitygroupExample example);
 
-    Citygroup selectByPrimaryKey(Integer id);
+    Citygroup selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Citygroup record, @Param("example") CitygroupExample example);
+    int updateByExampleSelective2(@Param("record") Citygroup record, @Param("example") CitygroupExample example);
 
-    int updateByExample(@Param("record") Citygroup record, @Param("example") CitygroupExample example);
+    int updateByExample2(@Param("record") Citygroup record, @Param("example") CitygroupExample example);
 
     int updateByPrimaryKeySelective(Citygroup record);
 

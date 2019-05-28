@@ -11,6 +11,27 @@ public class ReguserExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer currPage; //当前页位置
+
+    protected Integer limit; //记录数
+
+    public Integer getCurrPage() {
+        return currPage;
+    }
+
+    public void setCurrPage(Integer currPage) {
+        this.currPage = currPage;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+
     public ReguserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -656,52 +677,52 @@ public class ReguserExample {
         }
 
         public Criteria andCityEqualTo(Integer value) {
-            addCriterion("city =", value, "city");
+            addCriterion("city =", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityNotEqualTo(Integer value) {
-            addCriterion("city <>", value, "city");
+            addCriterion("city <>", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityGreaterThan(Integer value) {
-            addCriterion("city >", value, "city");
+            addCriterion("city >", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityGreaterThanOrEqualTo(Integer value) {
-            addCriterion("city >=", value, "city");
+            addCriterion("city >=", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityLessThan(Integer value) {
-            addCriterion("city <", value, "city");
+            addCriterion("city <", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityLessThanOrEqualTo(Integer value) {
-            addCriterion("city <=", value, "city");
+            addCriterion("city <=", value, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityIn(List<Integer> values) {
-            addCriterion("city in", values, "city");
+            addCriterion("city in", values, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityNotIn(List<Integer> values) {
-            addCriterion("city not in", values, "city");
+            addCriterion("city not in", values, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityBetween(Integer value1, Integer value2) {
-            addCriterion("city between", value1, value2, "city");
+            addCriterion("city between", value1, value2, "citys.id");
             return (Criteria) this;
         }
 
         public Criteria andCityNotBetween(Integer value1, Integer value2) {
-            addCriterion("city not between", value1, value2, "city");
+            addCriterion("city not between", value1, value2, "citys.id");
             return (Criteria) this;
         }
 

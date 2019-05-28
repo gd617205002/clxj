@@ -1,18 +1,20 @@
 package com.one.clxj.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 爱心捐赠实体类
+ */
 public class Donation {
-    private Integer id;
+    private Integer id; //编号
 
-    private String donationname;
+    private String donationname; //捐款人
 
-    private String type;
+    private String type; //
 
-    private BigDecimal money;
+    private double money; //金额
 
-    private Date donationtime;
+    private Date donationtime; //捐款时间
 
     public Integer getId() {
         return id;
@@ -38,11 +40,11 @@ public class Donation {
         this.type = type == null ? null : type.trim();
     }
 
-    public BigDecimal getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(BigDecimal money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 

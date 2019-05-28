@@ -8,23 +8,24 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface CatalogsMapper extends Mapper<Catalogs> {
+
     int countByExample(CatalogsExample example);
 
-    int deleteByExample(CatalogsExample example);
+    int deleteByExample2(CatalogsExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey2(Integer id);
 
     int insert(Catalogs record);
 
     int insertSelective(Catalogs record);
 
-    List<Catalogs> selectByExample(CatalogsExample example);
+    List<Catalogs> selectByExample2(CatalogsExample example);
 
-    Catalogs selectByPrimaryKey(Integer id);
+    Catalogs selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective(@Param("record") Catalogs record, @Param("example") CatalogsExample example);
+    int updateByExampleSelective2(@Param("record") Catalogs record, @Param("example") CatalogsExample example);
 
-    int updateByExample(@Param("record") Catalogs record, @Param("example") CatalogsExample example);
+    int updateByExample2(@Param("record") Catalogs record, @Param("example") CatalogsExample example);
 
     int updateByPrimaryKeySelective(Catalogs record);
 
