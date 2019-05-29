@@ -26,6 +26,16 @@ public class InitController {
     }
 
     /**
+     * 登录
+     * @return
+     */
+    @RequestMapping("/login.do")
+    public String login(){
+        System.out.println("登录");
+        return "front_desk/login";
+    }
+
+    /**
      * 通往后台
      * @return
      */

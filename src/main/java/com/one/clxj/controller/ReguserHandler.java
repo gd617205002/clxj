@@ -1,13 +1,15 @@
 package com.one.clxj.controller;
 
 import com.one.clxj.pojo.Reguser;
-import com.one.clxj.service.CitySer;
+import com.one.clxj.pojo.ReguserExample;
 import com.one.clxj.service.ReguserSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.misc.Request;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequestMapping(value = "/Reguser")
@@ -17,24 +19,52 @@ public class ReguserHandler {
     @Autowired
     private ReguserSer reguserSer;
 
-    @Autowired
-    private CitySer citySer;
-
-    @RequestMapping("/ReguserAll")
+    /**
+     * 查看用户是否存在
+     * @param reguser
+     * @return
+     */
+    @RequestMapping("/reguserByUsername.do")
     @ResponseBody
-    public String ReguserAll() {
-        Reguser reguser = new Reguser();
-        reguser.setId(3);
-
-        System.out.println("hell");
-
-        List<Reguser> list = reguserSer.reguserAll();
-        for (Reguser c:list
-                ) {
-            System.out.println(c);
+    public boolean reguserByUsername(Reguser reguser){
+        System.out.println("reguser: "+reguser);
+        ReguserExample reguserExample = new ReguserExample();
+        reguserExample.createCriteria().andUsernameEqualTo(reguser.getUsername()); //加入手机号
+        List<Reguser> list = reguserSer.conditionFind(null,reguserExample);
+        System.out.println(list);
+        if (list.size()>0){
+            return true;
+        }else {
+            return false;
         }
-        System.out.println("end");
-        System.out.println("Reguser1:"+reguserSer.reguserById(3));
-        return "hello";
+    }
+
+    /**
+     * 用户登录
+     * @param reguser
+     * @return
+     */
+    @RequestMapping("/reguserLogin.do")
+    @ResponseBody
+    public int reguserLogin(Reguser reguser, HttpSession session){
+        System.out.println("reguser: "+reguser);
+        ReguserExample reguserExample = new ReguserExample();
+        ReguserExample.Criteria criteria = reguserExample.createCriteria();
+        criteria.andUsernameEqualTo(reguser.getUsername()); //加入手机号
+        criteria.andPwdEqualTo(reguser.getPwd()); //加入密码
+
+        List<Reguser> list = reguserSer.conditionFind(null,reguserExample);
+        System.out.println(list);
+        int k=0; //存放登录状态  0 成功  1 密码错误  2  账号冻结
+        if (list.size()>0){  //判断用户是否存在
+            if (list.get(0).getEnableflag()==0){  //是否冻结
+                k = 2;
+            }else{
+                session.setAttribute("reguser",list.get(0));
+            }
+        }else {
+            k = 1;
+        }
+        return  k;
     }
 }

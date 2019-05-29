@@ -1,7 +1,7 @@
 package com.one.clxj.socket;
 
 
-import lombok.extern.slf4j.Slf4j;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,14 +10,18 @@ import javax.websocket.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.File;
 /**
  * @ServerEndpoint 注解是一个类层次的注解，它的功能主要是将目前的类定义成一个websocket服务器端,
  * 注解的值将被用于监听用户连接的终端访问URL地址,客户端可以通过这个URL来连接到WebSocket服务器端
  */
-public class SuperSocket {
+public abstract class SuperSocket {
+
+
+    public static File logFile = null;
 
     public static List<Session> list = new ArrayList<Session>();
+
 
     //日志打印
     private static final Logger log = LoggerFactory.getLogger(SuperSocket.class);
@@ -110,4 +114,9 @@ public class SuperSocket {
             sendMassage(list.get(i), massage);
         }
     }
+//  表示当前是哪个对象
+    public abstract String me();
+//
+    public abstract void init();
+
 }

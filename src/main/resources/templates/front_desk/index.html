@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>index</title>
@@ -13,10 +13,13 @@
       <script type='text/javascript' src='js/citylist.js'></script>
     <script type='text/javascript' src='js/querycity.js'></script>
     <link href='style/cityquery.css' rel="stylesheet" type="text/css" />
+    <link href='css/style-clxj.css' rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
 <!--首页TOP-->
-<div class="index-top">
+<div class="index-top none">
     <div class="index-top3">
     <div class="left">
         <span class="one"><a href="index.html"><img src="images/logo.png"></a></span>
@@ -42,19 +45,43 @@
     <div class="index-banner1">
     <ul>
         <li><a href="index.html">首页</a></li>
-        <li><a href="JAList/AtList.html">丛林</a></li>
-        <li><a href="JAList/JungleList.html">闲居</a></li>
+        <li><a href="front_desk/AtList.html">丛林</a></li>
+        <li><a href="front_desk/JungleList.html">闲居</a></li>
         <li><a href="Confession/ConEntryPage.html">忏悔</a></li>
         <li><a href="Foundation/FoundIndex.html">基金会</a></li>
         <li><a href="JAList/Join.html">加盟</a></li>
         <li><a href="JAList/ContactUs.html">联系我们</a></li>
         <li><a href="JAList/AppDown.html">APP下载</a></li>
     </ul>
-    <div class="dl none">
-        <a href="LRis/login.html">登录</a><i>|</i><a href="LRis/register.html">注册</a>
+    <!--<div class="dl none">-->
+        <div class="dl" th:if="${session.reguser }==null">
+            <a href="#" onclick="login()">登录</a><i>|</i><a href="LRis/register.html">注册</a>
+        </div >
+        <!--<div class="index-grzx ">-->
+        <div class="index-grzx " th:if="${session.reguser }!=null">
+
+            <a href="User/UserPersonal.html">个人中心</a>
+        </div>
     </div>
-        <div class="index-grzx "><a href="User/UserPersonal.html">个人中心</a> </div>
-    </div>
+
+    <!--layUI-->
+    <script type='text/javascript' src='layui/layui.all.js'></script>
+    <link href='layui/css/layui.css' rel="stylesheet" type="text/css" />
+    <script>
+
+        function login() {
+            var index = layer.open({
+                type : 2,
+                title:"用户登录",
+                maxmin : true,
+                offset: '100px',
+                area : [ '600px', '500px' ],
+                content : "login.do"// iframe的url
+            });
+
+        }
+
+    </script>
 </div>
 <!--首页轮播图-->
 <div class="index-lbt">
@@ -141,7 +168,7 @@
                             <div class="myTab_Content none">
                                 <div class="lbttj">
                                     <div class="tj-top">
-                                        <span class="gnxjac">国内闲居</span><span>国际闲居</span>
+                                        <span class="gnxjac">国内丛林</span><span>国际丛林</span>
                                     </div>
                                     <div class="tj-bottom">
                                         <div class="xj">
@@ -186,7 +213,7 @@
                                                 <tr>
                                                     <td></td>
                                                     <td class="ses sec"><input type="submit" value="搜索"> <a
-                                                            href="#"><img src="images/06.png">所有闲居</a></td>
+                                                            href="#"><img src="images/06.png">所有丛林</a></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -198,6 +225,12 @@
                     </div>
                 </div>
 </div>
+
+<script>
+    $(function(){
+        //alert("cccc");
+    })
+</script>
 <div class="index-content">
     <div id="a1" class="index-recommended">
         <p class="rmtj">热门推荐<i>明月松间照，清泉石上流</i></p>

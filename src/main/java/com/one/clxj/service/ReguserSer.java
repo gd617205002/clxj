@@ -1,11 +1,6 @@
 package com.one.clxj.service;
 
 import com.one.clxj.pojo.Reguser;
+import com.one.clxj.pojo.ReguserExample;
 
-import java.util.List;
-
-public  interface ReguserSer extends SuperService<Reguser>{
-
-    public List<Reguser>  reguserAll();
-    public Reguser reguserById (int id);
-}
+public  interface ReguserSer extends SuperService<Reguser,ReguserExample>{}

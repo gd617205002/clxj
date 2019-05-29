@@ -10,23 +10,10 @@ import tk.mybatis.mapper.common.Mapper;
 public interface CityMapper extends Mapper<City> {
     int countByExample(CityExample example);
 
-    int deleteByExample2(CityExample example);
-
-    int deleteByPrimaryKey2(Integer id);
-
-    int insert(City record);
-
-    int insertSelective(City record);
 
     List<City> selectByExample2(CityExample example);
 
     City selectByPrimaryKey2(Integer id);
 
-    int updateByExampleSelective2(@Param("record") City record, @Param("example") CityExample example);
 
-    int updateByExample2(@Param("record") City record, @Param("example") CityExample example);
-
-    int updateByPrimaryKeySelective(City record);
-
-    int updateByPrimaryKey(City record);
 }

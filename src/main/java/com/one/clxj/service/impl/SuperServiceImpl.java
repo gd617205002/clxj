@@ -8,7 +8,7 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-public class SuperServiceImpl<T> implements SuperService<T> {
+public class SuperServiceImpl<T,V> implements SuperService<T,V> {
 
     Mapper mapper = null;
 
@@ -23,8 +23,12 @@ public class SuperServiceImpl<T> implements SuperService<T> {
     }
 
     @Override
-    public boolean delByPrimaryKey(T p) {
-        mapper.deleteByPrimaryKey(p);
+    public boolean delByPrimaryKey(Object p) {
+        try {
+            mapper.deleteByPrimaryKey(p);
+        }catch (Exception e){
+            return false;
+        }
         return true;
     }
 
@@ -39,14 +43,14 @@ public class SuperServiceImpl<T> implements SuperService<T> {
     }
 
     @Override
-    public T findByPrimaryKey(T t) {
+    public T findByPrimaryKey(Object p) {
         T o = null;
-        o = (T)(mapper.selectByPrimaryKey(t));
+        o = (T)(mapper.selectByPrimaryKey(p));
         return o;
     }
 
     @Override
-    public List<T> fildAll(T t) {
+    public List<T> findAll() {
         List list = mapper.selectAll();
         return list;
     }
@@ -58,6 +62,22 @@ public class SuperServiceImpl<T> implements SuperService<T> {
         //用PageInfo对结果进行包装
         PageInfo pageInfo = new PageInfo(res);
         List<T> list = pageInfo.getList();
+        return list;
+    }
+
+    @Override
+    public List<T> conditionPaging(Integer page, Integer num, V v) {
+        PageHelper.startPage(page,num);
+        List<T> res = mapper.selectByExample(v);
+        //用PageInfo对结果进行包装
+        PageInfo pageInfo = new PageInfo(res);
+        List<T> list = pageInfo.getList();
+        return list;
+    }
+
+    @Override
+    public List<T> conditionFind(T t, V v) {
+        List<T> list = mapper.selectByExample(v);
         return list;
     }
 
