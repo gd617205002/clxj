@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 闲居加盟实体类
  */
 public class Joinxj {
-    @Id
     private Integer id; //编号
 
     private String xjname; //闲居户主名称

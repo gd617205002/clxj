@@ -1,10 +1,8 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 public class Userinfor {
-    @Id
     private Integer user_id;
 
     private String user_name;

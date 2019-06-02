@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 丛林闲居信息实体类
  */
 public class Clxjmain {
-    @Id
     private Integer id; //编号
 
     private String name; //名称
@@ -49,6 +47,8 @@ public class Clxjmain {
     private Date createtime; //添加时间
 
     private String mobile; //联系电话
+
+    private String introduction;//介绍
 
     public Integer getId() {
         return id;
@@ -219,6 +219,14 @@ public class Clxjmain {
         this.adminuser = adminuser;
     }
 
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
     @Override
     public String toString() {
         return "Clxjmain{" +
@@ -243,6 +251,7 @@ public class Clxjmain {
                 ", opentime=" + opentime +
                 ", createtime=" + createtime +
                 ", mobile='" + mobile + '\'' +
+                ", introduction='" + introduction + '\'' +
                 '}';
     }
 }

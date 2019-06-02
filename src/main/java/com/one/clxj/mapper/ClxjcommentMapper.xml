@@ -73,5 +73,126 @@
   <sql id="Base_Column_List" >
     id, cid, uid, cflag, content, photo, commenttime
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clxjcomment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from clxjcomment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.Integer" >
+    delete from clxjcomment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.one.clxj.pojo.ClxjcommentExample" >
+    delete from clxjcomment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.one.clxj.pojo.Clxjcomment" >
+    insert into clxjcomment (id, cid, uid, 
+      cflag, content, photo, 
+      commenttime)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{cflag,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
+      #{commenttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Clxjcomment" >
+    insert into clxjcomment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="clxjmain != null" >
+        cid,
+      </if>
+      <if test="reguser != null" >
+        uid,
+      </if>
+      <if test="cflag != null" >
+        cflag,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="commenttime != null" >
+        commenttime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clxjmain != null" >
+        #{clxjmain.id,jdbcType=INTEGER},
+      </if>
+      <if test="reguser != null" >
+        #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="cflag != null" >
+        #{cflag,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null" >
+        #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.one.clxj.pojo.ClxjcommentExample" resultType="java.lang.Integer" >
+    select count(*) from clxjcomment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Clxjcomment" >
+    update clxjcomment
+    <set >
+      <if test="clxjmain != null" >
+        cid = #{clxjmain.id,jdbcType=INTEGER},
+      </if>
+      <if test="reguser != null" >
+        uid = #{reguser.id ,jdbcType=INTEGER},
+      </if>
+      <if test="cflag != null" >
+        cflag = #{cflag,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null" >
+        commenttime = #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

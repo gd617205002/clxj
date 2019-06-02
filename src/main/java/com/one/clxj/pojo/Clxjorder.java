@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 丛林闲居订单实体类
  */
 public class Clxjorder {
-    @Id
     private String oid; //订单号
 
     private Clxjmain clxjmain; //丛林闲居编号

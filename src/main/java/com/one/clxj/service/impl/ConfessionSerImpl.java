@@ -9,17 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class ConfessionSerImpl extends SuperServiceImpl<Confession, ConfessionExample> implements ConfessionSer {
+public class ConfessionSerImpl implements ConfessionSer {
     @Autowired
     private ConfessionMapper confessionMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public int countByExample(ConfessionExample example) {
+        return confessionMapper.countByExample(example);
+    }
 
-        super.mapper = confessionMapper;
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return confessionMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Confession record) {
+        return confessionMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Confession> selectByExample(ConfessionExample example) {
+        return confessionMapper.selectByExample(example);
+    }
+
+    @Override
+    public Confession selectByPrimaryKey(Integer id) {
+        return confessionMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Confession record) {
+        return confessionMapper.updateByPrimaryKeySelective(record);
     }
 }

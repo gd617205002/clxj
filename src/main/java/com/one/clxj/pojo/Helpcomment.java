@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 求助评论实体类
  */
 public class Helpcomment {
-    @Id
     private Integer id; //编号
 
     private Helpinfo helpinfo; //求助编号

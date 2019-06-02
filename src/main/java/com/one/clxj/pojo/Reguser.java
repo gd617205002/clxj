@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 前台注册表
  */
 public class Reguser {
-    @Id
     private Integer id; //编号
 
     private String username; //用户名称

@@ -1,11 +1,23 @@
 package com.one.clxj.mapper;
-import tk.mybatis.mapper.common.Mapper;
+
+import java.util.List;
+
 import com.one.clxj.pojo.Carorder;
+import com.one.clxj.pojo.CarorderExample;
+import org.apache.ibatis.annotations.Param;
+import tk.mybatis.mapper.common.Mapper;
 
-public interface CarorderMapper extends Mapper<Carorder> {
+public interface CarorderMapper {
+    int countByExample(CarorderExample example);
 
-   public Carorder selectByPrimaryKey2(String id);
+    int deleteByPrimaryKey(String oid);
 
+    int insertSelective(Carorder record);
 
+    List<Carorder> selectByExample(CarorderExample example);
+
+    Carorder selectByPrimaryKey(String oid);
+
+    int updateByPrimaryKeySelective(Carorder record);
 
 }

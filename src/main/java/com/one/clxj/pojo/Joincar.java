@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 加盟车辆信息实体类
  */
 public class Joincar {
-    @Id
     private Integer id; //编号
 
     private String theowner; //车主姓名

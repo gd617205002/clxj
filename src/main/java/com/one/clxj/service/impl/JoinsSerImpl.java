@@ -9,17 +9,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class JoinsSerImpl extends SuperServiceImpl<Joins, JoinsExample> implements JoinsSer {
+public class JoinsSerImpl  implements JoinsSer {
     @Autowired
     private JoinsMapper joinsMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = joinsMapper;
+    @Override
+    public int countByExample(JoinsExample example) {
+        return joinsMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return joinsMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Joins record) {
+        return joinsMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Joins> selectByExample(JoinsExample example) {
+        return joinsMapper.selectByExample(example);
+    }
+
+    @Override
+    public Joins selectByPrimaryKey(Integer id) {
+        return joinsMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Joins record) {
+        return joinsMapper.updateByPrimaryKeySelective(record);
     }
 }

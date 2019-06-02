@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 款物发放实体类
  */
 public class Grant {
-    @Id
     private Integer id; //编号
 
     private String donationname; //捐款人

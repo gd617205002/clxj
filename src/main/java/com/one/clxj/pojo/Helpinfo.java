@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 求助信息实体类
  */
 public class Helpinfo {
-    @Id
     private Integer id; //编号
 
     private String name; //联系人姓名

@@ -5,23 +5,47 @@ import com.one.clxj.pojo.Adminuser;
 import com.one.clxj.pojo.AdminuserExample;
 import com.one.clxj.service.AdminuserSer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class AdminuserSerImpl extends SuperServiceImpl<Adminuser,AdminuserExample> implements AdminuserSer {
+public class AdminuserSerImpl  implements AdminuserSer {
 
     @Autowired
     private AdminuserMapper adminuserMapper;
 
-    @PostConstruct
-//    初始化
-    public void init(){
-       super.mapper = adminuserMapper;
+    @Override
+    public int countByExample(AdminuserExample example) {
+        return adminuserMapper.countByExample(example);
     }
 
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return adminuserMapper.deleteByPrimaryKey(id);
+    }
 
+    @Override
+    public int insertSelective(Adminuser record) {
+        return adminuserMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Adminuser> selectByExample(AdminuserExample example) {
+        return adminuserMapper.selectByExample(example);
+    }
+
+    @Override
+    public Adminuser selectByPrimaryKey(Integer id) {
+        return adminuserMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Adminuser record) {
+        return adminuserMapper.updateByPrimaryKeySelective(record);
+    }
 }

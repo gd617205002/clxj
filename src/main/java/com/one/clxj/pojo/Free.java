@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 忏悔解脱实体类
  */
 public class Free {
-    @Id
     private Integer id; //编号
 
     private Confession confession; //忏悔编号

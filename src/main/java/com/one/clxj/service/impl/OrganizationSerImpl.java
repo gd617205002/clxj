@@ -9,17 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class OrganizationSerImpl extends SuperServiceImpl<Organization, OrganizationExample> implements OrganizationSer {
+public class OrganizationSerImpl  implements OrganizationSer {
     @Autowired
     private OrganizationMapper organizationMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public int countByExample(OrganizationExample example) {
+        return organizationMapper.countByExample(example);
+    }
 
-        super.mapper = organizationMapper;
+    @Override
+    public int deleteByPrimaryKey(Integer org_id) {
+        return organizationMapper.deleteByPrimaryKey(org_id);
+    }
+
+    @Override
+    public int insertSelective(Organization record) {
+        return organizationMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Organization> selectByExample(OrganizationExample example) {
+        return organizationMapper.selectByExample(example);
+    }
+
+    @Override
+    public Organization selectByPrimaryKey(Integer org_id) {
+        return organizationMapper.selectByPrimaryKey(org_id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Organization record) {
+        return organizationMapper.updateByPrimaryKeySelective(record);
     }
 }

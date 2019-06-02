@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 城市信息实体类
  */
 public class City {
-    @Id
     private Integer id; //编号
 
     private String chinese; //城市名称

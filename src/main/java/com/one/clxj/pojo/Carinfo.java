@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 车辆信息实体类
  */
 public class Carinfo {
-    @Id
     private Integer id; //编号
 
     private Clxjmain clxjmains; //丛林闲居名称

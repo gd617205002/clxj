@@ -9,17 +9,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class CitygroupSerImpl extends SuperServiceImpl<Citygroup, CitygroupExample> implements CitygroupSer {
+public class CitygroupSerImpl implements CitygroupSer {
     @Autowired
     private CitygroupMapper citygroupMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = citygroupMapper;
+    @Override
+    public int countByExample(CitygroupExample example) {
+        return citygroupMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return citygroupMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Citygroup record) {
+        return citygroupMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Citygroup> selectByExample(CitygroupExample example) {
+        return citygroupMapper.selectByExample(example);
+    }
+
+    @Override
+    public Citygroup selectByPrimaryKey(Integer id) {
+        return citygroupMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Citygroup record) {
+        return citygroupMapper.updateByPrimaryKeySelective(record);
     }
 }

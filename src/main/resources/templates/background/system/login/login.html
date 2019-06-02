@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="temp/css/styles.css">
     <link rel="stylesheet" href="yzm/style.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
     <script src="yzm/style.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <form action="" method="get">
+                <form action="#" method="post" onsubmit="return check();" name="form1">
                 <div class="card p-4">
                     <div class="card-header text-center text-uppercase h4 font-weight-light">
                         Login
@@ -25,34 +26,78 @@
                     <div class="card-body py-5">
                         <div class="form-group">
                             <label class="form-control-label">用户名:</label>
-                            <input type="email" class="form-control" name="username" placeholder="请输入用户名">
+                            <input type="text" class="form-control" name="username" placeholder="请输入用户名">
                         </div>
 
                         <div class="form-group">
                             <label class="form-control-label">密码:</label>
-                            <input type="password" class="form-control" name="password" placeholder="请输入密码">
+                            <input type="password" class="form-control" name="pwd" placeholder="请输入密码">
                         </div>
 
                         <div id="slideBar"></div>
                         <script type="text/javascript">
+                            var flag = false;
                             var dataList = ["0","1"];
                             var options = {
                                 dataList: dataList,
                                 success:function(){
-                                    console.log("show");
+                                  flag = true;
                                 },
                                 fail: function(){
-                                    console.log("fail");
+                                   flag = false;
                                 }
                             };
                             SliderBar("slideBar", options);
+                            
+                            function check() {
+                                var  datas = $("form[name='form1']").serialize();
+
+                                if(form1.username.value==null||form1.username.value==''){
+                                     layer.msg("请输入用户名");
+                                     flag = false;
+                                     return flag;
+                                }
+
+                                if(form1.pwd.value==null||form1.pwd.value==''){
+                                    layer.msg("请输入密码");
+                                    flag = false;
+                                    return flag;
+                                }
+                                if (!flag) {
+                                    layer.msg("请移动滑块通过验证");
+                                    return flag;
+                                }else{
+                                    $.ajax({
+                                        url:"/Adminuser/login.do",
+                                        type:"get",
+                                        dataType:"json",
+                                        data:datas,
+                                        success:function (data) {
+                                           layer.msg("登录成功!");
+                                           var  result = "";
+                                           switch (data.usertype) {
+                                               case 0: result =result+"/main.do";break;//超级管理员
+                                               case 1:break;//僧侣管理员
+                                               case 2:break;//丛林管理员
+                                               case 3:break;//闲居管理员
+                                               case 4:break;//用车管理员
+                                           }
+                                           location.href=result;
+                                        },
+                                        error:function () {
+                                            alert("出现异常了");
+                                        }
+                                    })
+                                }
+                                return false;
+                            }
                         </script>
                     </div>
 
                     <div class="card-footer" style="margin-left: auto">
                         <div class="row">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-primary px-5">Login</button>
+                                <input type="submit" class="btn btn-primary px-5" value="Login"/>
                             </div>
                         </div>
                     </div>
@@ -69,5 +114,6 @@
 <script src="temp/vendor/chart.js/chart.min.js"></script>
 <script src="temp/js/carbon.js"></script>
 <script src="temp/js/demo.js"></script>
+<script src="layui/layui.all.js"></script>
 </body>
 </html>

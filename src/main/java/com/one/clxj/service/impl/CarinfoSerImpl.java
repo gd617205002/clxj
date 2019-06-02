@@ -9,19 +9,43 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class CarinfoSerImpl extends SuperServiceImpl<Carinfo,CarinfoExample> implements CarinfoSer {
+public class CarinfoSerImpl  implements CarinfoSer {
 
     @Autowired
     private CarinfoMapper carinfoMapper;
 
-    @PostConstruct
-//    初始化
-    public void init(){
 
-        super.mapper = carinfoMapper;
+    @Override
+    public int countByExample(CarinfoExample example) {
+        return carinfoMapper.countByExample(example);
     }
 
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return carinfoMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Carinfo record) {
+        return carinfoMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Carinfo> selectByExample(CarinfoExample example) {
+        return carinfoMapper.selectByExample(example);
+    }
+
+    @Override
+    public Carinfo selectByPrimaryKey2(Integer id) {
+        return carinfoMapper.selectByPrimaryKey2(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Carinfo record) {
+        return carinfoMapper.updateByPrimaryKeySelective(record);
+    }
 }

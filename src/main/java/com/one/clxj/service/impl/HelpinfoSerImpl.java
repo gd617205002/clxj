@@ -9,19 +9,43 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class HelpinfoSerImpl extends SuperServiceImpl<Helpinfo, HelpinfoExample> implements HelpinfoSer {
+public class HelpinfoSerImpl implements HelpinfoSer {
 
     @Autowired
     private HelpinfoMapper helpinfoMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = helpinfoMapper;
+    @Override
+    public int countByExample(HelpinfoExample example) {
+        return helpinfoMapper.countByExample(example);
     }
 
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return helpinfoMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Helpinfo record) {
+        return helpinfoMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Helpinfo> selectByExample(HelpinfoExample example) {
+        return helpinfoMapper.selectByExample(example);
+    }
+
+    @Override
+    public Helpinfo selectByPrimaryKey(Integer id) {
+        return helpinfoMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Helpinfo record) {
+        return helpinfoMapper.updateByPrimaryKeySelective(record);
+    }
 }

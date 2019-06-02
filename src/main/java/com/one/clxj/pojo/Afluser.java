@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 暂未用到
  */
 public class Afluser {
-    @Id
     private Integer id;
 
     private String username;

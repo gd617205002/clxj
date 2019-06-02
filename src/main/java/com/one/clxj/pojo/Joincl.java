@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 丛林加盟实体类
  */
 public class Joincl {
-    @Id
     private Integer id; //编号
 
     private String clname; //丛林名称

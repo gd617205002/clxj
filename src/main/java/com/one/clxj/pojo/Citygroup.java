@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 城市分组实体类
  */
 public class Citygroup {
-    @Id
     private Integer id; //编号
 
     private City city; //城市编号

@@ -91,5 +91,266 @@
     fileurl, applycontent, applystatus, applytype, time, uid, applymoneyusertime, vouchname, 
     vouchidcard, vouchaddress, vouchcompany, vouchphonenum, vouchmobile
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.HelpinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from helpinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from helpinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from helpinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Helpinfo" >
+    insert into helpinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="phonenum != null" >
+        phonenum,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="income != null" >
+        income,
+      </if>
+      <if test="basicliving != null" >
+        basicliving,
+      </if>
+      <if test="applymoney != null" >
+        applymoney,
+      </if>
+      <if test="fileurl != null" >
+        fileurl,
+      </if>
+      <if test="applycontent != null" >
+        applycontent,
+      </if>
+      <if test="applystatus != null" >
+        applystatus,
+      </if>
+      <if test="applytype != null" >
+        applytype,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="reguser != null" >
+        uid,
+      </if>
+      <if test="applymoneyusertime != null" >
+        applymoneyusertime,
+      </if>
+      <if test="vouchname != null" >
+        vouchname,
+      </if>
+      <if test="vouchidcard != null" >
+        vouchidcard,
+      </if>
+      <if test="vouchaddress != null" >
+        vouchaddress,
+      </if>
+      <if test="vouchcompany != null" >
+        vouchcompany,
+      </if>
+      <if test="vouchphonenum != null" >
+        vouchphonenum,
+      </if>
+      <if test="vouchmobile != null" >
+        vouchmobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=DOUBLE},
+      </if>
+      <if test="basicliving != null" >
+        #{basicliving,jdbcType=INTEGER},
+      </if>
+      <if test="applymoney != null" >
+        #{applymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="applycontent != null" >
+        #{applycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applystatus != null" >
+        #{applystatus,jdbcType=INTEGER},
+      </if>
+      <if test="applytype != null" >
+        #{applytype,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="applymoneyusertime != null" >
+        #{applymoneyusertime,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchname != null" >
+        #{vouchname,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchidcard != null" >
+        #{vouchidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchaddress != null" >
+        #{vouchaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchcompany != null" >
+        #{vouchcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchphonenum != null" >
+        #{vouchphonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchmobile != null" >
+        #{vouchmobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.one.clxj.pojo.HelpinfoExample" resultType="java.lang.Integer" >
+    select count(*) from helpinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Helpinfo" >
+    update helpinfo
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        income = #{income,jdbcType=DOUBLE},
+      </if>
+      <if test="basicliving != null" >
+        basicliving = #{basicliving,jdbcType=INTEGER},
+      </if>
+      <if test="applymoney != null" >
+        applymoney = #{applymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="fileurl != null" >
+        fileurl = #{fileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="applycontent != null" >
+        applycontent = #{applycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="applystatus != null" >
+        applystatus = #{applystatus,jdbcType=INTEGER},
+      </if>
+      <if test="applytype != null" >
+        applytype = #{applytype,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        uid = #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="applymoneyusertime != null" >
+        applymoneyusertime = #{applymoneyusertime,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchname != null" >
+        vouchname = #{vouchname,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchidcard != null" >
+        vouchidcard = #{vouchidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchaddress != null" >
+        vouchaddress = #{vouchaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchcompany != null" >
+        vouchcompany = #{vouchcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchphonenum != null" >
+        vouchphonenum = #{vouchphonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="vouchmobile != null" >
+        vouchmobile = #{vouchmobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

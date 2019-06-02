@@ -1,12 +1,9 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
-
 /**
  * 月底支出实体类
  */
 public class Payformonth {
-    @Id
     private Integer id; //编号
 
     private String monthly; //月度

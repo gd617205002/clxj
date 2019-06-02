@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 丛林闲居留言实体类
  */
 public class Clxjcomment {
-    @Id
     private Integer id; //编号
 
     private Clxjmain clxjmain; //丛林闲居编号

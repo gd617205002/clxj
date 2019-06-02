@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carbon - Admin Template</title>
+    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/style-clxj.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="temp/imgs/logo.png" alt="logo">
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none" style="margin-right: 550px">
+                <script>
+                    var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                    var now = new Date();
+                    var year=now.getFullYear();
+                    var month=now.getMonth()+1;
+                    var day=now.getDate()
+                    var currentime = year+"年"+month+"月"+day+"日 "+weekDayLabels[now.getDay()]
+                    document.write(currentime)
+                </script>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="temp/imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">admin</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Account</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人信息
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 修改密码
+                    </a>
+
+                    <div class="dropdown-header">Settings</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">Navigation</li>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="icon icon-speedometer"></i> 系统首页
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-target"></i> 管理员后台管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="back_user.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 注册用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="back_admin.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 后台用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="clshenghe.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 丛林审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="xianjushenghe.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 闲居审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="yongcheshenghe.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 用车审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="qiuzhu.html" class="nav-link active">
+                                    <i class="icon icon-target"></i> 求助信息管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="love.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 爱心捐赠管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="yuedizhichu.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 月底支出管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="kuanwufafang.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 款物发放管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 加盟信息管理<i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="cljiamenguali.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 丛林加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="xianjujiamen.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 闲居加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="yongchejiameng.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 用车加盟管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-graph"></i> 订单管理 <i class="fa fa-caret-left"></i>
+                        </a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="404.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 404
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="500.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 500
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="apk.html" class="nav-link">
+                            <i class="icon icon-puzzle"></i> apk版本管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon icon-puzzle"></i> 广告管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="chengshiguanli.html" class="nav-link">
+                            <i class="icon icon-grid"></i> 城市管理
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+</div>
+         <div class="content">
+                   
+          <form>
+                  <div class="form-group">
+                    <label for="name">加盟姓名:</label>
+                    <input type="text" class="form-control" id="name" value="李四">
+                  </div>
+                  <div class="form-group">
+                    <label for="sex">性别:</label>
+                    <input type="text" class="form-control" id="sex" value="男">
+                  </div>
+                  <div class="form-group">
+                    <label for="age">年龄:</label>
+                    <input type="text" class="form-control" id="age" value="18">
+                  </div>
+                  <div class="form-group">
+                    <label for="mobile">手机号码:</label>
+                    <input type="text" class="form-control" id="mobile" value="100">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="text" class="form-control" id="email" value="赣A12345">
+                  </div>
+                  <div class="form-group">
+                    <label for="addr">地址:</label>
+                    <input type="text" class="form-control" id="addr" value="李四">
+                  </div>
+                  <div class="form-group">
+                    <label for="shouru">家庭年收入:</label>
+                    <input type="text" class="form-control" id="shouru" value="100">
+                  </div>
+                  <div class="form-group">
+                    <label for="shifouxiangs">是否享受低保:</label>
+                    <input type="text" class="form-control" id="shifouxiangs" value="享受">
+                  </div>
+                  <div class="form-group">
+                    <label for="jine">申请金额:</label>
+                    <input type="text" class="form-control" id="jine" value="1000">
+                  </div>
+                  <div class="form-group">
+                    <label for="miaosu">申请描述:</label>
+                    <input type="text" class="form-control" id="miaosu" value="100">
+                  </div>
+                  <div class="form-group">
+                    <label for="xiazai">下载文档:</label>
+                    <input type="text" class="form-control" id="xiazai" value="赣A12345">
+                  </div>
+                  <div class="form-group">
+                    <label for="zhuangtai">审核状态:</label>
+                    <select id="zhuangtai" size="1" class="form-control">
+                                        <option>审核通过</option>
+                                        <option>正在审核</option>
+                                        <option>审核不通过</option>
+                                    </select>
+                  </div>
+                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="确认"/>
+                  <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
+        </form>
+        </div>
+</div>
+<script src="./vendor/jquery/jquery.min.js"></script>
+<script src="./vendor/popper.js/popper.min.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="./vendor/chart.js/chart.min.js"></script>
+<script src="./js/carbon.js"></script>
+<script src="./js/demo.js"></script>
+</body>
+</html>

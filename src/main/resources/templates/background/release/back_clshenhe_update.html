@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>丛林闲居修改</title>
+    <link rel="stylesheet" href="temp/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="temp/css/styles.css">
+    <link href="bootstrapTable/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/animate.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrapTable/css/plugins/bootstrapValidator/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="bootstrapTable/css/style.min.css" />
+    <link rel="stylesheet" href="bootstrapTable/css/style.table.css">
+    <link rel="stylesheet" href="temp/css/style-clxj.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="temp/imgs/logo.png" alt="logo">
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none" style="margin-right: 550px">
+                <script>
+                    var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                    var now = new Date();
+                    var year=now.getFullYear();
+                    var month=now.getMonth()+1;
+                    var day=now.getDate()
+                    var currentime = year+"年"+month+"月"+day+"日 "+weekDayLabels[now.getDay()]
+                    document.write(currentime)
+                </script>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="temp/imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">admin</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Account</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人信息
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 修改密码
+                    </a>
+
+                    <div class="dropdown-header">Settings</div>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">Navigation</li>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="icon icon-speedometer"></i> 系统首页
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-target"></i> 管理员后台管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="back_user.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 注册用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="back_admin.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 后台用户管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="back_clshenhe.html" class="nav-link active">
+                                    <i class="icon icon-target"></i> 丛林审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="xianjushenhe.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 闲居审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="yongcheshenhe.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 用车审核
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="qiuzhu.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 求助信息管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="love.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 爱心捐赠管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="yuedizhichu.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 月底支出管理
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="kuanwufafang.html" class="nav-link">
+                                    <i class="icon icon-target"></i> 款物发放管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 加盟信息管理<i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="cljiamenguali.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 丛林加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="xianjujiamen.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 闲居加盟管理
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="yongchejiameng.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 用车加盟管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-graph"></i> 订单管理 <i class="fa fa-caret-left"></i>
+                        </a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="404.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 404
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="500.html" class="nav-link">
+                                    <i class="icon icon-umbrella"></i> 500
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="apk.html" class="nav-link">
+                            <i class="icon icon-puzzle"></i> apk版本管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon icon-puzzle"></i> 广告管理
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="chengshiguanli.html" class="nav-link">
+                            <i class="icon icon-grid"></i> 城市管理
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+</div>
+         <div class="content">
+                   
+          <form id="form-clxj" onsubmit="return checkUpdate()">
+              <div class="form-group">
+                  <label for="name">名字:</label>
+                     <input type="text" class="form-control" id="name" th:value="${session.clxjmain.name}" readonly="readonly">
+                  <input type="hidden" name="_method" value="put">
+                  <input type="hidden" name="id" th:value="${session.clxjmain.id}">
+              </div>
+              <div class="form-group">
+                      <label for="type1">地址类型:</label>
+                  <select size="1" class="form-control" id="type1" name="type1">
+                      <option value="0" th:selected="${session.clxjmain.type1==0}">国外</option>
+                      <option value="1" th:selected="${session.clxjmain.type1==1}">国内</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                      <label for="type2">住址类型:</label>
+                  <select id="type2" size="1" class="form-control" name="type2">
+                      <option value="0" th:selected="${session.clxjmain.type2==0}">闲居</option>
+                      <option value="1" th:selected="${session.clxjmain.type2==1}">丛林</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="city">所属城市:</label>
+                  <input type="text" class="form-control" id="city" th:value="${session.clxjmain.belong_city}" readonly="readonly">
+              </div>
+              <div class="form-group">
+                  <label for="tu">首图:</label>
+                  <img th:src="${session.clxjmain.first_img_big}" id="tu" alt="图片找不到了">
+              </div>
+                  <div class="form-group">
+                    <label for="introduction">介绍:</label>
+                    <textarea id="introduction" class="form-control" th:text="${session.clxjmain.introduction}" readonly="readonly"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="addre">中文地址:</label>
+                    <input type="text" class="form-control" id="addre" th:value="${#strings.arraySplit(session.clxjmain.belong_city,'|')[1]}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="mobile">联系号码:</label>
+                    <input type="text" class="form-control" id="mobile"  th:value="${session.clxjmain.mobile}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="cishu">预订次数:</label>
+                    <input type="text" class="form-control"  id="cishu" th:value="${session.clxjmain.reserve_num}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="tuijian">是否推荐:</label>
+                    <select id="tuijian" size="1" class="form-control" name="recommend">
+                         <option value="0"  th:selected="${session.clxjmain.recommend=='0'}">推荐</option>
+                         <option value="1"  th:selected="${session.clxjmain.recommend=='1'}">不推荐</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="shijian">注册时间:</label>
+                    <input type="text" class="form-control" id="shijian"  th:value="${#dates.format(session.clxjmain.createtime,'yyyy-MM-dd')}">
+                  </div>
+              <div class="form-group">
+                      <label for="shenhe">审核状态:</label>
+                   <select id="shenhe" size="1" class="form-control" name="checkStatus">
+                       <option value="0"   th:selected="${session.clxjmain.checkStatus=='0'}">未审核</option>
+                       <option value="1"   th:selected="${session.clxjmain.checkStatus=='1'}">通过</option>
+                       <option value="2"   th:selected="${session.clxjmain.checkStatus=='2'}">未通过</option>
+                   </select>
+
+              </div>
+
+                  <div class="form-group">
+                    <label for="zhuci">寺院主持:</label>
+                    <input type="text" class="form-control" id="zhuci" th:value="${session.clxjmain.abbot}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="kaifangshijian">开放时间:</label>
+                    <input type="text" class="form-control" id="kaifangshijian" th:value="${#dates.format(session.clxjmain.opentime,'yyyy-MM-dd')}">
+                  </div>
+                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="确认"/>
+                  <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
+        </form>
+        </div>
+</div>
+<script src="temp/vendor/jquery/jquery.min.js"></script>
+<script src="temp/vendor/popper.js/popper.min.js"></script>
+<script src="bootstrapTable/js/bootstrap.min.js"></script>
+<script src="temp/vendor/chart.js/chart.min.js"></script>
+<script src="temp/js/carbon.js"></script>
+<script src="temp/js/demo.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="layui/layui.all.js"></script>
+<script src="bootstrapTable/js/back_clshenhe.js"></script>
+</body>
+</html>

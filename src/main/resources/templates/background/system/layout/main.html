@@ -40,7 +40,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="temp/imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">admin</span>
+                    <span class="small ml-1 d-md-down-none" th:text="${session.adminuser.name}">admin</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -71,7 +71,7 @@
                     <li class="nav-title">Navigation</li>
 
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link active">
+                        <a href="/back_user.do" class="nav-link active">
                             <i class="icon icon-speedometer"></i> 系统首页
                         </a>
                     </li>
@@ -83,19 +83,19 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="layouts-normal.html" class="nav-link">
+                                <a href="/back_user.do" class="nav-link">
                                     <i class="icon icon-target"></i> 注册用户管理
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="layouts-fixed-sidebar.html" class="nav-link">
+                                <a href="/back_admin.do" class="nav-link">
                                     <i class="icon icon-target"></i> 后台用户管理
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="layouts-fixed-header.html" class="nav-link">
+                                <a href="/back_clshenhe.do" class="nav-link">
                                     <i class="icon icon-target"></i> 丛林审核
                                 </a>
                             </li>
@@ -190,25 +190,6 @@
                         <a href="tables.html" class="nav-link">
                             <i class="icon icon-grid"></i> 城市管理
                         </a>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-umbrella"></i> Pages <i class="fa fa-caret-left"></i>
-                        </a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="404.html" class="nav-link">
-                                    <i class="icon icon-umbrella"></i> 404
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="500.html" class="nav-link">
-                                    <i class="icon icon-umbrella"></i> 500
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -314,7 +295,7 @@
                             </div>
                         </div>
                     </div>
-                    More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                    丛林闲居 <a href="#" target="_blank" title="丛林闲居">丛林闲居</a> - Collect from <a href="#" title="网页模板" target="_blank">丛林闲居</a>
                 </div>
             </div>
         </div>

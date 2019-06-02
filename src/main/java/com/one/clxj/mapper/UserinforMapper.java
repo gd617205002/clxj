@@ -6,26 +6,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface UserinforMapper extends Mapper<Userinfor> {
+public interface UserinforMapper  {
     int countByExample(UserinforExample example);
 
-    int deleteByExample2(UserinforExample example);
-
-    int deleteByPrimaryKey2(Integer user_id);
-
-    int insert(Userinfor record);
+    int deleteByPrimaryKey(Integer user_id);
 
     int insertSelective(Userinfor record);
 
-    List<Userinfor> selectByExample2(UserinforExample example);
+    List<Userinfor> selectByExample(UserinforExample example);
 
-    Userinfor selectByPrimaryKey2(Integer user_id);
-
-    int updateByExampleSelective2(@Param("record") Userinfor record, @Param("example") UserinforExample example);
-
-    int updateByExample2(@Param("record") Userinfor record, @Param("example") UserinforExample example);
+    Userinfor selectByPrimaryKey(Integer user_id);
 
     int updateByPrimaryKeySelective(Userinfor record);
 
-    int updateByPrimaryKey(Userinfor record);
 }

@@ -82,5 +82,194 @@
     id, clname, permitno, address, legalname, legalphone, legalidcard, contactsname, 
     contactsmobile, contactsphone, postcode, message, uid, jointime, joinstatus, fileurl
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.JoinclExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from joincl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="currPage != null and limit != null">
+      limit ${currPage},${limit}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from joincl
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from joincl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Joincl" >
+    insert into joincl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="clname != null" >
+        clname,
+      </if>
+      <if test="permitno != null" >
+        permitno,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="legalname != null" >
+        legalname,
+      </if>
+      <if test="legalphone != null" >
+        legalphone,
+      </if>
+      <if test="legalidcard != null" >
+        legalidcard,
+      </if>
+      <if test="contactsname != null" >
+        contactsname,
+      </if>
+      <if test="contactsmobile != null" >
+        contactsmobile,
+      </if>
+      <if test="contactsphone != null" >
+        contactsphone,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="reguser != null" >
+        uid,
+      </if>
+      <if test="jointime != null" >
+        jointime,
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus,
+      </if>
+      <if test="fileurl != null" >
+        fileurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clname != null" >
+        #{clname,jdbcType=VARCHAR},
+      </if>
+      <if test="permitno != null" >
+        #{permitno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="legalname != null" >
+        #{legalname,jdbcType=VARCHAR},
+      </if>
+      <if test="legalphone != null" >
+        #{legalphone,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidcard != null" >
+        #{legalidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsname != null" >
+        #{contactsname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsmobile != null" >
+        #{contactsmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsphone != null" >
+        #{contactsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.one.clxj.pojo.JoinclExample" resultType="java.lang.Integer" >
+    select count(*) from joincl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Joincl" >
+    update joincl
+    <set >
+      <if test="clname != null" >
+        clname = #{clname,jdbcType=VARCHAR},
+      </if>
+      <if test="permitno != null" >
+        permitno = #{permitno,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="legalname != null" >
+        legalname = #{legalname,jdbcType=VARCHAR},
+      </if>
+      <if test="legalphone != null" >
+        legalphone = #{legalphone,jdbcType=VARCHAR},
+      </if>
+      <if test="legalidcard != null" >
+        legalidcard = #{legalidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsname != null" >
+        contactsname = #{contactsname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsmobile != null" >
+        contactsmobile = #{contactsmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsphone != null" >
+        contactsphone = #{contactsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        uid = #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        jointime = #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus = #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        fileurl = #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

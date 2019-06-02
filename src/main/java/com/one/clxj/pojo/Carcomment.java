@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 车辆评论实体类
  */
 public class Carcomment {
-    @Id
     private Integer id; //编号
 
     private Carinfo carinfo; //车辆信息

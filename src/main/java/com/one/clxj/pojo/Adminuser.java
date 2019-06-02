@@ -1,14 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 管理员实体类
  */
-
 public class Adminuser {
-    @Id
     private Integer id;  //编号
 
     private String username; //用户名

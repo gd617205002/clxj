@@ -1,5 +1,6 @@
 package com.one.clxj.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.one.clxj.mapper.HelpinfoKeyMapper;
 import com.one.clxj.pojo.HelpinfoKey;
 import com.one.clxj.service.HelpinfoKeySer;
@@ -11,14 +12,17 @@ import javax.annotation.PostConstruct;
 
 @Service
 @Transactional
-public class HelpinfoKeySerImpl extends SuperServiceImpl<HelpinfoKey, Object> implements HelpinfoKeySer {
+public class HelpinfoKeySerImpl implements HelpinfoKeySer {
     @Autowired
     private HelpinfoKeyMapper helpinfoKeyMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public PageInfo<HelpinfoKey> paging(Integer page, Integer num) {
+        return null;
+    }
 
-        super.mapper = helpinfoKeyMapper;
+    @Override
+    public PageInfo<HelpinfoKey> conditionPaging(Integer page, Integer num, Object o) {
+        return null;
     }
 }

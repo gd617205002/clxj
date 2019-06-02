@@ -1,13 +1,11 @@
 package com.one.clxj.pojo;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * 用车订单实体类
  */
 public class Carorder {
-    @Id
     private String oid; //订单编号
 
     private Carinfo carinfo; //车辆编号

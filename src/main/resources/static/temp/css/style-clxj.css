@@ -1,0 +1,26 @@
+.col-md-6 {
+     -webkit-box-flex: 0;
+     -ms-flex: 0 0 50%;
+     flex: 0 0 100%;
+     max-width: 100%;
+ }
+.page-header{
+    padding:0px 0 9px
+}
+
+.navbar-brand {
+    padding: 0px 15px;
+}
+
+.caret {
+    border-right: 0px solid transparent;
+    border-left: 0px solid transparent;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.0625rem + 13px);
+}
+
+.col-sm-2 {
+    width: 11.667%;
+}

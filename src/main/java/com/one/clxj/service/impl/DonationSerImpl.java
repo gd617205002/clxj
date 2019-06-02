@@ -9,17 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class DonationSerImpl extends SuperServiceImpl<Donation, DonationExample> implements DonationSer {
+public class DonationSerImpl  implements DonationSer {
     @Autowired
     private DonationMapper donationMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public int countByExample(DonationExample example) {
+        return donationMapper.countByExample(example);
+    }
 
-        super.mapper = donationMapper;
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return donationMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Donation record) {
+        return donationMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Donation> selectByExample(DonationExample example) {
+        return donationMapper.selectByExample(example);
+    }
+
+    @Override
+    public Donation selectByPrimaryKey(Integer id) {
+        return donationMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Donation record) {
+        return donationMapper.updateByPrimaryKeySelective(record);
     }
 }
