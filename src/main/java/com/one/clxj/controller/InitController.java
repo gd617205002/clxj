@@ -20,6 +20,12 @@ public class InitController {
 
         return "front_desk/index";
     }
+//  基金会
+    @RequestMapping("/front_desk/FoundIndex.do")
+    public String FoundIndex(){
+
+        return "front_desk/FoundIndex";
+    }
 
     /**
      * 通往后台
