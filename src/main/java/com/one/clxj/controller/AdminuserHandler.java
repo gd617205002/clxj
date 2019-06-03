@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.one.clxj.pojo.Adminuser;
 import com.one.clxj.pojo.AdminuserExample;
 import com.one.clxj.service.AdminuserSer;
+import com.one.clxj.util.MyPageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -52,22 +53,19 @@ public class AdminuserHandler {
     @ResponseBody
     public Map<String,Object> findAll(Integer pageIndex,Integer pageSize,String username) {
         Map<String,Object> map = new HashMap<String,Object>();
-        if (username!=null&&!"".equals(username)){
-            AdminuserExample adminuserExample = new AdminuserExample();//查询条件
-            AdminuserExample.Criteria criteria = adminuserExample.createCriteria();
+        AdminuserExample adminuserExample = new AdminuserExample();//查询条件
+        AdminuserExample.Criteria criteria = adminuserExample.createCriteria();
+        if (username!=null&&!"".equals(username))
             criteria.andUsernameLike("%"+username+"%");
+
             List<Adminuser> list = adminuserSer.selectByExample(adminuserExample);
-            PageInfo<Adminuser> pageInfo =  pageInfo(list,pageIndex,pageSize);
+
+            PageInfo<Adminuser> pageInfo = new MyPageInfo<Adminuser>().pageInfo(list,pageIndex,pageSize);
+
             map.put("total",pageInfo.getTotal());
 
             map.put("rows",pageInfo.getList());
-        }else {
-            List<Adminuser> adminuserList = adminuserSer.selectByExample(null);
-            PageInfo<Adminuser> pageInfo = pageInfo(adminuserList,pageIndex,pageSize);
-            map.put("total",pageInfo.getTotal());
 
-            map.put("rows",pageInfo.getList());
-        }
         return map;
     }
 
@@ -131,9 +129,4 @@ public class AdminuserHandler {
         return k>0?"true":"false";
     }
 
-    //分页
-    public PageInfo<Adminuser> pageInfo(List<Adminuser> list,Integer pageIndex,Integer pageSize){
-        PageHelper.startPage(pageIndex,pageSize);
-        return  new PageInfo<Adminuser>(list);
-    }
 }
