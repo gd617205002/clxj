@@ -4,7 +4,10 @@ import com.one.clxj.mapper.ClxjmainMapper;
 import com.one.clxj.pojo.Clxjmain;
 import com.one.clxj.pojo.ClxjmainExample;
 import com.one.clxj.service.ClxjmainSer;
+import com.one.clxj.util.RedisUtils;
+import jdk.management.resource.ResourceId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

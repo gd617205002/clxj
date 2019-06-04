@@ -5,11 +5,10 @@ import com.one.clxj.pojo.Adminuser;
 import com.one.clxj.pojo.AdminuserExample;
 import com.one.clxj.service.AdminuserSer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service

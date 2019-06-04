@@ -8,7 +8,7 @@ $(function(){
     //要在生成表格之前注册
     window.operateEvents={
         "click #tableView": function (e,value,row,index) {
-            location.href="/Clxjmain/findByIdClMain.do?id="+value;
+            location.href="/Clxjmain/findByIdXjMain.do?id="+value;
         }
     }
 
@@ -16,7 +16,7 @@ $(function(){
     $('#mytab').bootstrapTable({
         method: 'get',
         contentType: "application/x-www-form-urlencoded",
-        url:"/Clxjmain/findAllClMain.do",
+        url:"/Clxjmain/findAllXjMain.do",
         height:tableHeight(),//高度调整
         //toolbar: '#toolbar',
         striped: true, //是否显示行间隔色
@@ -46,7 +46,7 @@ $(function(){
             {
                 title:'ID',
                 field:'id',
-                //visible:false
+                visible:false
             },
             {
                 title:'名称',
@@ -159,7 +159,7 @@ $(function(){
             name:$('#search_name').val(),
             type1:$('#search_typeid').val(),
             checkStatus:$('#search_checkstatus').val(),
-            type2:1
+            type2:0
         }
     }
 
@@ -167,7 +167,7 @@ $(function(){
     //查询按钮事件
     $('#search_btn').click(function(){
 
-        $('#mytab').bootstrapTable('refresh', {url: '/Clxjmain/findAllClMain.do'});
+        $('#mytab').bootstrapTable('refresh', {url: '/Clxjmain/findAllXjMain.do'});
     })
 })
 
@@ -197,7 +197,7 @@ function checkUpdate() {
                 }
             })
 
-    location.href="/back_clshenhe.do";
+    location.href="/back_xjshenhe.do";
 
     return false;
 }
@@ -212,6 +212,5 @@ layui.use('laydate', function() {
         ,type: 'datetime'
     });
 });
-
 
 

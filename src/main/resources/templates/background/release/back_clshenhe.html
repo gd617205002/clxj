@@ -108,13 +108,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenhe.html" class="nav-link">
+                                <a href="back_xjshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenhe.html" class="nav-link">
+                                <a href="back_ycshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
@@ -263,6 +263,13 @@
 <script src="bootstrapTable/js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
 <script src="layui/layui.all.js"></script>
 <script src="bootstrapTable/js/back_clshenhe.js"></script>
+<script src="/socket/Immediately.js"></script>
 
+<script>
+   /*var trs =  $("#mytab tr");
+    alert(trs.length);*/
+    var immediately = new Immediately("#mytab tbody tr", ['name', 'price', 'recommend'], 1,7,"ws://localhost:8080/socket/Clxjmain");
+    immediately.addSing(true);
+</script>
 </body>
 </html>

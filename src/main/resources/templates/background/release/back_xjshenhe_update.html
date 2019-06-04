@@ -1,15 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carbon - Admin Template</title>
-    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" href="./css/style-clxj.css">
+    <title>闲居审核更新</title>
+    <link rel="stylesheet" href="temp/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="temp/css/styles.css">
+    <link href="bootstrapTable/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/animate.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrapTable/css/plugins/bootstrapValidator/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="bootstrapTable/css/style.min.css" />
+    <link rel="stylesheet" href="bootstrapTable/css/style.table.css">
+    <link rel="stylesheet" href="temp/css/style-clxj.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -96,19 +102,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="clshenghe.html" class="nav-link">
+                                <a href="back_clshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 丛林审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenhe.html" class="nav-link active">
+                                <a href="back_xjshenhe.html" class="nav-link active">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenhe.html" class="nav-link">
+                                <a href="back_ycshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
@@ -202,144 +208,98 @@
             </nav>
         </div>
 </div>
-        <div class="content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+         <div class="content">
 
-                        <div class="card-header bg-light">
-								<form action="#" class="form-inline" method="get">
-								    <label for="name">名称:</label>
-									<input type="text" name="realname" id="name" class="form-control" placeholder="输入您要查询的名称"/>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label for="addrtype">地址类型:</label>
-									<select id="addrtype" size="1" class="form-control">
-										<option>选择所有</option>
-										<option>国内</option>
-										<option>国外</option>
-									</select>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<label for="addrtype">审核状态:</label>
-									<select id="addrtype" size="1" class="form-control">
-										<option>选择所有</option>
-										<option>审核通过</option>
-                                        <option>正在审核</option>
-										<option>审核不通过</option>
-									</select>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="submit" class="btn btn-primary" value="查询"/>&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="reset" class="btn btn-warning" value="重置"/>
-								</form>
-                        </div>
-                         
-                        <div class="card-body">
-                            <div class="table-responsive">
-							   <form method="post">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-									    <td><input type="checkbox" id="start_checkbox"/> </td>
-                                        <th>名称</th>
-                                        <th>地址类型</th>
-                                        <th>住址类型</th>
-										<th>地址</th>
-										<th>价格</th>
-										<th>申请状态</th>
-										<th>是否推荐</th>
-										<th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-									    <td><input type="checkbox" name="id"/> </td>
-                                        <td>南昌大酒店</td>
-                                        <td>国内</td>
-                                        <td>闲居</td>
-                                        <td>吉安</td>
-                                        <td>200</td>
-                                        <td>审核通过</td>
-                                        <td>不推荐</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-									   <td><input type="checkbox" name="id"/> </td>
-                                        <td>南昌大酒店</td>
-                                        <td>国内</td>
-                                        <td>闲居</td>
-                                        <td>吉安</td>
-										<td>200</td>
-										<td>审核通过</td>
-										<td>不推荐</td>
-										<td>
-											<button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-										</td>
-                                    </tr>
-                                   <tr>
-								       <td><input type="checkbox" name="id"/> </td>
-                                        <td>南昌大酒店</td>
-                                        <td>国内</td>
-                                        <td>闲居</td>
-                                        <td>吉安</td>
-                                        <td>200</td>
-                                        <td>审核通过</td>
-                                        <td>不推荐</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                   <tr>
-								       <td><input type="checkbox" name="id"/> </td>
-                                        <td>南昌大酒店</td>
-                                        <td>国内</td>
-                                        <td>闲居</td>
-                                        <td>吉安</td>
-                                        <td>200</td>
-                                        <td>审核通过</td>
-                                        <td>不推荐</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-									   <td><input type="checkbox" name="id"/> </td>
-                                        <td>南昌大酒店</td>
-                                        <td>国内</td>
-                                        <td>闲居</td>
-                                        <td>吉安</td>
-                                        <td>200</td>
-                                        <td>审核通过</td>
-                                        <td>不推荐</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-								</form>
-                            </div>
-                        </div>
-                    </div>
-                          <div class="content" style="margin-top: 0px;margin-left: 365px;">
-									<ul class="pagination">
-									      <li class="page-item"><button class="btn btn-info">首页</button></li>
-										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">上一页</button></li>
-										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">下一页</button></li>
-                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">尾页</button></li>
-									</ul>
-			              </div>
-                   </div>
-            </div>
-      </div>
+             <form id="form-clxj" onsubmit="return checkUpdate()">
+                 <div class="form-group">
+                     <label for="name">名字:</label>
+                     <input type="text" class="form-control" id="name" th:value="${session.clxjmain.name}" readonly="readonly">
+                     <input type="hidden" name="_method" value="put">
+                     <input type="hidden" name="id" th:value="${session.clxjmain.id}">
+                 </div>
+                 <div class="form-group">
+                     <label for="type1">地址类型:</label>
+                     <select size="1" class="form-control" id="type1" name="type1" readonly="readonly">
+                         <option value="0" th:selected="${session.clxjmain.type1==0}">国外</option>
+                         <option value="1" th:selected="${session.clxjmain.type1==1}">国内</option>
+                     </select>
+                 </div>
+                 <div class="form-group">
+                     <label for="type2">住址类型:</label>
+                     <select id="type2" size="1" class="form-control" name="type2" readonly="readonly">
+                         <option value="0" th:selected="${session.clxjmain.type2==0}">闲居</option>
+                         <option value="1" th:selected="${session.clxjmain.type2==1}">丛林</option>
+                     </select>
+                 </div>
+                 <div class="form-group">
+                     <label for="city">所属城市:</label>
+                     <input type="text" class="form-control" id="city" th:value="${session.clxjmain.belong_city}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="tu">首图:</label>
+                     <img th:src="${session.clxjmain.first_img_big}" id="tu" alt="图片找不到了">
+                 </div>
+                 <div class="form-group">
+                     <label for="introduction">介绍:</label>
+                     <textarea id="introduction" class="form-control" th:text="${session.clxjmain.introduction}" readonly="readonly"></textarea>
+                 </div>
+
+                 <div class="form-group">
+                     <label for="addre">中文地址:</label>
+                     <input type="text" class="form-control" id="addre" th:value="${#strings.arraySplit(session.clxjmain.belong_city,'|')[1]}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="mobile">联系号码:</label>
+                     <input type="text" class="form-control" id="mobile"  th:value="${session.clxjmain.mobile}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="cishu">预订次数:</label>
+                     <input type="text" class="form-control"  id="cishu" th:value="${session.clxjmain.reserve_num}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="tuijian">是否推荐:</label>
+                     <select id="tuijian" size="1" class="form-control" name="recommend">
+                         <option value="0"  th:selected="${session.clxjmain.recommend=='0'}">推荐</option>
+                         <option value="1"  th:selected="${session.clxjmain.recommend=='1'}">不推荐</option>
+                     </select>
+                 </div>
+                 <div class="form-group">
+                     <label for="shijian">注册时间:</label>
+                     <input type="text" class="form-control" id="shijian"  th:value="${#dates.format(session.clxjmain.createtime,'yyyy-MM-dd')}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="shenhe">审核状态:</label>
+                     <select id="shenhe" size="1" class="form-control" name="checkStatus" readonly="readonly">
+                         <option value="0"   th:selected="${session.clxjmain.checkStatus=='0'}">未审核</option>
+                         <option value="1"   th:selected="${session.clxjmain.checkStatus=='1'}">通过</option>
+                         <option value="2"   th:selected="${session.clxjmain.checkStatus=='2'}">未通过</option>
+                     </select>
+
+                 </div>
+
+                 <div class="form-group">
+                     <label for="zhuci">寺院主持:</label>
+                     <input type="text" class="form-control" id="zhuci" th:value="${session.clxjmain.abbot}" readonly="readonly">
+                 </div>
+                 <div class="form-group">
+                     <label for="kaifangshijian">开放时间:</label>
+                     <input type="text" class="form-control" id="kaifangshijian" th:value="${#dates.format(session.clxjmain.opentime,'yyyy-MM-dd')}">
+                 </div>
+                 <input type="submit" style="margin-left: 460px" class="btn btn-info" value="更改推荐"/>
+                 <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
+             </form>
+        </div>
 </div>
-<script src="./vendor/jquery/jquery.min.js"></script>
-<script src="./vendor/popper.js/popper.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="./vendor/chart.js/chart.min.js"></script>
-<script src="./js/carbon.js"></script>
-<script src="./js/demo.js"></script>
+<script src="temp/vendor/jquery/jquery.min.js"></script>
+<script src="temp/vendor/popper.js/popper.min.js"></script>
+<script src="bootstrapTable/js/bootstrap.min.js"></script>
+<script src="temp/vendor/chart.js/chart.min.js"></script>
+<script src="temp/js/carbon.js"></script>
+<script src="temp/js/demo.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="layui/layui.all.js"></script>
+<script src="bootstrapTable/js/back_clshenhe.js"></script>
 </body>
 </html>

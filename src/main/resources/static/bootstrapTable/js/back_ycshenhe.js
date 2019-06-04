@@ -8,7 +8,7 @@ $(function(){
     //要在生成表格之前注册
     window.operateEvents={
         "click #tableView": function (e,value,row,index) {
-            location.href="/Clxjmain/findByIdClMain.do?id="+value;
+            location.href="/Carinfo/findByIdCarInfo.do?id="+value;
         }
     }
 
@@ -16,7 +16,7 @@ $(function(){
     $('#mytab').bootstrapTable({
         method: 'get',
         contentType: "application/x-www-form-urlencoded",
-        url:"/Clxjmain/findAllClMain.do",
+        url:"/Carinfo/findAllCarInfo.do",
         height:tableHeight(),//高度调整
         //toolbar: '#toolbar',
         striped: true, //是否显示行间隔色
@@ -46,39 +46,28 @@ $(function(){
             {
                 title:'ID',
                 field:'id',
-                //visible:false
+                visible:false
             },
             {
-                title:'名称',
-                field:'name',
+                title:'所属丛林闲居名称',
+                field:'clxjmains.name',
             },
             {
-                title:'地址类型',
-                field:'type1',
-                formatter:type1Formate
-            },
-            {
-                title:'住址类型',
-                field:'type2',
-                formatter:type2Formate
-            },
-            {
-                title:'地址',
-                field:'belong_city'
+                title:'标题',
+                field:'cartitle',
             },
             {
                 title:'价格',
-                field:'price',
+                field:'price'
+            },
+            {
+                title:'汽车牌照',
+                field:'licence'
             },
             {
                 title:'申请状态',
-                field:'checkStatus',
+                field:'checkstatus',
                 formatter:statusFormate
-            },
-            {
-                title:'是否推荐',
-                field:'recommend',
-                formatter:recoFormate
             },
             {
                 title: '操作',
@@ -91,26 +80,8 @@ $(function(){
         locale:'zh-CN',//中文支持,
     })
 
-    //格式化日期
-    function dateFormate(value,row,index){
-       return new Date(value).Format("yyyy-MM-dd");
-    }
 
-    //格式化地址
-    function type1Formate(value,row,index) {
-        if (value==0)
-            return "国外";
-        else
-            return "国内";
-    }
 
-    //格式化住址类型
-    function type2Formate(value,row,index) {
-         if (value==0)
-             return "闲居";
-        else
-            return "丛林";
-    }
 
     //格式化审核状态
     function statusFormate(value,row,index){
@@ -120,30 +91,6 @@ $(function(){
             return "未审核";
         else
             return "未通过";
-    }
-
-    function recoFormate(value,row,index){
-        if (value==0)
-            return "推荐";
-        else
-            return "不推荐";
-    }
-
-    //格式化日期
-    Date.prototype.Format = function (fmt) { //author: meizz
-        var o = {
-            "M+": this.getMonth() + 1, //月份
-            "d+": this.getDate(), //日
-            "h+": this.getHours(), //小时
-            "m+": this.getMinutes(), //分
-            "s+": this.getSeconds(), //秒
-            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-            "S": this.getMilliseconds() //毫秒
-        };
-        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-        for (var k in o)
-            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        return fmt;
     }
 
     //按钮生成
@@ -156,10 +103,8 @@ $(function(){
         return{
             pageSize: params.limit,
             pageIndex:params.pageNumber,
-            name:$('#search_name').val(),
-            type1:$('#search_typeid').val(),
-            checkStatus:$('#search_checkstatus').val(),
-            type2:1
+            cartitle:$('#search_cartitle').val(),
+            checkstatus:$('#search_checkstatus').val(),
         }
     }
 
@@ -167,7 +112,7 @@ $(function(){
     //查询按钮事件
     $('#search_btn').click(function(){
 
-        $('#mytab').bootstrapTable('refresh', {url: '/Clxjmain/findAllClMain.do'});
+        $('#mytab').bootstrapTable('refresh', {url: '/Carinfo/findAllCarInfo.do'});
     })
 })
 
@@ -180,10 +125,10 @@ function tableHeight() {
 function checkUpdate() {
             //修改
             $.ajax({
-                url:"/Clxjmain/updateClxjmain.do",
+                url:"/Carinfo/updateCarInfo.do",
                 async:false,
                 type:"post",
-                data:$("#form-clxj").serialize(),
+                data:$("#form-car").serialize(),
                 ContentType:"application/json;charset=UTF-8",
                 dataType:"json",
                 success:function (data) {
@@ -197,21 +142,10 @@ function checkUpdate() {
                 }
             })
 
-    location.href="/back_clshenhe.do";
+    location.href="/back_ycshenhe.do";
 
     return false;
 }
-
-
-layui.use('laydate', function() {
-    var laydate = layui.laydate;
-
-    //日期时间选择器
-    laydate.render({
-        elem: '#kaifangshijian'
-        ,type: 'datetime'
-    });
-});
 
 
 

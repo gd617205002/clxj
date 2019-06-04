@@ -1,10 +1,12 @@
 package com.one.clxj.pojo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
-public class ClxjmainExample {
+public class ClxjmainExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;

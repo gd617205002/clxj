@@ -1,15 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carbon - Admin Template</title>
-    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" href="./css/style-clxj.css">
+    <title>用车审核更新</title>
+    <link rel="stylesheet" href="temp/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="temp/css/styles.css">
+    <link href="bootstrapTable/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/animate.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrapTable/css/plugins/bootstrapValidator/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="bootstrapTable/css/style.min.css" />
+    <link rel="stylesheet" href="bootstrapTable/css/style.table.css">
+    <link rel="stylesheet" href="temp/css/style-clxj.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -102,13 +108,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenhe.html" class="nav-link">
+                                <a href="back_xjshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenhe.html" class="nav-link active">
+                                <a href="back_ycshenhe.html" class="nav-link active">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
@@ -143,7 +149,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="cljiamenguali.html" class="nav-link">
+                                <a href="cljiamenguali.htmll" class="nav-link">
                                     <i class="icon icon-energy"></i> 丛林加盟管理
                                 </a>
                             </li>
@@ -202,125 +208,58 @@
             </nav>
         </div>
 </div>
-        <div class="content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-
-                        <div class="card-header bg-light">
-								<form action="#" class="form-inline" method="get">
-								    <label for="name">名称:</label>
-									<input type="text" name="realname" id="name" class="form-control" placeholder="输入您要查询的名称"/>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label for="addrtype">审核状态:</label>
-									<select id="addrtype" size="1" class="form-control">
-										<option>选择所有</option>
-										<option>审核通过</option>
-                                        <option>正在审核</option>
-										<option>审核不通过</option>
-									</select>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="submit" class="btn btn-primary" value="查询"/>&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="reset" class="btn btn-warning" value="重置"/>
-								</form>
-                        </div>
-                         
-                        <div class="card-body">
-                            <div class="table-responsive">
-							   <form method="post">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-									    <td><input type="checkbox" id="start_checkbox"/> </td>
-                                        <th>所属丛林闲居名称</th>
-                                        <th>标题</th>
-                                        <th>价格</th>
-										<th>汽车牌照</th>
-										<th>审核状态</th>
-										<th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-									    <td><input type="checkbox" name="id"/> </td>
-                                        <td>国内青门寺院一</td>
-                                        <td>汽车A</td>
-                                        <td>199</td>
-                                        <td>赣123456</td>
-                                        <td>正在审核</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-									   <td><input type="checkbox" name="id"/> </td>
-                                        <td>国内青门寺院一</td>
-                                        <td>汽车A</td>
-                                        <td>199</td>
-                                        <td>赣123456</td>
-                                        <td>正在审核</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                   <tr>
-								       <td><input type="checkbox" name="id"/> </td>
-                                        <td>国内青门寺院一</td>
-                                        <td>汽车A</td>
-                                        <td>199</td>
-                                        <td>赣123456</td>
-                                        <td>正在审核</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                   <tr>
-								       <td><input type="checkbox" name="id"/> </td>
-                                        <td>国内青门寺院一</td>
-                                        <td>汽车A</td>
-                                        <td>199</td>
-                                        <td>赣123456</td>
-                                        <td>正在审核</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-									   <td><input type="checkbox" name="id"/> </td>
-                                        <td>国内青门寺院一</td>
-                                        <td>汽车A</td>
-                                        <td>199</td>
-                                        <td>赣123456</td>
-                                        <td>正在审核</td>
-                                        <td>
-                                            <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"><span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-								</form>
-                            </div>
-                        </div>
-                    </div>
-                          <div class="content" style="margin-top: 0px;margin-left: 365px;">
-									<ul class="pagination">
-									      <li class="page-item"><button class="btn btn-info">首页</button></li>
-										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">上一页</button></li>
-										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">下一页</button></li>
-                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										  <li class="page-item"><button class="btn btn-info">尾页</button></li>
-									</ul>
-			              </div>
-                   </div>
-            </div>
-      </div>
+         <div class="content">
+                   
+          <form id="form-car" method="post" onsubmit="return checkUpdate()">
+              <input type="hidden" value="put" name="_method">
+              <input type="hidden" th:value="${session.carinfo.id}" name="id">
+              <div class="form-group">
+                  <label for="clxjname">所属丛林闲居名称:</label>
+                  <input type="text" id="clxjname" class="form-control"  th:value="${session.carinfo.clxjmains.name}" readonly="readonly">
+              </div>
+              <div class="form-group">
+                  <label for="title">标题:</label>
+                  <input type="text" class="form-control"  id="title" th:value="${session.carinfo.cartitle}" readonly="readonly">
+              </div>
+                  <div class="form-group">
+                    <label>图片:</label>
+                    <img src="imgs/logos.png" alt="图片显示" th:src="${session.carinfo.carouselImg}">
+                  </div>
+                  <div class="form-group">
+                    <label for="jiage">价格:</label>
+                    <input type="text" class="form-control" id="jiage" th:value="${session.carinfo.price}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="paizhao">汽车牌照:</label>
+                    <input type="text" class="form-control" id="paizhao" th:value="${session.carinfo.licence}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="name">申请人名字:</label>
+                    <input type="text" class="form-control" id="name" th:value="${session.carinfo.adminuser.name}" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="zhuangtai">审核状态:</label>
+                    <select id="zhuangtai" name="checkstatus" size="1" class="form-control">
+                        <option  value="0" th:selected="${session.carinfo.checkstatus==0}">未审核</option>
+                        <option  value="1" th:selected="${session.carinfo.checkstatus==1}">通过</option>
+                        <option  value="2" th:selected="${session.carinfo.checkstatus==2}">未通过</option>
+                    </select>
+                  </div>
+                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="提交审核"/>
+                  <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
+        </form>
+        </div>
 </div>
-<script src="./vendor/jquery/jquery.min.js"></script>
-<script src="./vendor/popper.js/popper.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="./vendor/chart.js/chart.min.js"></script>
-<script src="./js/carbon.js"></script>
-<script src="./js/demo.js"></script>
+<script src="temp/vendor/jquery/jquery.min.js"></script>
+<script src="temp/vendor/popper.js/popper.min.js"></script>
+<script src="bootstrapTable/js/bootstrap.min.js"></script>
+<script src="temp/vendor/chart.js/chart.min.js"></script>
+<script src="temp/js/carbon.js"></script>
+<script src="temp/js/demo.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="layui/layui.all.js"></script>
+<script src="bootstrapTable/js/back_ycshenhe.js"></script>
 </body>
 </html>

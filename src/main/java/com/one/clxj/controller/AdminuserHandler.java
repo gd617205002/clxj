@@ -5,8 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.one.clxj.pojo.Adminuser;
 import com.one.clxj.pojo.AdminuserExample;
 import com.one.clxj.service.AdminuserSer;
-import com.one.clxj.util.MyPageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,9 +58,11 @@ public class AdminuserHandler {
         if (username!=null&&!"".equals(username))
             criteria.andUsernameLike("%"+username+"%");
 
+            PageHelper.startPage(pageIndex,pageSize);
+
             List<Adminuser> list = adminuserSer.selectByExample(adminuserExample);
 
-            PageInfo<Adminuser> pageInfo = new MyPageInfo<Adminuser>().pageInfo(list,pageIndex,pageSize);
+            PageInfo<Adminuser> pageInfo = new PageInfo<Adminuser>(list);
 
             map.put("total",pageInfo.getTotal());
 

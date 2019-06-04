@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" href="./css/style-clxj.css">
 </head>
 <body class="sidebar-fixed header-fixed">
@@ -96,19 +96,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="back_clshenhe.html" class="nav-link">
+                                <a href="clshenghe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 丛林审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenhe.html" class="nav-link">
+                                <a href="xianjushenghe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenhe.html" class="nav-link active">
+                                <a href="yongcheshenghe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
@@ -124,7 +124,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="yuedizhichu.html" class="nav-link">
+                                <a href="back_ydzf.html" class="nav-link active">
                                     <i class="icon icon-target"></i> 月底支出管理
                                 </a>
                             </li>
@@ -143,7 +143,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="cljiamenguali.htmll" class="nav-link">
+                                <a href="cljiamenguali.html" class="nav-link">
                                     <i class="icon icon-energy"></i> 丛林加盟管理
                                 </a>
                             </li>
@@ -201,40 +201,96 @@
                 </ul>
             </nav>
         </div>
-</div>
-         <div class="content">
-                   
-          <form>
-                  <div class="form-group">
-                    <label for="tupian">图片:</label>
-                    <img src="imgs/logos.png" alt="图片显示">
-                    <input type="file" name="tupian">
-                  </div>
-                  <div class="form-group">
-                    <label for="jiage">价格:</label>
-                    <input type="text" class="form-control" id="jiage" value="100">
-                  </div>
-                  <div class="form-group">
-                    <label for="paizhao">汽车牌照:</label>
-                    <input type="text" class="form-control" id="paizhao" value="赣A12345">
-                  </div>
-                  <div class="form-group">
-                    <label for="name">申请人名字:</label>
-                    <input type="text" class="form-control" id="name" value="李四">
-                  </div>
-                  <div class="form-group">
-                    <label for="zhuangtai">审核状态:</label>
-                    <select id="zhuangtai" size="1" class="form-control">
-                                        <option>审核通过</option>
-                                        <option>正在审核</option>
-                                        <option>审核不通过</option>
-                                    </select>
-                  </div>
-                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="确认"/>
-                  <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
-        </form>
-        </div>
-</div>
+    </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="card-header bg-light">
+								<form action="#" class="form-inline" method="get">
+								    <label for="date">月度:</label>
+									<input type="text" name="realname" id="date" class="form-control" placeholder="输入您要查询的姓名"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="xmname">项目名称:</label>
+                                    <input type="text" name="realname" id="xmname" class="form-control" placeholder="输入您要查询的姓名"/>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="submit" class="btn btn-primary" value="查询"/>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="reset" class="btn btn-warning" value="重置"/>
+								</form>
+                            <div style="margin-top:10px">
+                                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-minus"></i> 批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i>导入</button>
+                            <div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox" id="start_checkbox"/> </th>
+                                        <th>月度</th>
+                                        <th>项目名称</th>
+                                        <th>支出金额(元)</th>
+                                        <th>备注</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" name="id"/> </td>
+                                        <td>2019-05</td>
+                                        <td>物流系统</td>
+                                        <td>100000</td>
+										<td>123654</td>
+                                    </tr>
+                                   <tr>
+                                    <td><input type="checkbox" name="id"/> </td>
+                                        <td>2019-05</td>
+                                        <td>物流系统</td>
+                                        <td>100000</td>
+                                        <td>123654</td>
+                                    </tr>
+                                   <tr>
+                                    <td><input type="checkbox" name="id"/> </td>
+                                        <td>2019-05</td>
+                                        <td>物流系统</td>
+                                        <td>100000</td>
+                                        <td>123654</td>
+                                    </tr>
+                                  <tr>
+                                   <td><input type="checkbox" name="id"/> </td>
+                                        <td>2019-05</td>
+                                        <td>物流系统</td>
+                                        <td>100000</td>
+                                        <td>123654</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="id"/> </td>
+                                        <td>2019-05</td>
+                                        <td>物流系统</td>
+                                        <td>100000</td>
+                                        <td>123654</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                          <div class="content" style="margin-top: 0px;margin-left: 246px;">
+									<ul class="pagination">
+									      <li class="page-item"><button class="btn btn-info">首页</button></li>
+										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										  <li class="page-item"><button class="btn btn-info">上一页</button></li>
+										  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										  <li class="page-item"><button class="btn btn-info">下一页</button></li>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										  <li class="page-item"><button class="btn btn-info">尾页</button></li>
+									</ul>
+			              </div>
+                   </div>
+            </div>
+      </div>
+<div>
 <script src="./vendor/jquery/jquery.min.js"></script>
 <script src="./vendor/popper.js/popper.min.js"></script>
 <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>

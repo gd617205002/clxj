@@ -1,11 +1,13 @@
 package com.one.clxj.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 管理员实体类
  */
-public class Adminuser {
+public class Adminuser implements Serializable {
     private Integer id;  //编号
 
     private String username; //用户名
@@ -84,6 +86,26 @@ public class Adminuser {
 
     public void setRegtime(Date regtime) {
         this.regtime = regtime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Adminuser adminuser = (Adminuser) o;
+        return Objects.equals(id, adminuser.id) &&
+                Objects.equals(username, adminuser.username) &&
+                Objects.equals(pwd, adminuser.pwd) &&
+                Objects.equals(name, adminuser.name) &&
+                Objects.equals(mobile, adminuser.mobile) &&
+                Objects.equals(usertype, adminuser.usertype) &&
+                Objects.equals(userflag, adminuser.userflag) &&
+                Objects.equals(regtime, adminuser.regtime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, pwd, name, mobile, usertype, userflag, regtime);
     }
 
     @Override

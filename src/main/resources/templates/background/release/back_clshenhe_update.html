@@ -108,13 +108,13 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenhe.html" class="nav-link">
+                                <a href="back_xjshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenhe.html" class="nav-link">
+                                <a href="back_ycshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
@@ -219,14 +219,14 @@
               </div>
               <div class="form-group">
                       <label for="type1">地址类型:</label>
-                  <select size="1" class="form-control" id="type1" name="type1">
+                  <select size="1" class="form-control" id="type1" name="type1" readonly="readonly">
                       <option value="0" th:selected="${session.clxjmain.type1==0}">国外</option>
                       <option value="1" th:selected="${session.clxjmain.type1==1}">国内</option>
                   </select>
               </div>
               <div class="form-group">
                       <label for="type2">住址类型:</label>
-                  <select id="type2" size="1" class="form-control" name="type2">
+                  <select id="type2" size="1" class="form-control" name="type2" readonly="readonly">
                       <option value="0" th:selected="${session.clxjmain.type2==0}">闲居</option>
                       <option value="1" th:selected="${session.clxjmain.type2==1}">丛林</option>
                   </select>
@@ -258,18 +258,18 @@
                   </div>
                   <div class="form-group">
                     <label for="tuijian">是否推荐:</label>
-                    <select id="tuijian" size="1" class="form-control" name="recommend">
+                    <select id="tuijian" size="1" class="form-control" name="recommend" readonly="readonly">
                          <option value="0"  th:selected="${session.clxjmain.recommend=='0'}">推荐</option>
                          <option value="1"  th:selected="${session.clxjmain.recommend=='1'}">不推荐</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="shijian">注册时间:</label>
-                    <input type="text" class="form-control" id="shijian"  th:value="${#dates.format(session.clxjmain.createtime,'yyyy-MM-dd')}">
+                    <input type="text" class="form-control" id="shijian"  th:value="${#dates.format(session.clxjmain.createtime,'yyyy-MM-dd')}" readonly="readonly">
                   </div>
               <div class="form-group">
                       <label for="shenhe">审核状态:</label>
-                   <select id="shenhe" size="1" class="form-control" name="checkStatus">
+                   <select id="shenhe" size="1" class="form-control" name="checkStatus" readonly="readonly">
                        <option value="0"   th:selected="${session.clxjmain.checkStatus=='0'}">未审核</option>
                        <option value="1"   th:selected="${session.clxjmain.checkStatus=='1'}">通过</option>
                        <option value="2"   th:selected="${session.clxjmain.checkStatus=='2'}">未通过</option>
@@ -285,7 +285,7 @@
                     <label for="kaifangshijian">开放时间:</label>
                     <input type="text" class="form-control" id="kaifangshijian" th:value="${#dates.format(session.clxjmain.opentime,'yyyy-MM-dd')}">
                   </div>
-                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="确认"/>
+                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="更改推荐"/>
                   <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
         </form>
         </div>

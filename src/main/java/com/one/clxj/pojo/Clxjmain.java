@@ -1,11 +1,13 @@
 package com.one.clxj.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 丛林闲居信息实体类
  */
-public class Clxjmain {
+public class Clxjmain implements Serializable {
     private Integer id; //编号
 
     private String name; //名称
@@ -253,5 +255,39 @@ public class Clxjmain {
                 ", mobile='" + mobile + '\'' +
                 ", introduction='" + introduction + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clxjmain clxjmain = (Clxjmain) o;
+        return Objects.equals(id, clxjmain.id) &&
+                Objects.equals(name, clxjmain.name) &&
+                Objects.equals(type1, clxjmain.type1) &&
+                Objects.equals(type2, clxjmain.type2) &&
+                Objects.equals(belong_city, clxjmain.belong_city) &&
+                Objects.equals(first_img_big, clxjmain.first_img_big) &&
+                Objects.equals(first_img_min, clxjmain.first_img_min) &&
+                Objects.equals(carousel_img, clxjmain.carousel_img) &&
+                Objects.equals(price, clxjmain.price) &&
+                Objects.equals(address, clxjmain.address) &&
+                Objects.equals(longitude, clxjmain.longitude) &&
+                Objects.equals(latitude, clxjmain.latitude) &&
+                Objects.equals(reserve_num, clxjmain.reserve_num) &&
+                Objects.equals(recommend, clxjmain.recommend) &&
+                Objects.equals(adminuser, clxjmain.adminuser) &&
+                Objects.equals(checkStatus, clxjmain.checkStatus) &&
+                Objects.equals(abbot, clxjmain.abbot) &&
+                Objects.equals(abbotresume, clxjmain.abbotresume) &&
+                Objects.equals(opentime, clxjmain.opentime) &&
+                Objects.equals(createtime, clxjmain.createtime) &&
+                Objects.equals(mobile, clxjmain.mobile) &&
+                Objects.equals(introduction, clxjmain.introduction);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, type1, type2, belong_city, first_img_big, first_img_min, carousel_img, price, address, longitude, latitude, reserve_num, recommend, adminuser, checkStatus, abbot, abbotresume, opentime, createtime, mobile, introduction);
     }
 }

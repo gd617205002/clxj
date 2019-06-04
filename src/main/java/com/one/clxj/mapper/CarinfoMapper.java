@@ -16,7 +16,7 @@ public interface CarinfoMapper {
 
     List<Carinfo> selectByExample(CarinfoExample example);
 
-    Carinfo selectByPrimaryKey2(Integer id);
+    Carinfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Carinfo record);
 

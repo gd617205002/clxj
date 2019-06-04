@@ -3,11 +3,12 @@ package com.one.clxj;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import java.util.Properties;
 
@@ -20,6 +21,9 @@ public class CxljApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(CxljApplication.class, args);
+        //起socket服务
+//        SocketServer server = new SocketServer();
+//        server.startSocketServer(8088);
     }
 
     @Bean

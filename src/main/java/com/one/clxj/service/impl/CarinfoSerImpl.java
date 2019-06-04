@@ -40,8 +40,8 @@ public class CarinfoSerImpl  implements CarinfoSer {
     }
 
     @Override
-    public Carinfo selectByPrimaryKey2(Integer id) {
-        return carinfoMapper.selectByPrimaryKey2(id);
+    public Carinfo selectByPrimaryKey(Integer id) {
+        return carinfoMapper.selectByPrimaryKey(id);
     }
 
     @Override

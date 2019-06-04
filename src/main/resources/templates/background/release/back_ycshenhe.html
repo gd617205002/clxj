@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carbon - Admin Template</title>
-    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-	<link rel="stylesheet" href="./css/bootstrap.css">
-	<link rel="stylesheet" href="./css/style-clxj.css">
+    <title>用车审核</title>
+    <link rel="stylesheet" href="temp/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="temp/vendor/font-awesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="temp/css/styles.css">
+    <link href="bootstrapTable/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/animate.min.css" rel="stylesheet"/>
+    <link href="bootstrapTable/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrapTable/css/plugins/bootstrapValidator/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="bootstrapTable/css/style.min.css" />
+    <link rel="stylesheet" href="bootstrapTable/css/style.table.css">
+    <link rel="stylesheet" href="temp/css/style-clxj.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -96,25 +102,25 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="clshenghe.html" class="nav-link">
+                                <a href="back_clshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 丛林审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="xianjushenghe.html" class="nav-link">
+                                <a href="back_xjshenhe.html" class="nav-link">
                                     <i class="icon icon-target"></i> 闲居审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="yongcheshenghe.html" class="nav-link">
+                                <a href="back_ycshenhe.html" class="nav-link active">
                                     <i class="icon icon-target"></i> 用车审核
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="qiuzhu.html" class="nav-link active">
+                                <a href="qiuzhu.html" class="nav-link">
                                     <i class="icon icon-target"></i> 求助信息管理
                                 </a>
                             </li>
@@ -202,71 +208,52 @@
             </nav>
         </div>
 </div>
-         <div class="content">
-                   
-          <form>
-                  <div class="form-group">
-                    <label for="name">加盟姓名:</label>
-                    <input type="text" class="form-control" id="name" value="李四">
-                  </div>
-                  <div class="form-group">
-                    <label for="sex">性别:</label>
-                    <input type="text" class="form-control" id="sex" value="男">
-                  </div>
-                  <div class="form-group">
-                    <label for="age">年龄:</label>
-                    <input type="text" class="form-control" id="age" value="18">
-                  </div>
-                  <div class="form-group">
-                    <label for="mobile">手机号码:</label>
-                    <input type="text" class="form-control" id="mobile" value="100">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">邮箱:</label>
-                    <input type="text" class="form-control" id="email" value="赣A12345">
-                  </div>
-                  <div class="form-group">
-                    <label for="addr">地址:</label>
-                    <input type="text" class="form-control" id="addr" value="李四">
-                  </div>
-                  <div class="form-group">
-                    <label for="shouru">家庭年收入:</label>
-                    <input type="text" class="form-control" id="shouru" value="100">
-                  </div>
-                  <div class="form-group">
-                    <label for="shifouxiangs">是否享受低保:</label>
-                    <input type="text" class="form-control" id="shifouxiangs" value="享受">
-                  </div>
-                  <div class="form-group">
-                    <label for="jine">申请金额:</label>
-                    <input type="text" class="form-control" id="jine" value="1000">
-                  </div>
-                  <div class="form-group">
-                    <label for="miaosu">申请描述:</label>
-                    <input type="text" class="form-control" id="miaosu" value="100">
-                  </div>
-                  <div class="form-group">
-                    <label for="xiazai">下载文档:</label>
-                    <input type="text" class="form-control" id="xiazai" value="赣A12345">
-                  </div>
-                  <div class="form-group">
-                    <label for="zhuangtai">审核状态:</label>
-                    <select id="zhuangtai" size="1" class="form-control">
-                                        <option>审核通过</option>
-                                        <option>正在审核</option>
-                                        <option>审核不通过</option>
-                                    </select>
-                  </div>
-                  <input type="submit" style="margin-left: 460px" class="btn btn-info" value="确认"/>
-                  <input type="reset"  style="margin-left: 20px" class="btn btn-danger" value="重置"/>
-        </form>
-        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="tableBody">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    查询条件
+                                </div>
+                                <div class="panel-body form-group" style="margin-bottom:0px;">
+                                    <label class="col-sm-2 control-label" style="text-align: right; margin-top:5px">汽车标题：</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="name" id="search_cartitle"/>
+                                    </div>
+                                    <label class="col-sm-2 control-label" style="text-align: right; margin-top:5px" >审核状态：</label>
+                                    <div class="col-sm-2">
+                                        <select name="checkstatus" id="search_checkstatus" class="form-control">
+                                            <option value="">选择所有</option>
+                                            <option value="0">未审核</option>
+                                            <option value="1">通过</option>
+                                            <option value="2">未通过</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 pull-right">
+                                        <button class="btn btn-primary" id="search_btn">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <table id="mytab" class="table table-hover"></table>
+                        </div>
+                    </div>
+                   </div>
+            </div>
+      </div>
 </div>
-<script src="./vendor/jquery/jquery.min.js"></script>
-<script src="./vendor/popper.js/popper.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="./vendor/chart.js/chart.min.js"></script>
-<script src="./js/carbon.js"></script>
-<script src="./js/demo.js"></script>
+<script src="temp/vendor/jquery/jquery.min.js"></script>
+<script src="temp/vendor/popper.js/popper.min.js"></script>
+<script src="bootstrapTable/js/bootstrap.min.js"></script>
+<script src="temp/vendor/chart.js/chart.min.js"></script>
+<script src="temp/js/carbon.js"></script>
+<script src="temp/js/demo.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="bootstrapTable/js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="layui/layui.all.js"></script>
+<script src="bootstrapTable/js/back_ycshenhe.js"></script>
 </body>
 </html>

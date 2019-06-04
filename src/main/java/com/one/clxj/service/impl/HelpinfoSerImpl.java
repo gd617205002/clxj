@@ -18,7 +18,6 @@ public class HelpinfoSerImpl implements HelpinfoSer {
     @Autowired
     private HelpinfoMapper helpinfoMapper;
 
-
     @Override
     public int countByExample(HelpinfoExample example) {
         return helpinfoMapper.countByExample(example);

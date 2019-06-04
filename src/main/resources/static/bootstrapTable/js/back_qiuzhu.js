@@ -8,7 +8,7 @@ $(function(){
     //要在生成表格之前注册
     window.operateEvents={
         "click #tableView": function (e,value,row,index) {
-            location.href="/Clxjmain/findByIdClMain.do?id="+value;
+            location.href="/Helpinfo/findByIdHelpInfo.do?id="+value;
         }
     }
 
@@ -16,7 +16,7 @@ $(function(){
     $('#mytab').bootstrapTable({
         method: 'get',
         contentType: "application/x-www-form-urlencoded",
-        url:"/Clxjmain/findAllClMain.do",
+        url:"/Helpinfo/findAllHelpInfo.do",
         height:tableHeight(),//高度调整
         //toolbar: '#toolbar',
         striped: true, //是否显示行间隔色
@@ -46,39 +46,43 @@ $(function(){
             {
                 title:'ID',
                 field:'id',
-                //visible:false
+                visible:false
             },
             {
-                title:'名称',
+                title:'求助姓名',
                 field:'name',
             },
             {
-                title:'地址类型',
-                field:'type1',
-                formatter:type1Formate
+                title:'求助性别',
+                field:'sex',
+                formatter: sexFormatter
             },
             {
-                title:'住址类型',
-                field:'type2',
-                formatter:type2Formate
+                title:'求助年龄',
+                field:'age'
             },
             {
-                title:'地址',
-                field:'belong_city'
+                title:'家庭年收入',
+                field:'income'
             },
             {
-                title:'价格',
-                field:'price',
+                title:'享受低保',
+                field:'basicliving',
+                formatter:basicFormate
+            },
+            {
+                title:'申请类型',
+                field:'applytype',
+                formatter: applytypeFormatter
             },
             {
                 title:'申请状态',
-                field:'checkStatus',
-                formatter:statusFormate
+                field:'applystatus',
+                formatter: applystatusFormatter
             },
             {
-                title:'是否推荐',
-                field:'recommend',
-                formatter:recoFormate
+                title:'申请金额',
+                field:'applymoney'
             },
             {
                 title: '操作',
@@ -91,59 +95,41 @@ $(function(){
         locale:'zh-CN',//中文支持,
     })
 
-    //格式化日期
-    function dateFormate(value,row,index){
-       return new Date(value).Format("yyyy-MM-dd");
+    //性别格式化
+    function sexFormatter(value,row,index) {
+        if (value==1)
+            return "男";
+        else
+            return "女";
     }
 
-    //格式化地址
-    function type1Formate(value,row,index) {
-        if (value==0)
-            return "国外";
+    //是否享受低保
+    function basicFormate(value,row,index) {
+        if (value==1)
+            return "享受";
         else
-            return "国内";
+            return "未享受";
     }
 
-    //格式化住址类型
-    function type2Formate(value,row,index) {
-         if (value==0)
-             return "闲居";
-        else
-            return "丛林";
-    }
 
     //格式化审核状态
-    function statusFormate(value,row,index){
-        if (value==1)
-            return "通过";
-        else if (value==0)
-            return "未审核";
-        else
-            return "未通过";
-    }
-
-    function recoFormate(value,row,index){
+    function applystatusFormatter(value,row,index){
         if (value==0)
-            return "推荐";
+            return "审核中";
+        else if (value==1)
+            return "初审通过";
+        else if (value==2)
+            return "终审通过";
         else
-            return "不推荐";
+            return "终审未通过"
     }
 
-    //格式化日期
-    Date.prototype.Format = function (fmt) { //author: meizz
-        var o = {
-            "M+": this.getMonth() + 1, //月份
-            "d+": this.getDate(), //日
-            "h+": this.getHours(), //小时
-            "m+": this.getMinutes(), //分
-            "s+": this.getSeconds(), //秒
-            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-            "S": this.getMilliseconds() //毫秒
-        };
-        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-        for (var k in o)
-            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        return fmt;
+    //格式化申请类型
+    function applytypeFormatter(value,row,index) {
+        if (value==0)
+            return "救助";
+        else
+            return "扶助";
     }
 
     //按钮生成
@@ -157,9 +143,7 @@ $(function(){
             pageSize: params.limit,
             pageIndex:params.pageNumber,
             name:$('#search_name').val(),
-            type1:$('#search_typeid').val(),
-            checkStatus:$('#search_checkstatus').val(),
-            type2:1
+            applystatus:$('#search_applystatus').val(),
         }
     }
 
@@ -167,7 +151,7 @@ $(function(){
     //查询按钮事件
     $('#search_btn').click(function(){
 
-        $('#mytab').bootstrapTable('refresh', {url: '/Clxjmain/findAllClMain.do'});
+        $('#mytab').bootstrapTable('refresh', {url: '/Helpinfo/findAllHelpInfo.do'});
     })
 })
 
@@ -180,10 +164,10 @@ function tableHeight() {
 function checkUpdate() {
             //修改
             $.ajax({
-                url:"/Clxjmain/updateClxjmain.do",
+                url:"/Helpinfo/updateHelpInfo.do",
                 async:false,
                 type:"post",
-                data:$("#form-clxj").serialize(),
+                data:$("#form-qiuzhu").serialize(),
                 ContentType:"application/json;charset=UTF-8",
                 dataType:"json",
                 success:function (data) {
@@ -197,21 +181,10 @@ function checkUpdate() {
                 }
             })
 
-    location.href="/back_clshenhe.do";
+    location.href="/back_qiuzhu.do";
 
     return false;
 }
-
-
-layui.use('laydate', function() {
-    var laydate = layui.laydate;
-
-    //日期时间选择器
-    laydate.render({
-        elem: '#kaifangshijian'
-        ,type: 'datetime'
-    });
-});
 
 
 
