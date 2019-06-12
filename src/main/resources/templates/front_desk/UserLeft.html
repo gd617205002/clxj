@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org"  >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>丛林闲居-用户中心-个人资料</title>
+    <link rel="stylesheet" href="/style/cy.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <!-- 表单验证stop -->
+
+    <!--layUI-->
+    <script type='text/javascript' src='/layui/layui.all.js'></script>
+    <link href='/layui/css/layui.css' rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:#f6f6f6;">
+
+
+        <div class="per-cont-left">
+            <ul class="left-top">
+                <li class="top-one">
+                    <ul class="lf one-i">
+                        <li>
+
+                            <img src="/images/touxiagn.png" th:if="${session.reguser.sex==1}"/>
+
+                            <img src="/images/touxiagnv.jpg" th:if="${session.reguser.sex==2}"/>
+
+                        </li>
+                    </ul>
+                    <ul class="lf one-ii">
+                        <li></li>
+                        <li>尊敬的会员！</li>
+                        <li class="quit"><em onclick="loginOut2()">[退出]</em></li>
+                    </ul>
+                </li>
+                <li class="top-two cf">用户名：<span th:text="${session.reguser.username }"></span></li>
+                <li class="top-two">邮&nbsp;&nbsp;箱：<span th:text="${session.reguser.email }"></span></li>
+            </ul>
+            <ul class="grzl-banner">
+                <li ><a href="/userPersonal.do"><p class="grzl"></p>个人资料</a></li>
+                <li><a href="userCPassword.do"><p class="xgmm"></p>密码修改</a></li>
+                <li><a href="userJAOrder.do"><p class="clxjdd"></p>丛林闲居订单</a></li>
+                <li><a href="userCarOrder.do"><p class="ycdd"></p>我的用车订单</a></li>
+                <li><a href="userPquery.do"><p class="qzjd"></p>求助进度查询</a></li>
+                <li><a href="userJPquery.do"><p class="jmcx"></p>加盟进度查询</a></li>
+            </ul>
+        </div>
+
+<!--<script src="/js/index.js"></script>-->
+<script type="text/javascript">
+    function loginOut2() {
+        window.location.href = "Reguser/reguserLogout.do";
+        }
+
+</script>
+
+</body>
+</html>

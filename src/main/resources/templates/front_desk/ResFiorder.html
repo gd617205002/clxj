@@ -1,26 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>丛林闲居-订房-填写订单</title>
     <link rel="stylesheet" href="style/cy.css">
     <link rel="stylesheet" href="style/style.css">
     <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-<script src="/js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
+    <!--layUI-->
+    <script type='text/javascript' src='/layui/layui.js'></script>
+    <link href='/layui/css/layui.css' rel="stylesheet" type="text/css" />
+    <script src="/js/date.js"></script>
 </head> 
 <body style="background-color: #e7f2ff;">
-<script language="JavaScript">
-        javascript:window.history.forward(1); //我目前先用着这个
-</script>
-<!--登录页TOP-->
-<div class="index-top1">
-<c:if test="${sessionUser==null }">
-<script type="text/javascript">
-window.location.href = "<%=path%>/login.jsp"; 
-</script>
-</c:if>
     <div class="left">
-        <span class="one"><a href="                   "><img src="images/logo1.png"></a></span> 
+        <span class="one"><a href="   "><img src="images/logo1.png"></a></span>
     </div>
     <div class="right1">
         <div class="three1">
@@ -34,35 +28,54 @@ window.location.href = "<%=path%>/login.jsp";
 </div>
 <div class="df-txdd">
     <div class="dt-main">
-    <form action="/clxjorder!addOrder.action" method="post" id="orderForm">
+    <form action="#" onsubmit="return false;" method="post" id="orderForm">
         <div class="dtm-left">
             <div class="top">
-            	<input type ="hidden" name="clxjorder.cid" id="cid" value="${clxjmainJson.id }"/>
-            	<input type ="hidden" name="clxjorder.uid"  value="${sessionUser.id }"/>
-            	<input type ="hidden" name="clxjorder.total" id="total"/>
-            	<input type ="hidden" name="clxjorder.state"   value="1"/>
-            	<input type ="hidden" name="type2"   value="${clxjmainJson.type2 }"/>
-                <p class="one"><img src="images/txdd_03.jpg">${clxjmainJson.name }</p>
-                <p class="two">地址:${clxjmainJson.address }</p>
+            	<input type ="hidden" name="clxjorder.cid" id="reguser" th:value="${session.reguser.id }"/>
+                <input type="hidden" id="price" th:value="${clxjmain.price}" />
+                <input type ="hidden"  id="clxjmainId" th:value="${clxjmain.id}"/>
+                 <input type ="hidden" id="type2"   th:value="${clxjmain.type2}"/>
+                <!--<input type ="hidden" name="type2"   value="${clxjmainJson.type2 }"/>-->
+                <p class="one"><img src="images/txdd_03.jpg"><sprn th:text="${clxjmain.name}"></sprn></p>
+                <p class="two">地址:<sprn th:text="${clxjmain.address}"></sprn></p>
             </div>
             <div class="second">
                 <div class="df-title">
                     填写订单
                 </div>
                 <div class="df-td">
-                    <!-- <p class="kfsl">
+                     <p class="kfsl">
                         客房数量：
-                        <select>
-                            <option value="0">1间</option>
-                            <option value="1">2间</option>
-                            <option value="2">3间</option>
+                        <select id="kefang">
+                            <option value="1">1间</option>
+                            <option value="2">2间</option>
+                            <option value="3">3间</option>
                         </select>      
-                    </p> -->
+                    </p>
                     <!-- <p class="kf1">客房1：豪华中庭房</p> -->
                     <p class="time kfsl">入住时间：
-       				 <input id="d5221" name="clxjorder.checkstartdate"  class="Wdate" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}',minDate:'%y-%M-{%d}'})" />
+       				<!-- <input id="d5221" name="clxjorder.checkstartdate"  class="Wdate" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}',minDate:'%y-%M-{%d}'})" />-->
+                        <input type="text"  style="width: 170px;display: inline-block"  name="sendtime" class="layui-input" id="test1" placeholder="yyyy-MM-dd">
+                    <script>
+                        layui.use('laydate', function() {
+                            var laydate = layui.laydate;
+                            //常规用法
+                            laydate.render({
+                                elem: '#test1'
+                                ,theme: 'molv'
+                                ,min:new Date().Format("yyyy-MM-dd")
+                            });
+                            //常规用法
+                            laydate.render({
+                                elem: '#test2'
+                                ,theme: 'molv'
+                                ,min:new Date().Format("yyyy-MM-dd")
+                            });
+                        })
+                    </script>
 						至
 					<!-- <input id="d5222" name="clxjorder.checkenddate" class="Wdate" type="text"  onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d5221\')}',onpicking:function(dp){checkDate(dp.cal.getNewDateStr(),${clxjmainJson.price })}})" /><em id="em" style="color: red;"></em> -->
+                        <input type="text"   style="width: 170px;display: inline-block"  name="sendtime" class="layui-input" id="test2" placeholder="yyyy-MM-dd">
        				 </p> 
                     <p class="kfs2 txxm">入住人姓名：<input name="clxjorder.checkperson" id="checkperson" onblur="check('checkperson')" type="text" placeholder="如：张三" style="height:28px;"><i>(请填写实际一名入住人姓名)</i></p> 
                     <!-- <p class="kfs3 ">房型：200*200cm大床/120*200cm双床</p> --><br/>  
@@ -88,22 +101,24 @@ window.location.href = "<%=path%>/login.jsp";
                         </tr>
                     </table>
                 </div>  
-                <div class="sj">  
+                <div class="sj">
                     <p>提示：<br/>
                     	<i  style="margin-left: 0px;">1、丛林及非营运性闲居无发票可开，营运性闲居可在交费时直接向闲居索取。</i><br/>
-                    <c:if test="${clxjmainJson.price ==0}"><i  style="margin-left: 0px;">2、订房者有了解佛教的，也有对佛教从未接触的。丛林的任何人不得强求客人对僧侣给予供养、捐款。</i><br/>
+                    <span th:if="${clxjmain.price}==0"><i  style="margin-left: 0px;">2、订房者有了解佛教的，也有对佛教从未接触的。丛林的任何人不得强求客人对僧侣给予供养、捐款。</i><br/>
                     	<i style="margin-left: 18px;">丛林的僧侣不得向客人宣扬迷信。客人与法师结缘或拜师都是客人自愿的事，丛林任何人员不得以种种理</i><br/>
                     	<i style="margin-left: 18px;">由要求，更不得强求。如有上述情况发生，请拨打免费投诉电话：400-688-6798或：0791-88193562，</i><br/>
-                    	<i style="margin-left: 18px;">也可在评价中给予反馈。</i></c:if>  
-                    <c:if test="${clxjmainJson.price !=0}"><i  style="margin-left: 0px;">2、投诉请拨打免费热线：400-688-6798或：0791-88193562，也可在评价中给予反馈。</i></c:if>	
+                    	<i style="margin-left: 18px;">也可在评价中给予反馈。</i></span>
+                    <span th:if="${clxjmain.price}>0"><i  style="margin-left: 0px;">2、投诉请拨打免费热线：400-688-6798或：0791-88193562，也可在评价中给予反馈。</i></span>
                     </p> 
-                </div>   
+                </div>
             </div>  
             <div class="last"> 
                 <p class="tte">政策说明</p>
                 <ul> 
-                    <li>政策和预定说明：</li>   
-                    <li> <div style="color: red;margin-top: 10px; "><br/>          
+                    <li>政策和预定说明：</li>
+
+                    <li>
+                        <div style="color: red;margin-top: 10px; "><br/>
                     	<i  style="margin-left: 25px;">1、预订了的房子要退，必须提前36小时，不足36小时者不能退订。退订者要及时“登录”取消预订，<br/></i><i style="margin-left: 43px;">否则系统会记录您的不良记录。</i><br/>
                     	<i  style="margin-left: 25px;">2、丛林闲居为非盈利的公益平台，不向丛林或者闲居收取任何费用。客人与丛林或闲居的结算均为<br/></i><i style="margin-left: 43px;">线下自行完成，与平台无关。 </i>      
                     	</div> </li>      
@@ -121,9 +136,9 @@ window.location.href = "<%=path%>/login.jsp";
                     <p class="special">填写订单</p><p>订单完成</p>
                 </div>
                 <div class="bottom">
-                    <div class="df-sl">您预定了<i>1</i>间客房</div>
+                    <div class="df-sl">您预定了<i id="kefangs">1</i>间客房</div>
                     <div class="df-main">
-                        <img width="245" height="111" src="${clxjBackurl }${clxjmainJson.first_img_min }">
+                        <img width="245" height="111" th:src="${clxjmain.first_img_min }">
                         <!-- <ul>
                             <li>房   型：特惠大床房</li>
                             <li>床   型：大床1.5米</li>
@@ -133,24 +148,23 @@ window.location.href = "<%=path%>/login.jsp";
                         </ul> -->
                         <hr>
                         <div>
-                        <p class="jc">房费总计：</p>    
-                        <input type="hidden" id="price" value="${clxjmainJson.price }"/>  
-                        <p><i><em id="priceem"><c:if test="${clxjmainJson.price ==0}"><i style="font-size: 30px;">¥随缘</i></c:if><c:if test="${clxjmainJson.price !=0}"><i style="font-size: 30px;">¥${clxjmainJson.price}</i></c:if></em></i></p>
+                        <p class="jc"><div style="float: left;margin-top: 7px;font-size: 18px;margin-left: 15px">房费总计：</div>
+                            <span><i><em id="priceem" style="font-size: 30px;color: red"><i  th:if="${clxjmain.price}==0">随缘</i><i th:if="${clxjmain.price}>0" th:text="'¥'+${clxjmain.price}"></i></em></i></span>
+                        </p>
+
                         <div style="display: none;"><p>所有住客，已含税和服务费</p>   
-                         <p>联系电话:&nbsp;&nbsp;${clxjmainJson.mobile}</p>   
+                         <p>联系电话:&nbsp;&nbsp;<span th:text="${clxjmain.mobile}"></span></p>
                          </div>
                         </div> 
-                        <hr style="margin-top: 20px;"> 
-                        <c:if test="${clxjmainJson.price ==0}">
-               	 <div style="margin-top: 40px;color: black;">                      
-                <i style="color: red;">*</i> &nbsp;&nbsp;&nbsp;<i style="font-size: 15px;color: red;">“随缘”</i>是指订房者在丛林居住一天<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需向丛林交纳的食宿费共计20元。食与<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;僧侣一样，有的丛林每天食两餐，有的<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三餐，不食不退款。用餐时间：早餐<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：6:30；中餐：11:30；晚餐：17:00。 <br/>      
-                </div>     
-                </c:if>             
+                        <hr style="margin-top: 20px;">
+               	 <div style="margin-top: 40px;color: black;"  th:if="${clxjmain.price}==0">
+                <i style="color: red;">*</i> &nbsp;&nbsp;<i style="font-size: 15px;color: red;">“随缘”</i>是指订房者在丛林居住一天需向丛林交纳的食宿费共计20元。食与僧侣一样，有的丛林每天食两餐，有的三餐，不食不退款。用餐时间：早餐：6:30；中餐：11:30；晚餐：17:00。
+                </div>
                     	<div style="margin-bottom: 20px;"></div>
                     </div>   
                 </div>  
             </div> 
-        </div> 
+        </div>
     </div>
 </div>
 <footer>
@@ -160,9 +174,94 @@ window.location.href = "<%=path%>/login.jsp";
     </ul>
     <p><a href="#"><img src="images/index_48.jpg"></a><a href="#"><img src="images/index_50.jpg"></a><a href="#"><img src="images/index_52.jpg"></a> <a href="#"><img src="images/index_54.jpg"></a><a href="#"><img src="images/index_56.jpg"></a> <a href="#"><img src="images/index_58.jpg"></a>    </p>
 </footer>
-<script type="text/javascript" src="/js/index.js"></script>  
-<script type="text/javascript"> 
-	var checks = false;
+    <div id="success" align="center" style="width: 300px;height: 70px;top: 130%;left: 45%;position:absolute;background-color: #ced4da;padding-top: 40px;display: none">
+       <!-- 下单成功，5秒后跳转首页，立即跳转-->
+    </div>
+<script type="text/javascript" src="/js/date.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            var price = $("#price").val();
+            $("#kefang").change(function(){   //选择房间数量
+                var num = $(this).val();
+                $("#kefangs").text(num);
+                if(price>0){
+                    $("#priceem i").text("¥"+num*price); //修改总价
+                }
+            })
+           /* $("#test1,#test2").click(function(){
+                var start = $("#test1").val();
+                var end = $("#test2").val();
+                if(start!=""&&end!=""){
+                    alert(DateDiff(start,end))
+                }
+            })*/
+
+           //提交
+            $("#sub").click(function(){
+                var reguser = $("#reguser").val(); //购买人
+                var start = $("#test1").val(); //入住时间
+                var end = $("#test2").val(); //结束时间
+                var checkperson = $("#checkperson").val(); //入住人
+                var relperson = $("#relperson").val(); //联系人
+                var relphone = $("#relphone").val(); //联系电话
+                var relemail = $("#relemail").val(); //邮箱
+                var total = $("#price").val()*$("#kefang").val(); //总价
+                var clxjmainId = $("#clxjmainId").val();
+                var oid = new Date().Format("yyyyMMddhhmmss");  //订单号
+                if($("#type2").val()==0){
+                    oid+="xj";
+                }else{
+                    oid+="cl";
+                }
+                if(start==""||end==""){
+                    error("入住时间不能为空");
+                }else if(DateDiff(end,start)<=0){
+                    error("入住结束时间必须大于入住开始时间");
+                }else if(checkperson==""||$("#checkperson").css("border")=="1px solid rgb(255, 0, 0)"){
+                    error("入住人不能为空或入住人填写错误");
+                }else if(relperson==""||$("#relperson").css("border")=="1px solid rgb(255, 0, 0)"){
+                    error("联系人不能为空或联系人填写错误");
+                }else if(relphone==""||$("#relphone").css("border")=="1px solid rgb(255, 0, 0)"){
+                    error("联系电话不能为空或联系电话填写错误");
+                }else if(relemail==""||$("#relemail").css("border")=="1px solid rgb(255, 0, 0)"){
+                    error("邮箱不能为空或邮箱填写错误");
+                }else{
+                    $.post("Clxjorder/resFiorder.do",
+                        {"oid":oid,"clxjmain.id":clxjmainId,"reguser.id":reguser,"checkstartdate":start,"checkenddate":end,"total":total,"checkperson":checkperson,"relperson":relperson,"relphone":relphone,"relemail":relemail},
+                        function(result){
+                            if(result == true){
+                                $("#sub").attr("disabled",true);
+                                countDown(3,$("#type2").val());
+                            }else{
+                                error("预定失败");
+                            }
+                        },"json");
+                }
+            })
+        })
+        function countDown(secs,type){
+            document.getElementById("success").style.display="block";
+            var href="";
+            if(type==1){
+                href="atList.do";  //丛林
+            }else{
+                href="jungleList.do";  //闲居
+            }
+            var times=setInterval(function(){
+                secs-=1;
+                $("#success").html("登录成功！"+secs+"后将跳转到原网页,<a href='"+href+"' style='color: red;'>立即跳转</a>");
+                if(secs<=0){
+                    clearInterval(times); //清除
+                    location.href = href;
+                }
+            },1000)
+        }
+
+    </script>
+<script type="text/javascript">
+/*	var checks = false;
 		function checkDate(time,price){ 
 			var d5221 = document.getElementById("d5221").value;
 			var cid = document.getElementById("cid").value;
@@ -192,7 +291,22 @@ window.location.href = "<%=path%>/login.jsp";
 							  checks = false;
 						  }
 					  },"json");
-		}
+		}*/
+
+        //弹窗
+        function error(data){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+
+                layer.open({
+                    type: 1,
+                    title:"提交提示",
+                    area: ['300px', '150px'],
+                    content: '<div align="center" style="margin-top: 45px;font-size: 16px;color: red">'+data+'</div>' //这里content是一个普通的String
+                });
+            });
+
+        }
 		//计算天数差的函数，通用  
 		   function  DateDiff(sDate1,  sDate2){    //sDate1和sDate2是2006-12-18格式  
 		       var  aDate,  oDate1,  oDate2,  iDays  
@@ -200,10 +314,11 @@ window.location.href = "<%=path%>/login.jsp";
 		       oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为12-18-2006格式  
 		       aDate  =  sDate2.split("-")  
 		       oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])  
-		       iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数  
-		       if(iDays==0){
+		       //iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数
+               iDays  =  parseInt((oDate1  -  oDate2)  /  1000  /  60  /  60  /24);   //把相差的毫秒数转换为天数
+		       /*if(iDays==0){
 		    	   iDays=1;
-		       } 
+		       } */
 		       return  iDays  
 		   }    
 	function check(id){
@@ -251,34 +366,39 @@ window.location.href = "<%=path%>/login.jsp";
 			  break;
 		}
 	}
+	/*$(function(){
+	    $("#sub").click(function(){
+            var price = document.getElementById("price").value;
+            var d5221 = document.getElementById("test1").value;
+            var d5222 = document.getElementById("test2").value;
+            var sub = document.getElementById("sub");
+            if(d5221==""||d5221==null||d5222==""||d5222==null){
+                alert("请选择预约时间");
+                checks = false;
+            }else{
+                //checkDate(d5221,price);
+            }
+            if(checks){
+                check("checkperson");
+                if(checks){
+                    check("relperson");
+                    if(checks){
+                        check("relphone");
+                        if(checks){
+                            check("relemail");
+                            if(checks){
+                                sub.disabled = true;
+                                //document.getElementById("orderForm").submit();
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    })
 	function subForm(){
-		var price = document.getElementById("price").value;
-		var d5221 = document.getElementById("d5221").value;
-		var d5222 = document.getElementById("d5222").value;
-		var sub = document.getElementById("sub");
-		if(d5221==""||d5221==null||d5222==""||d5222==null){
-			alert("请选择预约时间");
-			checks = false; 
-		}else{
-		checkDate(d5221,price);
-		}
-		if(checks){
-			check("checkperson");
-			if(checks){
-				check("relperson");
-				if(checks){ 
-					check("relphone");
-					if(checks){
-						check("relemail");
-						if(checks){
-							sub.disabled = true;
-							document.getElementById("orderForm").submit();
-						}
-					}
-				}
-			}
-		}
-	}
+
+	}*/
 	</script>
 </body>
 </html>

@@ -3,11 +3,11 @@ import javax.websocket.server.ServerEndpoint;
 
 
 import org.springframework.stereotype.Component;
-@ServerEndpoint("/socket/Grant")
+@ServerEndpoint("/socket/Grants")
 @Component
-public class GrantSocket extends SuperSocket {
+public class GrantsSocket extends SuperSocket {
     @Override
     public String me() {
-        return GrantSocket.class.getName();
+        return GrantsSocket.class.getName();
     }
 }

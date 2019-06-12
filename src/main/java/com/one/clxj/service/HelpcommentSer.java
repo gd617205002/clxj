@@ -1,12 +1,13 @@
 package com.one.clxj.service;
 
-import com.one.clxj.mapper.HelpcommentMapper;
+
 import com.one.clxj.pojo.Helpcomment;
 import com.one.clxj.pojo.HelpcommentExample;
 
 import java.util.List;
 
-public  interface HelpcommentSer{
+public  interface HelpcommentSer {
+
     int countByExample(HelpcommentExample example);
 
     int deleteByPrimaryKey(Integer id);

@@ -1,11 +1,23 @@
 package com.one.clxj.service;
 
-import com.one.clxj.mapper.CarcommentMapper;
-import com.one.clxj.mapper.CarinfoMapper;
+
 import com.one.clxj.pojo.Carcomment;
 import com.one.clxj.pojo.CarcommentExample;
 
-public  interface CarcommentSer extends CarcommentMapper{
+import java.util.List;
 
+public  interface CarcommentSer{
+
+    int countByExample(CarcommentExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insertSelective(Carcomment record);
+
+    List<Carcomment> selectByExample(CarcommentExample example);
+
+    Carcomment selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Carcomment record);
 
 }

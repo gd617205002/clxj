@@ -14,10 +14,10 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class WebSocketConfig {
 //    socket暂时有bug，先不配置
-    @Bean
+   /* @Bean
    public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
-    }
+    }*/
     /**
      * 配置日期转换器
      */

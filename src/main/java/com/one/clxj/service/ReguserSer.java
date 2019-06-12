@@ -1,12 +1,13 @@
 package com.one.clxj.service;
 
-import com.one.clxj.mapper.ReguserMapper;
+
 import com.one.clxj.pojo.Reguser;
 import com.one.clxj.pojo.ReguserExample;
 
 import java.util.List;
 
-public  interface ReguserSer{
+public  interface ReguserSer {
+
     int countByExample(ReguserExample example);
 
     int deleteByPrimaryKey(Integer id);
@@ -18,4 +19,5 @@ public  interface ReguserSer{
     Reguser selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Reguser record);
+
 }

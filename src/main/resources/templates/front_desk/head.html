@@ -1,56 +1,98 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>head</title>
- <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-     
-     
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>head</title>
+    <link rel="stylesheet" href="/style/cy.css">
+    <link rel="stylesheet" href="/style/style.css">
+
+    <!--layUI-->
+    <script type='text/javascript' src='layui/layui.js'></script>
+    <link href='layui/css/layui.css' rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--首页TOP-->
 <div class="index-top">
     <div class="index-top3">
-    <div class="left"> 
-        <span class="one"><a href="                   "><img width="158" height="64" src="images/logo1.png"></a></span>
-        <span class="two"><img src="images/index_q.png"></span>
+        <div class="left">
+            <span class="one"><a href="/  "><img width="158" height="64"
+                                                                           src="/images/logo1.png"></a></span>
+            <span class="two"><img src="/images/index_q.png"></span>
 
-        <div class="three"> 
-            <span><img src="images/index_03.png"></span>
-            <ul>
-                <li class="rx">客户服务热线:</li>
-                <li class="phone">400-688-6798</li>
-            </ul>
+            <div class="three">
+                <span><img src="/images/index_03.png"></span>
+                <ul>
+                    <li class="rx">客户服务热线:</li>
+                    <li class="phone">400-688-6798</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <p class="one"><img src="/images/index_06.jpg"></p>
+            <p class="two"><img src="/images/e_03.jpg"></p>
+            <p class="three none"><img width="104" height="105" src="/images/weixin.png"></p>
         </div>
     </div>
-    <div class="right">
-        <p class="one"><img src="images/index_06.jpg"></p>
-        <p class="two"><img src="images/e_03.jpg"></p> 
-        <p class="three none"><img width="104" height="105" src="images/weixin.png"></p>
-    </div> 
-    </div> 
 </div>
 <!--首页banner-->
 <div class="index-banner">
     <div class="index-banner1">
-    <ul>
-        <li><a href="">首页</a></li> 
-        <li><a href="/clxjmain!selClOfPage.action?clxjmain.type2=true">丛林</a></li>
-        <li><a href="/clxjmain!selXjOfPage.action?clxjmain.type2=false">闲居</a></li>
-        <li><a href="ConEntryPage.jsp">忏悔</a></li>
-        <li><a href="FoundIndex.jsp">基金会</a></li>
-        <li><a href="joincl.jsp">加盟</a></li>
-        <li><a href="ContactUs.jsp">联系我们</a></li> 
-        <li><a href="clsz.jsp">丛林素斋</a></li>
-    </ul> 
-    <c:if test="${sessionUser==null }">
-    	<div class="dl"><a href="#" onclick="Alllogin()">登录</a><i>|</i><a href="register.jsp">注册</a></div>
-    </c:if>
-    <c:if test="${sessionUser!=null }">     
-    	<div class="index-grzx "><a href="UserPersonal.jsp">个人中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<i>|</i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="loginOut()">退出</a></div>
-    </c:if>
-    </div>  
+        <ul>
+            <li><a  href="desk.do">首页</a></li>
+            <li><a  href="atList.do">丛林</a></li>
+            <li><a  href="jungleList.do">闲居</a></li>
+            <li><a  href="ConEntryPage.html">忏悔</a></li>
+            <li><a  href="FoundIndex.html">基金会</a></li>
+            <li><a href="Join.html">加盟</a></li>
+            <li><a  href="ContactUs.html">联系我们</a></li>
+            <li><a  href="AppDown.html">APP下载</a></li>
+        </ul>
+
+
+        <div class="dl" th:if="${session.reguser}==null">
+            <a   href="javascript:void(0);"  onclick="login()" >登录</a><i>|</i><a href="/register.do">注册</a>
+        </div>
+
+
+
+        <div class="index-grzx " th:if="${session.reguser}!=null">
+            <a href="userPersonal.do">个人中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<i>|</i>&nbsp;&nbsp;&nbsp;&nbsp;<a
+                href="javascript:void(0);" onclick="logout()" >退出</a>
+        </div>
+
+    </div>
+
+
 </div>
+<script>
+    //登录
+    function login() {
+        var index = layer.open({
+            type : 2,
+            title:"用户登录",
+            maxmin : true,
+            offset: '100px',
+            area : [ '600px', '500px' ],
+            content : "login.do"// iframe的url
+        });
+    }
+    //退出
+    function logout(){
+        $.ajax({
+            type : "post",
+            url : "Reguser/reguserLogout.do",
+            success : function(res){
+                layui.use('layer', function() {
+                    var layer = layui.layer;
+                    if(res==true){
+                       location.reload();
+                    }else{
+                        layer.msg("异常出错，退出失败！！！");
+                    }
+                });
+            }
+        });
+    }
+</script>
 </body>
 </html>

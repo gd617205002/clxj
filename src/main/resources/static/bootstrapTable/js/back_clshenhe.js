@@ -46,7 +46,7 @@ $(function(){
             {
                 title:'ID',
                 field:'id',
-                //visible:false
+                visible:false
             },
             {
                 title:'名称',
@@ -212,6 +212,5 @@ layui.use('laydate', function() {
         ,type: 'datetime'
     });
 });
-
 
 

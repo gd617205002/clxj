@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" onsubmit="return checkUpdatePwd()" name="form-admin">
+    <div class="layui-form-item">
+        <label class="layui-form-label">旧密码</label>
+        <div class="layui-input-inline">
+            <input type="text" required  lay-verify="required"  id="pwd1" placeholder="请输入原来密码" autocomplete="off" class="layui-input">
+            <input type="hidden" name="id" th:value="${session.adminuser.id}">
+            <input type="hidden" name="_method" value="put">
+            <input type="hidden" id="oldpwd" th:value="${session.adminuser.pwd}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">新密码</label>
+        <div class="layui-input-inline">
+            <input type="text"  required  lay-verify="required" id="pwd" name="pwd" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">确认密码</label>
+        <div class="layui-input-inline">
+            <input type="text" required  lay-verify="required" id="pwd2" placeholder="请确认新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" type="submit">修改</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/layui/layui.all.js"></script>
+<script>
+    function checkUpdatePwd(){
+        var flag = true;
+        if ($("#oldpwd").val()!=$("#pwd1").val()){
+            layer.msg("旧密码错误了");
+            flag = false;
+        }
+        if ($("#pwd").val()!=$("#pwd2").val()){
+            layer.msg("两次密码不一致");
+            flag = false;
+        }
+        if (flag) {
+            $.ajax({
+                url:"/Adminuser/updateAdminUser.do",
+                async:false,
+                type:"post",
+                data:$("#form-admin").serialize(),
+                ContentType:"application/json;charset=UTF-8",
+                dataType:"json",
+                success:function (data) {
+                    if (data)
+                        layer.msg("修改成功");
+                    else
+                        layer.msg("修改失败");
+                },
+                error:function () {
+                    alert("出异常了");
+                }
+            })
+        }
+        parent.layer.closeAll();
+
+        return false;
+    }
+</script>
+</body>
+</html>

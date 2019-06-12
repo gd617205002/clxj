@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看信息</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" onsubmit="return checkUpdatePwd()" name="form-admin">
+    <div class="layui-form-item">
+        <label class="layui-form-label">编号：</label>
+        <div class="layui-input-inline">
+            <input type="text" th:value="${session.adminuser.id}" class="layui-input" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名：</label>
+        <div class="layui-input-inline">
+            <input type="text"  th:value="${session.adminuser.username}" class="layui-input" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码：</label>
+        <div class="layui-input-inline">
+            <input type="text" th:value="${session.adminuser.pwd}" class="layui-input" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名：</label>
+        <div class="layui-input-inline">
+            <input type="text" th:value="${session.adminuser.name}" class="layui-input" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话号码：</label>
+        <div class="layui-input-inline">
+            <input type="text"  th:value="${session.adminuser.mobile}" class="layui-input" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户类型：</label>
+        <div class="layui-input-inline">
+            <select  size="1" class="layui-input" disabled>
+                <option value="0"  th:selected="${session.adminuser.usertype=='0'}">超级管理</option>
+                <option value="1"  th:selected="${session.adminuser.usertype=='1'}">僧侣管理</option>
+                <option value="2"  th:selected="${session.adminuser.usertype=='2'}">丛林管理</option>
+                <option value="3"  th:selected="${session.adminuser.usertype=='3'}">闲居管理</option>
+                <option value="4"  th:selected="${session.adminuser.usertype=='4'}">用车管理</option>
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">期限：</label>
+            <div class="layui-input-inline">
+                <select  size="1" class="layui-input" disabled>
+                    <option value="1"  th:selected="${session.adminuser.userflag=='1'}">长期</option>
+                    <option value="0"  th:selected="${session.adminuser.userflag=='0'}">短期</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册时间：</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${#dates.format(session.adminuser.regtime,'yyyy-MM-dd')}" class="layui-input" disabled>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/layui/layui.all.js"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class GrantExample {
+public class GrantsExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -33,7 +33,7 @@ public class GrantExample {
     }
 
 
-    public GrantExample() {
+    public GrantsExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
