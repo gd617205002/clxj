@@ -7,13 +7,17 @@ import com.one.clxj.pojo.ReguserExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface ReguserMapper  extends Mapper<Reguser>{
+public interface ReguserMapper {
     int countByExample(ReguserExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Reguser> selectByExample2(ReguserExample example);
+    int insertSelective(Reguser record);
 
-    Reguser selectByPrimaryKey2(Integer id);
+    List<Reguser> selectByExample(ReguserExample example);
 
+    Reguser selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Reguser record);
 
 }

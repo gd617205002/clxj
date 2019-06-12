@@ -7,8 +7,8 @@
     <!--<result column="uid" property="reguser.id" jdbcType="INTEGER" />-->
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="time" property="time" jdbcType="VARCHAR" />
-    <association property="helpinfo" column="helpid" select="com.one.clxj.mapper.HelpinfoMapper.selectByPrimaryKey2"/>
-    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
+    <association property="helpinfo" column="helpid" select="com.one.clxj.mapper.HelpinfoMapper.selectByPrimaryKey"/>
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, helpid, uid, content, time
   </sql>
-  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.HelpcommentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.HelpcommentExample" >
     select
     <if test="distinct" >
       distinct
@@ -88,18 +88,78 @@
       limit ${currPage},${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from helpcomment
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from helpcomment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Helpcomment" >
+    insert into helpcomment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="helpinfo != null" >
+        helpid,
+      </if>
+      <if test="reguser != null" >
+        uid,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="helpinfo != null" >
+        #{helpinfo.id,jdbcType=INTEGER},
+      </if>
+      <if test="reguser != null" >
+        #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="countByExample" parameterType="com.one.clxj.pojo.HelpcommentExample" resultType="java.lang.Integer" >
     select count(*) from helpcomment
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Helpcomment" >
+    update helpcomment
+    <set >
+      <if test="helpinfo != null" >
+        helpid = #{helpinfo.id,jdbcType=INTEGER},
+      </if>
+      <if test="reguser != null" >
+        uid = #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

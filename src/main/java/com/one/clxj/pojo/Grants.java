@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 款物发放实体类
  */
-public class Grant {
+public class Grants {
     private Integer id; //编号
 
     private String donationname; //捐款人
@@ -84,5 +84,19 @@ public class Grant {
 
     public void setDonationTime(Date donationTime) {
         this.donationTime = donationTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Grants{" +
+                "id=" + id +
+                ", donationname='" + donationname + '\'' +
+                ", goods='" + goods + '\'' +
+                ", num=" + num +
+                ", worthless=" + worthless +
+                ", useto='" + useto + '\'' +
+                ", recipients='" + recipients + '\'' +
+                ", donationTime=" + donationTime +
+                '}';
     }
 }

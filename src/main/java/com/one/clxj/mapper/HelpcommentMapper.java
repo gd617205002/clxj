@@ -7,12 +7,17 @@ import com.one.clxj.pojo.HelpcommentExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface HelpcommentMapper extends Mapper<Helpcomment> {
+public interface HelpcommentMapper{
     int countByExample(HelpcommentExample example);
 
-    List<Helpcomment> selectByExample2(HelpcommentExample example);
+    int deleteByPrimaryKey(Integer id);
 
-    Helpcomment selectByPrimaryKey2(Integer id);
+    int insertSelective(Helpcomment record);
 
+    List<Helpcomment> selectByExample(HelpcommentExample example);
+
+    Helpcomment selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Helpcomment record);
 
 }

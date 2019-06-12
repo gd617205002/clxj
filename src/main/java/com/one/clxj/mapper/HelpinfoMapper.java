@@ -7,13 +7,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface HelpinfoMapper extends Mapper<Helpinfo> {
-    int countByExample(HelpinfoExample example);
+public interface HelpinfoMapper {
+    int countByExample(HelpinfoExample example);;
 
+    int deleteByPrimaryKey(Integer id);
 
+    int insertSelective(Helpinfo record);
 
-    List<Helpinfo> selectByExample2(HelpinfoExample example);
+    List<Helpinfo> selectByExample(HelpinfoExample example);
 
-    Helpinfo selectByPrimaryKey2(Integer id);
+    Helpinfo selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Helpinfo record);
 
 }

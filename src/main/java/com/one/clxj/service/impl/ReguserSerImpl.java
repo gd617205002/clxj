@@ -5,21 +5,47 @@ import com.one.clxj.pojo.Reguser;
 import com.one.clxj.pojo.ReguserExample;
 import com.one.clxj.service.ReguserSer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class ReguserSerImpl extends SuperServiceImpl<Reguser, ReguserExample> implements ReguserSer {
+public class ReguserSerImpl  implements ReguserSer   {
     @Autowired
     private ReguserMapper reguserMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = reguserMapper;
+    @Override
+    public int countByExample(ReguserExample example) {
+        return reguserMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return reguserMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Reguser record) {
+        return reguserMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Reguser> selectByExample(ReguserExample example) {
+        return reguserMapper.selectByExample(example);
+    }
+
+    @Override
+    public Reguser selectByPrimaryKey(Integer id) {
+        return reguserMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Reguser record) {
+        return reguserMapper.updateByPrimaryKeySelective(record);
     }
 }

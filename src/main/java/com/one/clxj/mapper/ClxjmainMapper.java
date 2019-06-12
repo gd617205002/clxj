@@ -6,14 +6,18 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface ClxjmainMapper  extends Mapper<Clxjmain> {
+public interface ClxjmainMapper   {
     int countByExample(ClxjmainExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
 
-    List<Clxjmain> selectByExample2(ClxjmainExample example);
+    int insertSelective(Clxjmain record);
 
-    Clxjmain selectByPrimaryKey2(Integer id);
+    List<Clxjmain> selectByExample(ClxjmainExample example);
 
+    Clxjmain selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Clxjmain record);
 
 }

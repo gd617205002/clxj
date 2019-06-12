@@ -8,17 +8,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
-@Transactional public  class CarcommentSerImpl extends SuperServiceImpl<Carcomment,CarcommentExample>implements CarcommentSer {
+@Transactional public  class CarcommentSerImpl implements CarcommentSer {
     @Autowired
     private CarcommentMapper carcommentMapper;
 
-    @PostConstruct
-//    初始化
-    public void init(){
-        super.mapper = carcommentMapper;
+
+    @Override
+    public int countByExample(CarcommentExample example) {
+        return carcommentMapper.countByExample(example);
     }
 
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return carcommentMapper.deleteByPrimaryKey(id);
+    }
 
+    @Override
+    public int insertSelective(Carcomment record) {
+        return carcommentMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Carcomment> selectByExample(CarcommentExample example) {
+        return carcommentMapper.selectByExample(example);
+    }
+
+    @Override
+    public Carcomment selectByPrimaryKey(Integer id) {
+        return carcommentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Carcomment record) {
+        return carcommentMapper.updateByPrimaryKeySelective(record);
+    }
 }

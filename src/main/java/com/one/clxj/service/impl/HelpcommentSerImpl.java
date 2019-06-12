@@ -9,18 +9,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class HelpcommentSerImpl extends SuperServiceImpl<Helpcomment, HelpcommentExample> implements HelpcommentSer {
+public class HelpcommentSerImpl  implements HelpcommentSer {
     @Autowired
     private HelpcommentMapper helpcommentMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = helpcommentMapper;
+    @Override
+    public int countByExample(HelpcommentExample example) {
+        return helpcommentMapper.countByExample(example);
     }
 
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return helpcommentMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Helpcomment record) {
+        return helpcommentMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Helpcomment> selectByExample(HelpcommentExample example) {
+        return helpcommentMapper.selectByExample(example);
+    }
+
+    @Override
+    public Helpcomment selectByPrimaryKey(Integer id) {
+        return helpcommentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Helpcomment record) {
+        return helpcommentMapper.updateByPrimaryKeySelective(record);
+    }
 }

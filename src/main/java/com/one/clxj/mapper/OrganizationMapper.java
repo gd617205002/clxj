@@ -7,13 +7,17 @@ import com.one.clxj.pojo.OrganizationExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface OrganizationMapper extends Mapper<Organization> {
+public interface OrganizationMapper {
     int countByExample(OrganizationExample example);
 
+    int deleteByPrimaryKey(Integer org_id);
 
-    List<Organization> selectByExample2(OrganizationExample example);
+    int insertSelective(Organization record);
 
-    Organization selectByPrimaryKey2(Integer org_id);
+    List<Organization> selectByExample(OrganizationExample example);
 
+    Organization selectByPrimaryKey(Integer org_id);
+
+    int updateByPrimaryKeySelective(Organization record);
 
 }

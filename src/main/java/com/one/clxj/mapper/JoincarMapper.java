@@ -7,12 +7,17 @@ import com.one.clxj.pojo.JoincarExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface JoincarMapper extends Mapper<Joincar> {
+public interface JoincarMapper {
     int countByExample(JoincarExample example);
 
-    List<Joincar> selectByExample2(JoincarExample example);
+    int deleteByPrimaryKey(Integer id);
 
-    Joincar selectByPrimaryKey2(Integer id);
+    int insertSelective(Joincar record);
 
+    List<Joincar> selectByExample(JoincarExample example);
+
+    Joincar selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Joincar record);
 
 }

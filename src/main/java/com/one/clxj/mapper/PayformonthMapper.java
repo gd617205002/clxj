@@ -6,14 +6,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface PayformonthMapper extends Mapper<Payformonth> {
+public interface PayformonthMapper{
     int countByExample(PayformonthExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
+    int insertSelective(Payformonth record);
 
-    List<Payformonth> selectByExample2(PayformonthExample example);
+    List<Payformonth> selectByExample(PayformonthExample example);
 
-    Payformonth selectByPrimaryKey2(Integer id);
+    Payformonth selectByPrimaryKey(Integer id);
 
+    int updateByPrimaryKeySelective(Payformonth record);
 
 }

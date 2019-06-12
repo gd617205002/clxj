@@ -7,11 +7,17 @@ import com.one.clxj.pojo.ClxjorderExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface ClxjorderMapper extends Mapper<Clxjorder> {
+public interface ClxjorderMapper{
     int countByExample(ClxjorderExample example);
 
-    List<Clxjorder> selectByExample2(ClxjorderExample example);
+    int deleteByPrimaryKey(String oid);
 
-    Clxjorder selectByPrimaryKey2(String oid);
+    int insertSelective(Clxjorder record);
+
+    List<Clxjorder> selectByExample(ClxjorderExample example);
+
+    Clxjorder selectByPrimaryKey(String oid);
+
+    int updateByPrimaryKeySelective(Clxjorder record);
 
 }

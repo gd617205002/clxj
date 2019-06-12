@@ -27,13 +27,13 @@
   </head>
   
   <body>
-  	<form action='/grant!importData.action' target="frmright"  enctype='multipart/form-data' method='post' id='uplodFileForm'>
+  	<form action='/grants!importData.action' target="frmright"  enctype='multipart/form-data' method='post' id='uplodFileForm'>
   	<input type="hidden" name="type" value="<%=request.getParameter("type") %>"/>
   	<input type="hidden" name="suffix" id="suffix"/>
   	<div class="padding_top20 padding_left25">
   	<table>
   		<tr>
-  			<td><input type='file' id='grantDataFile' name='grantDataFile' showInfo="false"/></td>
+  			<td><input type='file' id='grantsDataFile' name='grantsDataFile' showInfo="false"/></td>
   			<td>
   			<button type="button" id="sub"><span class="icon_xls">导入</span></button>
   			</td>
@@ -42,7 +42,7 @@
   			<td colspan="2" class="padding_top5">说明：导入的excel需要遵循规定的格式</td>
   		</tr>
   		<tr>
-  			<td colspan="2"><a href="/grant/grant.xls" class="red underline">点击这里</a>下载导入的excel数据模板</td>
+  			<td colspan="2"><a href="/grants/grants.xls" class="red underline">点击这里</a>下载导入的excel数据模板</td>
   		</tr>
   	</table>
   	</div>
@@ -52,9 +52,9 @@
 	    //表单提交
 	    $('#sub').click(function(){ 
 		    //判断表单的客户端验证是否通过
-		    var fileurl=$("#grantDataFile").val();
+		    var fileurl=$("#grantsDataFile").val();
 		    var suffix=fileurl.substring(fileurl.lastIndexOf("."),fileurl.length) ;
-	    	if($("#grantDataFile").val()==""){
+	    	if($("#grantsDataFile").val()==""){
 				top.Dialog.alert("请选择Excel文件");
 				return false;
 			}

@@ -9,17 +9,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class ClxjmainSerImpl extends SuperServiceImpl<Clxjmain, ClxjmainExample> implements ClxjmainSer {
+public class ClxjmainSerImpl implements ClxjmainSer {
     @Autowired
     private ClxjmainMapper clxjmainMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = clxjmainMapper;
+    @Override
+    public int countByExample(ClxjmainExample example) {
+        return clxjmainMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return clxjmainMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Clxjmain record) {
+        return clxjmainMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Clxjmain> selectByExample(ClxjmainExample example) {
+        return clxjmainMapper.selectByExample(example);
+    }
+
+    @Override
+    public Clxjmain selectByPrimaryKey(Integer id) {
+        return clxjmainMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Clxjmain record) {
+        return clxjmainMapper.updateByPrimaryKeySelective(record);
     }
 }

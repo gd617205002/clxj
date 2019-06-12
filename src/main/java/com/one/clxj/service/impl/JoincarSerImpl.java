@@ -9,17 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class JoincarSerImpl extends SuperServiceImpl<Joincar, JoincarExample> implements JoincarSer {
+public class JoincarSerImpl  implements JoincarSer {
     @Autowired
     private JoincarMapper joincarMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public int countByExample(JoincarExample example) {
+        return joincarMapper.countByExample(example);
+    }
 
-        super.mapper = joincarMapper;
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return joincarMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Joincar record) {
+        return joincarMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Joincar> selectByExample(JoincarExample example) {
+        return joincarMapper.selectByExample(example);
+    }
+
+    @Override
+    public Joincar selectByPrimaryKey(Integer id) {
+        return joincarMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Joincar record) {
+        return joincarMapper.updateByPrimaryKeySelective(record);
     }
 }

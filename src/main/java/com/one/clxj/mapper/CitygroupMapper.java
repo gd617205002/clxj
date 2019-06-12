@@ -7,12 +7,17 @@ import com.one.clxj.pojo.CitygroupExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface CitygroupMapper extends Mapper<Citygroup> {
+public interface CitygroupMapper {
     int countByExample(CitygroupExample example);
 
-    List<Citygroup> selectByExample2(CitygroupExample example);
+    int deleteByPrimaryKey(Integer id);
 
-    Citygroup selectByPrimaryKey2(Integer id);
+    int insertSelective(Citygroup record);
 
+    List<Citygroup> selectByExample(CitygroupExample example);
+
+    Citygroup selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Citygroup record);
 
 }

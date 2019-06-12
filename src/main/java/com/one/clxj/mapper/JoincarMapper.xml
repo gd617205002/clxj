@@ -20,7 +20,7 @@
     <result column="jointime" property="jointime" jdbcType="VARCHAR" />
     <result column="joinstatus" property="joinstatus" jdbcType="INTEGER" />
     <result column="fileurl" property="fileurl" jdbcType="VARCHAR" />
-    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey2"/>
+    <association property="reguser" column="uid" select="com.one.clxj.mapper.ReguserMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -85,7 +85,7 @@
     driverphone, insurancename, insurancenumber, insurancephone, message, uid, jointime, 
     joinstatus, fileurl
   </sql>
-  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.JoincarExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.JoincarExample" >
     select
     <if test="distinct" >
       distinct
@@ -102,13 +102,132 @@
       limit ${currPage},${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from joincar
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from joincar
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Joincar" >
+    insert into joincar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="theowner != null" >
+        theowner,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="carname != null" >
+        carname,
+      </if>
+      <if test="travelnumber != null" >
+        travelnumber,
+      </if>
+      <if test="travelrun != null" >
+        travelrun,
+      </if>
+      <if test="drivername != null" >
+        drivername,
+      </if>
+      <if test="drivernumber != null" >
+        drivernumber,
+      </if>
+      <if test="driverphone != null" >
+        driverphone,
+      </if>
+      <if test="insurancename != null" >
+        insurancename,
+      </if>
+      <if test="insurancenumber != null" >
+        insurancenumber,
+      </if>
+      <if test="insurancephone != null" >
+        insurancephone,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="reguser != null" >
+        uid,
+      </if>
+      <if test="jointime != null" >
+        jointime,
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus,
+      </if>
+      <if test="fileurl != null" >
+        fileurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="theowner != null" >
+        #{theowner,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="carname != null" >
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="travelnumber != null" >
+        #{travelnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="travelrun != null" >
+        #{travelrun,jdbcType=VARCHAR},
+      </if>
+      <if test="drivername != null" >
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="drivernumber != null" >
+        #{drivernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancename != null" >
+        #{insurancename,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancenumber != null" >
+        #{insurancenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancephone != null" >
+        #{insurancephone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="countByExample" parameterType="com.one.clxj.pojo.JoincarExample" resultType="java.lang.Integer" >
     select count(*) from joincar
     <if test="_parameter != null" >
@@ -116,4 +235,61 @@
     </if>
   </select>
 
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Joincar" >
+    update joincar
+    <set >
+      <if test="theowner != null" >
+        theowner = #{theowner,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="carname != null" >
+        carname = #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="travelnumber != null" >
+        travelnumber = #{travelnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="travelrun != null" >
+        travelrun = #{travelrun,jdbcType=VARCHAR},
+      </if>
+      <if test="drivername != null" >
+        drivername = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="drivernumber != null" >
+        drivernumber = #{drivernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        driverphone = #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancename != null" >
+        insurancename = #{insurancename,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancenumber != null" >
+        insurancenumber = #{insurancenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancephone != null" >
+        insurancephone = #{insurancephone,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="reguser != null" >
+        uid = #{reguser.id,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        jointime = #{jointime,jdbcType=VARCHAR},
+      </if>
+      <if test="joinstatus != null" >
+        joinstatus = #{joinstatus,jdbcType=INTEGER},
+      </if>
+      <if test="fileurl != null" >
+        fileurl = #{fileurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

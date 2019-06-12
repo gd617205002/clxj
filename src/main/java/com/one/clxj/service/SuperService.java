@@ -29,5 +29,5 @@ public interface SuperService<T, V> {
     public List<T> conditionPaging(Integer page, Integer num, V v);
 
     //  条件查询
-    public List<T> conditionFind(T t, V v);
+    public List<T> conditionFind(V v);
 }

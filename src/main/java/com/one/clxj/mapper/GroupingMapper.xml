@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     id, type
   </sql>
-  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.GroupingExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.GroupingExample" >
     select
     <if test="distinct" >
       distinct
@@ -83,18 +83,51 @@
       limit ${currPage},${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from grouping
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from grouping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Grouping" >
+    insert into grouping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="countByExample" parameterType="com.one.clxj.pojo.GroupingExample" resultType="java.lang.Integer" >
     select count(*) from grouping
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Grouping" >
+    update grouping
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

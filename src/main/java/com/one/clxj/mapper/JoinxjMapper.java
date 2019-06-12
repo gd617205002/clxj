@@ -7,13 +7,17 @@ import com.one.clxj.pojo.JoinxjExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface JoinxjMapper  extends Mapper<Joinxj> {
+public interface JoinxjMapper{
     int countByExample(JoinxjExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Joinxj> selectByExample2(JoinxjExample example);
+    int insertSelective(Joinxj record);
 
-    Joinxj selectByPrimaryKey2(Integer id);
+    List<Joinxj> selectByExample(JoinxjExample example);
 
+    Joinxj selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Joinxj record);
 
 }

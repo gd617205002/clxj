@@ -24,6 +24,8 @@ public class Clxjmain {
 
     private Double price; //价格
 
+    private String introduction; //介绍
+
     private String address; //中文地址
 
     private String longitude; //经度
@@ -217,6 +219,14 @@ public class Clxjmain {
         this.adminuser = adminuser;
     }
 
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
     @Override
     public String toString() {
         return "Clxjmain{" +
@@ -229,6 +239,7 @@ public class Clxjmain {
                 ", first_img_min='" + first_img_min + '\'' +
                 ", carousel_img='" + carousel_img + '\'' +
                 ", price=" + price +
+                ", introduction='" + introduction + '\'' +
                 ", address='" + address + '\'' +
                 ", longitude='" + longitude + '\'' +
                 ", latitude='" + latitude + '\'' +

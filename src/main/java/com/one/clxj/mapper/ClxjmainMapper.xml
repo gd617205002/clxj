@@ -24,7 +24,7 @@
     <result column="opentime" property="opentime" jdbcType="TIMESTAMP" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <association property="adminuser" column="joinid" select="com.one.clxj.mapper.AdminuserMapper.selectByPrimaryKey2"/>
+    <association property="adminuser" column="joinid" select="com.one.clxj.mapper.AdminuserMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -89,7 +89,7 @@
     price, introduction, address, longitude, latitude, reserve_num, recommend, joinid, 
     checkStatus, abbot, abbotresume, opentime, createtime, mobile
   </sql>
-  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjmainExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.ClxjmainExample" >
     select
     <if test="distinct" >
       distinct
@@ -106,18 +106,231 @@
       limit ${currPage},${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from clxjmain
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from clxjmain
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Clxjmain" >
+    insert into clxjmain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type1 != null" >
+        type1,
+      </if>
+      <if test="type2 != null" >
+        type2,
+      </if>
+      <if test="belong_city != null" >
+        belong_city,
+      </if>
+      <if test="first_img_big != null" >
+        first_img_big,
+      </if>
+      <if test="first_img_min != null" >
+        first_img_min,
+      </if>
+      <if test="carousel_img != null" >
+        carousel_img,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="reserve_num != null" >
+        reserve_num,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="adminuser != null" >
+        joinid,
+      </if>
+      <if test="checkStatus != null" >
+        checkStatus,
+      </if>
+      <if test="abbot != null" >
+        abbot,
+      </if>
+      <if test="abbotresume != null" >
+        abbotresume,
+      </if>
+      <if test="opentime != null" >
+        opentime,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null" >
+        #{type1,jdbcType=INTEGER},
+      </if>
+      <if test="type2 != null" >
+        #{type2,jdbcType=INTEGER},
+      </if>
+      <if test="belong_city != null" >
+        #{belong_city,jdbcType=VARCHAR},
+      </if>
+      <if test="first_img_big != null" >
+        #{first_img_big,jdbcType=VARCHAR},
+      </if>
+      <if test="first_img_min != null" >
+        #{first_img_min,jdbcType=VARCHAR},
+      </if>
+      <if test="carousel_img != null" >
+        #{carousel_img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve_num != null" >
+        #{reserve_num,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="adminuser != null" >
+        #{adminuser.id,jdbcType=INTEGER},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="abbot != null" >
+        #{abbot,jdbcType=VARCHAR},
+      </if>
+      <if test="abbotresume != null" >
+        #{abbotresume,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="countByExample" parameterType="com.one.clxj.pojo.ClxjmainExample" resultType="java.lang.Integer" >
     select count(*) from clxjmain
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Clxjmain" >
+    update clxjmain
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type1 != null" >
+        type1 = #{type1,jdbcType=INTEGER},
+      </if>
+      <if test="type2 != null" >
+        type2 = #{type2,jdbcType=INTEGER},
+      </if>
+      <if test="belong_city != null" >
+        belong_city = #{belong_city,jdbcType=VARCHAR},
+      </if>
+      <if test="first_img_big != null" >
+        first_img_big = #{first_img_big,jdbcType=VARCHAR},
+      </if>
+      <if test="first_img_min != null" >
+        first_img_min = #{first_img_min,jdbcType=VARCHAR},
+      </if>
+      <if test="carousel_img != null" >
+        carousel_img = #{carousel_img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve_num != null" >
+        reserve_num = #{reserve_num,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="adminuser != null" >
+        joinid = #{adminuser.id,jdbcType=INTEGER},
+      </if>
+      <if test="checkStatus != null" >
+        checkStatus = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="abbot != null" >
+        abbot = #{abbot,jdbcType=VARCHAR},
+      </if>
+      <if test="abbotresume != null" >
+        abbotresume = #{abbotresume,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null" >
+        opentime = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

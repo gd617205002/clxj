@@ -28,17 +28,17 @@
 		<!--右侧区域start-->
 		<td width="100%" class="ver01" >
 			<div class="box2" panelTitle="查询" showStatus="false">
-				<form action="/grant!getGrantOfPager.action" id="queryForm" method="post">
+				<form action="/grants!getGrantsOfPager.action" id="queryForm" method="post">
 				<table>        
 					<tr>
 					    <td>捐款人：</td>
 						<td>
-							<input type="text" id="donationname" name="grant.donationname"/>
+							<input type="text" id="donationname" name="grants.donationname"/>
 							<input type="text" style="width:2px;display:none;"/>
 						</td>
 						<td>受助人：</td>
 						<td>
-							<input type="text" id="recipients" name="grant.recipients"/>
+							<input type="text" id="recipients" name="grants.recipients"/>
 							<input type="text" style="width:2px;display:none;"/>
 						</td>
 						<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
@@ -94,7 +94,7 @@
 		                 }
 		            } */
 			  ],  
-		 url: '/grant!getGrantOfPager.action', sortName: 'id',rownumbers:true,checkbox:true,
+		 url: '/grants!getGrantsOfPager.action', sortName: 'id',rownumbers:true,checkbox:true,
          height: '100%', width:"100%",pageSize:10,
          
         toolbar:{
@@ -147,7 +147,7 @@
 			return;
 		}
 		top.Dialog.confirm("确定要删除吗？",function(){
-			$.post("/grant!deleteGrant.action", 
+			$.post("/grants!deleteGrants.action",
 					//获取所有选中行
 					getSelectIds(grid),
 					function(result){
@@ -183,7 +183,7 @@
 	function showImportDialog(){
 		top.Dialog.open({Title:"导入款物发放信息", 
 						Message:"请上传excel文件", 
-						URL:"/grant/uploadFile.jsp?type=2",
+						URL:"/grants/uploadFile.jsp?type=2",
 						Width:350,Height:130});
 	}
 	

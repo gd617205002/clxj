@@ -7,14 +7,17 @@ import com.one.clxj.pojo.DonationExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface DonationMapper extends Mapper<Donation> {
+public interface DonationMapper{
     int countByExample(DonationExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
+    int insertSelective(Donation record);
 
-    List<Donation> selectByExample2(DonationExample example);
+    List<Donation> selectByExample(DonationExample example);
 
-    Donation selectByPrimaryKey2(Integer id);
+    Donation selectByPrimaryKey(Integer id);
 
+    int updateByPrimaryKeySelective(Donation record);
 
 }

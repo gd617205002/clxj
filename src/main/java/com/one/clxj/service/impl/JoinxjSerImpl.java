@@ -9,17 +9,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class JoinxjSerImpl extends SuperServiceImpl<Joinxj, JoinxjExample> implements JoinxjSer {
+public class JoinxjSerImpl  implements JoinxjSer {
     @Autowired
     private JoinxjMapper joinxjMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
+    @Override
+    public int countByExample(JoinxjExample example) {
+        return joinxjMapper.countByExample(example);
+    }
 
-        super.mapper = joinxjMapper;
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return joinxjMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Joinxj record) {
+        return joinxjMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Joinxj> selectByExample(JoinxjExample example) {
+        return joinxjMapper.selectByExample(example);
+    }
+
+    @Override
+    public Joinxj selectByPrimaryKey(Integer id) {
+        return joinxjMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Joinxj record) {
+        return joinxjMapper.updateByPrimaryKeySelective(record);
     }
 }

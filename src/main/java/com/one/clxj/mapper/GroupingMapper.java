@@ -7,12 +7,17 @@ import com.one.clxj.pojo.GroupingExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface GroupingMapper extends Mapper<Grouping> {
+public interface GroupingMapper {
     int countByExample(GroupingExample example);
 
-    List<Grouping> selectByExample2(GroupingExample example);
+    int deleteByPrimaryKey(Integer id);
 
-    Grouping selectByPrimaryKey2(Integer id);
+    int insertSelective(Grouping record);
 
+    List<Grouping> selectByExample(GroupingExample example);
+
+    Grouping selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Grouping record);
 
 }

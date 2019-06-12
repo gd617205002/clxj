@@ -7,13 +7,17 @@ import com.one.clxj.pojo.UploadfilesExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface UploadfilesMapper extends Mapper<Uploadfiles> {
+public interface UploadfilesMapper {
     int countByExample(UploadfilesExample example);
 
+    int deleteByPrimaryKey(Integer fileId);
 
-    List<Uploadfiles> selectByExample2(UploadfilesExample example);
+    int insertSelective(Uploadfiles record);
 
-    Uploadfiles selectByPrimaryKey2(Integer fileId);
+    List<Uploadfiles> selectByExample(UploadfilesExample example);
 
+    Uploadfiles selectByPrimaryKey(Integer fileId);
+
+    int updateByPrimaryKeySelective(Uploadfiles record);
 
 }

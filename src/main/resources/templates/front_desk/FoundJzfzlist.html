@@ -4,19 +4,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>丛林闲居-基金会-救助扶助公示列表</title>
-    <link rel="stylesheet" href="style/cy.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="js/laydate.js"></script>
-    <link rel="stylesheet" href="style/laydate.css">
-    <link rel="stylesheet" href="js/molv/laydate.css">
+    <link rel="stylesheet" href="/style/cy.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="/js/laydate.js"></script>
+    <link rel="stylesheet" href="/style/laydate.css">
+    <link rel="stylesheet" href="/js/molv/laydate.css">
 </head>
 <body>
     <!--首页TOP-->
     <div class="yc-txdd1">
         
         <!--首页banner--> 
-         <jsp:include  page="head.jsp" />   
-	<script type="text/javascript">
+         <!--<jsp:include  page="head.jsp" />-->
+
+        <iframe src="head.html" scrolling="no" width="100%" height="160px" frameborder="0"></iframe>
+
+        <script type="text/javascript">
 	function Alllogin(){
 		window.location.href = "login.jsp?returnurl=/FoundJzfzlist.jsp"; 
 	} 
@@ -28,10 +31,10 @@
         <!--用车-填写订单-->
         <div class="yc-txdd">
             <div class="yc-mbx">
-                <p>当前位置：<a href="index.jsp" class="ll">丛林闲居网</a> > <a href="FoundIndex.jsp" class="ll">基金会</a> > <a href="#"
+                <p>当前位置：<a href="/index.jsp" class="ll">丛林闲居网</a> > <a href="/FoundIndex.jsp" class="ll">基金会</a> > <a href="/#"
                                                                                                class="xz">救助/扶助公示列表</a></p>
             </div>
-            <div><img src="images/jjh_03.jpg"></div>
+            <div><img src="/images/jjh_03.jpg"></div>
             <div class="jjh-index">
                 <div class="jjh-index-left">
                     <p class="fzym-p">救助/扶助公示列表</p>
@@ -55,28 +58,28 @@
 
                 </div>
                 <div class="jjh-index-right">
-                    <a href="FoundRescue.jsp"><div>
-                        <img src="images/brower_03.jpg" class="enheng">
+                    <a href="FoundjzfzDetailed.html"><div>
+                        <img src="/images/brower_03.jpg" class="enheng">
                         <p>我要求助</p>
-                        <img src="images/brower_07.jpg" >
+                        <img src="/images/brower_07.jpg" >
                     </div></a>
-                    <a href="DonationLove.jsp"><div>
-                        <img src="images/brower_11.jpg" class="enheng">
+                    <a href="DonationLove.html"><div>
+                        <img src="/images/brower_11.jpg" class="enheng">
                         <p>我要查询</p>
-                        <img src="images/brower_07.jpg">
+                        <img src="/images/brower_07.jpg">
                     </div></a>
-                    <a href="FoundDonations.jsp"><div>
-                        <img src="images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
+                    <a href="FoundDonations.html"><div>
+                        <img src="/images/brower_15.jpg" class="enheng" style="margin-top: 15px;">
                         <p>我要捐款</p>
-                        <img src="images/brower_07.jpg">
+                        <img src="/images/brower_07.jpg">
                     </div></a>
-                    <a href="UserPquery.jsp"><div>
-                        <img src="images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
+                    <a href="UserPquery.html"><div>
+                        <img src="/images/brower_19.jpg" class="enheng" style="margin-top: 23px;">
                         <p>求助进度</p>
-                        <img src="images/brower_07.jpg">
+                        <img src="/images/brower_07.jpg">
                     </div></a>
-                    <a href="FoundJzfzlist.jsp"><div>
-                        <img src="images/brower_23.jpg" style="margin-top: 16px;">
+                    <a href="FoundJzfzlist.html"><div>
+                        <img src="/images/brower_23.jpg" style="margin-top: 16px;">
                         <p>公示列表</p>
                     </div></a>
                 </div>
@@ -87,12 +90,14 @@
 
 
         </div>
-        <%@ include  file="bottom.jsp"%>
+        <!--<%@ include  file="bottom.jsp"%>-->
+        <iframe src="bottom.html" scrolling="no" width="100%" height="368px" frameborder="0"></iframe>
+
     </div>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/index.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/index.js"></script>
 <script type="text/javascript">
 getCount();
 var count; 
@@ -213,7 +218,7 @@ function supage(divId, funName, params, curPage, total, pageSize){
       
     //首页控制  
     if(curPage>1){  
-        output += '<a href="javascript:'+funName+'(' + param_str + '1);" title="第一页" class="page-first">«</a>';  
+        output += '<a href="/javascript:'+funName+'(' + param_str + '1);" title="第一页" class="page-first">«</a>';  
     }  
     else  
     {  
@@ -221,7 +226,7 @@ function supage(divId, funName, params, curPage, total, pageSize){
     }  
     //上一页菜单控制  
     if(curPage>1){  
-        output += '<a href="javascript:'+funName+'(' + param_str + (curPage-1)+');" title="上一页" class="page-previous">‹</a>';  
+        output += '<a href="/javascript:'+funName+'(' + param_str + (curPage-1)+');" title="上一页" class="page-previous">‹</a>';  
     }  
     else{  
         output += '<span class="page-disabled">‹</span>';  
@@ -230,22 +235,22 @@ function supage(divId, funName, params, curPage, total, pageSize){
     //页码展示  
     for (i = start; i <= end; i++) {  
         if (i == curPage) {  
-            output += '<a href="javascript:;" class="page-cur">' + curPage + '</a>';  
+            output += '<a href="/javascript:;" class="page-cur">' + curPage + '</a>';  
         }  
         else {  
-            output += '<a href="javascript:'+funName+'(' + param_str + i + ');">' + i + '</a>';  
+            output += '<a href="/javascript:'+funName+'(' + param_str + i + ');">' + i + '</a>';  
         }  
     }  
     //下一页菜单控制  
     if(totalPage>1 && curPage<totalPage){  
-        output += '<a title="下一页" href="javascript:'+funName+'('+param_str + (curPage+1)+');" class="page-next">›</a>';  
+        output += '<a title="下一页" href="/javascript:'+funName+'('+param_str + (curPage+1)+');" class="page-next">›</a>';  
     }  
     else{  
         output += '<span class="page-disabled">›</span>';  
     }  
     //最后页控制  
     if(curPage<totalPage){  
-        output += '<a title="最后页" href="javascript:'+funName+'('+param_str + totalPage+');" class="page-end">»</a>';  
+        output += '<a title="最后页" href="/javascript:'+funName+'('+param_str + totalPage+');" class="page-end">»</a>';  
     }  
     else{  
         output += '<span class="page-disabled">»</span>';  

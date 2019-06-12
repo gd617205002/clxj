@@ -7,12 +7,17 @@ import com.one.clxj.pojo.CarinfoExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface CarinfoMapper  extends Mapper<Carinfo> {
+public interface CarinfoMapper {
     int countByExample(CarinfoExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Carinfo> selectByExample2(CarinfoExample example);
+    int insertSelective(Carinfo record);
 
-    Carinfo selectByPrimaryKey2(Integer id);
+    List<Carinfo> selectByExample(CarinfoExample example);
+
+    Carinfo selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Carinfo record);
 
 }

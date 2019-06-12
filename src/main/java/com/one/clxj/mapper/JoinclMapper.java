@@ -7,13 +7,17 @@ import com.one.clxj.pojo.JoinclExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface JoinclMapper  extends Mapper<Joincl> {
+public interface JoinclMapper  {
     int countByExample(JoinclExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Joincl> selectByExample2(JoinclExample example);
+    int insertSelective(Joincl record);
 
-    Joincl selectByPrimaryKey2(Integer id);
+    List<Joincl> selectByExample(JoinclExample example);
 
+    Joincl selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Joincl record);
 
 }

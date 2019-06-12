@@ -35,7 +35,7 @@ public class SuperServiceImpl<T,V> implements SuperService<T,V> {
     @Override
     public boolean chan(T t) {
         try {
-            mapper.updateByPrimaryKey(t);
+            mapper.updateByPrimaryKeySelective(t);
         }catch (Exception e){
             return false;
         }
@@ -45,10 +45,16 @@ public class SuperServiceImpl<T,V> implements SuperService<T,V> {
     @Override
     public T findByPrimaryKey(Object p) {
         T o = null;
-        o = (T)(mapper.selectByPrimaryKey(p));
+
+        o = (T) (mapper.selectByPrimaryKey(p));
+
         return o;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<T> findAll() {
         List list = mapper.selectAll();
@@ -57,10 +63,11 @@ public class SuperServiceImpl<T,V> implements SuperService<T,V> {
 
     @Override
     public List<T> paging(Integer page, Integer num) {
+
         PageHelper.startPage(page,num);
         List<T> res = mapper.selectAll();
         //用PageInfo对结果进行包装
-        PageInfo pageInfo = new PageInfo(res);
+        PageInfo<T> pageInfo = new PageInfo<T>(res);
         List<T> list = pageInfo.getList();
         return list;
     }
@@ -76,7 +83,7 @@ public class SuperServiceImpl<T,V> implements SuperService<T,V> {
     }
 
     @Override
-    public List<T> conditionFind(T t, V v) {
+    public List<T> conditionFind(V v) {
         List<T> list = mapper.selectByExample(v);
         return list;
     }

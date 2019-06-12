@@ -1,6 +1,22 @@
 package com.one.clxj.service;
 
+import com.one.clxj.mapper.OrganizationMapper;
 import com.one.clxj.pojo.Organization;
 import com.one.clxj.pojo.OrganizationExample;
 
-public  interface OrganizationSer extends SuperService<Organization,OrganizationExample>{}
+import java.util.List;
+
+public  interface OrganizationSer {
+
+    int countByExample(OrganizationExample example);
+
+    int deleteByPrimaryKey(Integer org_id);
+
+    int insertSelective(Organization record);
+
+    List<Organization> selectByExample(OrganizationExample example);
+
+    Organization selectByPrimaryKey(Integer org_id);
+
+    int updateByPrimaryKeySelective(Organization record);
+}

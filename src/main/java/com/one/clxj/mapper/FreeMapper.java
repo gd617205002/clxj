@@ -7,13 +7,17 @@ import com.one.clxj.pojo.FreeExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface FreeMapper extends Mapper<Free> {
+public interface FreeMapper  {
     int countByExample(FreeExample example);
 
-
-    List<Free> selectByExample2(FreeExample example);
-
-    Free selectByPrimaryKey2(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
 
+    int insertSelective(Free record);
+
+    List<Free> selectByExample(FreeExample example);
+
+    Free selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Free record);
 }

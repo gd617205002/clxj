@@ -7,8 +7,8 @@
 <!-- 录音必需start -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="/record/js/bootstrap.min.css">
-<script type="text/javascript" src="/record/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="record/js/bootstrap.min.css">
+<script type="text/javascript" src="record/js/bootstrap.min.js"></script>
 <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript">
@@ -27,8 +27,10 @@
 <div class="yc-txdd1">
      
     <!--首页banner-->
-     <jsp:include  page="head.jsp" />   
-<script type="text/javascript">
+     <!--<jsp:include  page="head.jsp" />-->
+	<iframe src="head.html" scrolling="no" width="100%" height="160px" frameborder="0"></iframe>
+
+	<script type="text/javascript">
 function Alllogin(){
 	window.location.href = "login.jsp?returnurl=/ConRoom.jsp";
 } 
@@ -62,36 +64,36 @@ function loginOut(){
 										<!-- =========================================录音部分从这里开始，页面仅仅需要一下部分======================================= -->
 										<!-- =============================================================================================================== -->
 										<script type="text/javascript"
-											src="/record/js/swfobject.js"></script>
+											src="record/js/swfobject.js"></script>
 										<script type="text/javascript"
-											src="/record/js/recorder.js"></script>
+											src="record/js/recorder.js"></script>
 										<script type="text/javascript"
-											src="/record/js/main.js"></script>
-										<link rel="stylesheet" href="/record/style.css">
+											src="record/js/main.js"></script>
+										<link rel="stylesheet" href="record/style.css">
 										<div class="qcontainer" id="myRecordDiv">
 											<div id="recorder-audio" class="control_panel idle">
 												<button class="record_button"
 													onclick="FWRecorder.record('audio', 'audio.wav');"
 													title="Record">
-													<img src="/record/images/record.png" alt="开始录音">
+													<img src="record/images/record.png" alt="开始录音">
 												</button>
 												<button class="stop_recording_button"
 													onclick="FWRecorder.stopRecording('audio');"
 													title="Stop Recording">
-													<img src="/record/images/stop.png" alt="停止录音">
+													<img src="record/images/stop.png" alt="停止录音">
 												</button>
 												<button class="play_button"
 													onclick="FWRecorder.playBack('audio');" title="Play">
-													<img src="/record/images/play.png" alt="播放">
+													<img src="record/images/play.png" alt="播放">
 												</button>
 												<button class="pause_playing_button"
 													onclick="FWRecorder.pausePlayBack('audio');"
 													title="Pause Playing">
-													<img src="/record/images/pause.png" alt="暂停">
+													<img src="record/images/pause.png" alt="暂停">
 												</button>
 												<button class="stop_playing_button"
 													onclick="FWRecorder.stopPlayBack();" title="Stop Playing">
-													<img src="/record/images/stop.png" alt="停止">
+													<img src="record/images/stop.png" alt="停止">
 												</button>
 												<div class="level"></div>
 											</div>
@@ -146,14 +148,16 @@ function loginOut(){
 
     <!--忏悔-进入页-->
 
-     <%@ include  file="bottom.jsp"%>
+     <!--<%@ include  file="bottom.jsp"%>-->
+	<iframe src="bottom.html" scrolling="no" width="100%" height="368px" frameborder="0"></iframe>
+
 </div>
 <div class="tcc none" id="okok">
     <div class="cgxd3">
         <div class="cgxd-main">
-            <p class="xdcg"><img src="images/chw.png"></p>
+            <p class="xdcg"><img src="/images/chw.png"></p>
             <p class="ddbh"><em id="pwd"></em></p>  
-            <p class="fhdd"><a href="ConEntryPage.jsp" class="fh">返回忏悔首页</a>（牢记上10位数字码，方便您阅读解脱文）</p>
+            <p class="fhdd"><a href="/ConEntryPage.jsp" class="fh">返回忏悔首页</a>（牢记上10位数字码，方便您阅读解脱文）</p>
         </div>
     </div>
 </div>
@@ -196,6 +200,6 @@ function loginOut(){
 		window.location.href ="/ConEntryPage.jsp"; 
 		}
 </script>
-<script src="js/index.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

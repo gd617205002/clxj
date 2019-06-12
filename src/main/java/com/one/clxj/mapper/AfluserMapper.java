@@ -7,12 +7,17 @@ import com.one.clxj.pojo.AfluserExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface AfluserMapper extends Mapper<Afluser> {
+public interface AfluserMapper{
     int countByExample(AfluserExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Afluser> selectByExample2(AfluserExample example);
+    int insertSelective(Afluser record);
 
-    Afluser selectByPrimaryKey2(Integer id);
+    List<Afluser> selectByExample(AfluserExample example);
+
+    Afluser selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Afluser record);
 
 }

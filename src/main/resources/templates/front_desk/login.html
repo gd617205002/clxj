@@ -5,34 +5,14 @@
      <title>丛林闲居</title>
     <link rel="stylesheet" href="style/cy.css">
     <link rel="stylesheet" href="style/style.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
 
-    </script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+
 </head>
-<script language="javascript">
-   function enterkey() {   
-   if (event.keyCode == 13){
-	   login();  
-    }
-   }
-</script>
+
 <body onkeydown="enterkey()" style="background-color: #fff">
-<!--登录页TOP-->   
-<!--<div class="index-top1">
-    <div class="left">
-        <span class="one"><a href="                   "><img src="images/logo1.png" height="64px" width="158px"></a></span>
-    </div>
-    <div class="right1">
-        <div class="three1">
-            <span><img src="images/index_03.png"></span>
-            <ul>
-                <li class="rx">客户服务热线:</li>
-                <li class="phone">400-688-6798</li>
-            </ul>
-        </div>
-    </div>
-</div> -->
+
 
 <!--layUI-->
 <script type='text/javascript' src='layui/layui.js'></script>
@@ -43,17 +23,11 @@
 <link href='css/huakuai.css' rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='js/huakuai.js'></script>
 
-<!--手机验证码-->
-<script type='text/javascript' src='js/yzm.js'></script>
 
-<!--MD5加密-->
-<script type='text/javascript' src='js/md5.js'></script>
 
 <div class="login-main">
     <div class="login-xf">
         <div class="lx-nei">
-
-
             <div class="layui-tab">
                 <ul class="layui-tab-title">
                     <li class="layui-this" id="mima">密码登录</li>
@@ -65,8 +39,8 @@
                             <ul>
                                 <li class="yhm"><input id="username" maxlength="11"  type="text" placeholder="手机号" onblur="checkUsername(this.value)"><span class="sjh"></span> </li>
                                 <li class="yhm1"><input id="pwd" type="password" placeholder="密码6到12位" > <span id="pwdimg"></span></li>
-                                <li class="mouth1"><span class="one"><a href="RetrievePassword.jsp">忘记密码</a> </span>
-                                    <span class="one" style="margin-left: 170px;"><a href="register.jsp">注册</a> </span>
+                                <li class="mouth1"><span class="one"><a href="#" onclick="wangji()">忘记密码</a> </span>
+                                    <span class="one" style="margin-left: 170px;"><a href="#" onclick="zhuce()">注册</a> </span>
                                 </li>
 
                                 <li class="dl" style="padding-top: 20px">
@@ -84,9 +58,9 @@
                             <li class="yhm"><input id="username2" maxlength="11"  type="text" placeholder="手机号" onblur="checkUsername(this.value)">
                                 <span class="sjh"></span> </li>
                             <li  ><input id="yzm" type="text" style="width: 130px;height: 32px" placeholder="验证码6位" ><span id="hqyzmimg"></span>
-                                <button id="hqyzm"  style="margin-left: 50px;width: 80px;height: 30px">获取验证码</button> </li>
-                            <li class="mouth1"><span class="one"><a href="RetrievePassword.jsp">忘记密码</a> </span>
-                                <span class="one" style="margin-left: 170px;"><a href="register.jsp">注册</a> </span>
+                                <button id="hqyzm"  style="margin-left: 22px;width: 110px;height: 30px">获取验证码</button> </li>
+                            <li class="mouth1"><span class="one"><a href="#" onclick="wangji()">忘记密码</a> </span>
+                                <span class="one" style="margin-left: 170px;"><a href="#" onclick="zhuce()">注册</a> </span>
                             </li>
 
                             <li class="dl"  style="padding-top: 20px" >
@@ -99,132 +73,237 @@
                         </ul>
                     </div>
 
-
                 </div>
             </div>
 
-            <script>
-                //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-                layui.use('element', function(){
-                var element = layui.element;
+            <div class="success"  id="show">
+                <div >
 
-                });
-
-                var sjyzm="";  //保存验证码
-
-                //获取验证码
-                function yzm(){
-                    sjyzm="";
-                    // 0-9的随机数
-                    for(var i =0;i<6;i++){//循环六次
-                        var num = Math.random()*9;//Math.random();每次生成(0-1)之间的数;
-                        num = parseInt(num,10);
-                        sjyzm+=num;
-                    }
-
-                }
-
-                /**
-                 * 获取手机验证码
-                 */
-                $(function(){
-                    $("#hqyzm").click(function(){
-
-                        var phone = $("#username2").val(); //获取手机号
-                        //提示已发送短信
-                        layui.use('layer', function(){
-                            var layer = layui.layer;
-
-                            if(phone.trim()==""){  //手机号为空
-                                layer.msg("请输入手机号");
-                            }else if($(".sjh img").attr("src")=="image/unchecked.gif"){
-                                layer.msg("手机号输入错误");
-                             }else{
-                                //提示已发送短信
-
-                                yzm(); //生成验证信息
-
-                                //发送验证
-                                $.ajax({
-                                    url:"Reguser/reguserYZM.do",
-                                    type:"post",
-                                    data:"phone="+phone+"&yzm="+sjyzm,
-                                    success:function(res){
-                                       if(res==true){
-                                           layer.msg("发送成功");
-                                       }else{
-                                           layer.msg("发送失败");
-                                       }
-                                    }
-                                })
-
-
-                                $("#hqyzm").attr("disabled","disabled");
-                                var second =5; //倒计时
-                                $("#hqyzm").text(second+"s");
-                                time(second);
-
-
-                            }
-
-                        })
-
-                    })
-                })
-
-                /**
-                 * 验证码倒计时
-                 */
-                function time(second) {
-
-                    var time=setInterval(function(){
-                        second-=1;
-                        $("#hqyzm").text(second+"s");
-                       if(second<=0){
-                           clearInterval(time); //清除
-                           $("#hqyzm").text("重新获取");
-                           $("#hqyzm").attr("disabled",false);
-                       }
-                    },1000)
-                }
-            </script>
-
+                    <div class="cgxd3" style="width: 498px;top:64%">
+                        <div class="cgxd-main" style="padding-top:30px;">
+                            <p class="xdcg"><img src="images/dlcg.png">  </p>
+                            <p class="ddbh"><em id="em"></em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    function wangji(){
+        parent.location="retrievePassword.do";
+    }
+    function zhuce(){
+        parent.location="register.do";
+    }
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+    });
 
+    var sjyzm="";  //保存验证码
+    //获取验证码
+    function yzm(){
+        sjyzm="";
+        // 0-9的随机数
+        for(var i =0;i<6;i++){//循环六次
+            var num = Math.random()*9;//Math.random();每次生成(0-1)之间的数;
+            num = parseInt(num,10);
+            sjyzm+=num;
+        }
+    }
+
+    /**
+     * 验证码倒计时
+     */
+    var time="";
+    function down(second) {
+        time=setInterval(function(){
+            second-=1;
+            $("#hqyzm").text(second+"s后重新发送");
+            if(second<=0){
+                clearInterval(time); //清除
+                $("#hqyzm").text("重新获取");
+                $("#hqyzm").attr("disabled",false);
+            }
+        },1000)
+    }
+    /**
+     * 获取手机验证码
+     */
+    $(function(){
+        $("#hqyzm").click(function(){
+
+            var phone = $("#username2").val(); //获取手机号
+            //提示已发送短信
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                if(phone.trim()==""){  //手机号为空
+                    layer.msg("请输入手机号");
+                }else if($(".sjh img").attr("src")=="image/unchecked.gif"){
+                    layer.msg("手机号输入错误");
+                }else{
+                    yzm(); //生成验证信息
+
+                    //发送验证
+                    $.ajax({
+                        url:"Reguser/reguserYZM.do",
+                        type:"post",
+                        data:"phone="+phone+"&yzm="+sjyzm+"&num=1",
+                        success:function(res){
+                            if(res==true){
+                                layer.msg("发送成功");
+                                $("#hqyzm").attr("disabled","disabled");
+                                var second =60; //倒计时
+                                $("#hqyzm").text(second+"s后重新发送");
+                                down(second);
+                            }else{
+                                layer.msg("发送失败");
+                                clearInterval(time); //清除
+                                $("#hqyzm").text("重新获取");
+                                $("#hqyzm").attr("disabled",false);
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    })
+    function checkUsername(username){
+
+        var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
+        var phoneNumCheck = (username.trim()).match(phoneNum);
+
+        $(".sjh").html("");
+        if(username!=""){
+            if(!phoneNumCheck){
+                $(".sjh").html("<img src='image/unchecked.gif' />");
+            }else{
+
+                $.ajax({
+                    url:"Reguser/reguserByUsername.do",
+                    type:"post",
+                    data:"username="+username.trim(),
+                    success:function(res){
+                        if(res!=""){
+                            $(".sjh").html("<img src='image/checked.gif' />");
+                        }else{
+                            $(".sjh").html("<img src='image/unchecked.gif' />");
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg("手机号未注册");
+                            });
+                        }
+                    }
+                })
+
+            }
+        }
+
+    }
+
+    /**
+     * 密码登录
+     */
+    function loginPwd(){
+
+        if($(".sjh img").attr("src")=="image/unchecked.gif"||$("#username").val()==""){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.msg("重新输入手机号");
+            });
+
+        }else if($(".pwdimg img").attr("src")=="image/unchecked.gif"||$("#pwd").val()==""){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.msg("重新输密码");
+            });
+        }else{
+            $.ajax({
+                url:"Reguser/reguserLogin.do",
+                type:"post",
+                data:"username="+$("#username").val()+"&pwd="+$("#pwd").val(),
+                success:function(res){
+
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        if(res==0){
+                            //layer.msg("成功");
+                            //parent.location.reload();
+                            countDown(5);
+
+                        }else if(res==1){
+                            layer.msg("密码错误");
+                        }else{
+                            layer.msg("账号已冻结请联系管理员");
+                        }
+                    });
+
+                }
+            })
+        }
+
+    }
+
+    /**
+     * 短信登录
+     */
+    function loginDX(){
+
+        if($(".sjh img:eq(1)").attr("src")=="image/unchecked.gif"||$("#username2").val()==""){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.msg("重新输入手机号");
+            });
+
+        }else if($("#yzm").val()==""||$("#yzm").val()!=sjyzm){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.msg("重新输密码");
+            });
+        }else{
+            $.ajax({
+                url:"Reguser/reguserLoginDX.do",
+                type:"post",
+                data:"username="+$("#username2").val()+"&yzm="+$("#yzm").val()+"&hqyzm="+sjyzm,
+                success:function(res){
+
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        if(res==0){
+                            //layer.msg("成功");
+                            //parent.location.reload();
+                            countDown(3);
+                        }else if(res==1){
+                            layer.msg("验证码错误");
+                        }else{
+                            layer.msg("账号已冻结请联系管理员");
+                        }
+                    });
+
+                }
+            })
+        }
+
+    }
+    function countDown(secs){
+        document.getElementById("show").style.display="block";
+        var times=setInterval(function(){
+            secs-=1;
+            $("#em").html("登录成功！"+secs+"后将跳转到原网页,<a href='javascript:void(0)'  onclick='divshow()' style='color: red;'>立即跳转</a>");
+            if(secs<=0){
+                clearInterval(times); //清除
+                divshow();
+            }
+        },1000)
+
+    }
+    function divshow(){
+        parent.location.reload();
+    }
+</script>
 <script type="text/javascript">
-/*var checks = false;
-var error = document.getElementById("error");
-var username  = document.getElementById("username");
-var pwd  = document.getElementById("pwd");
-var yzm = document.getElementById("yzm");
-function changeYzm(){
-	$("#yzmImg").attr("src","/reguser!exyzmStr.action?x=" + Math.random());
-		}*/
-/*function checkYZM(){
-	if(yzm.value==""){
-		error.value = "验证码不能为空";
-		checks = false;
-	}else{
-		$.post("/reguser!checkLoginYZM.action",
-				  {"YZM":yzm.value},
-				  function(result){
-					  if(result == null){
-						  error.value = "验证码错误";
-						  checks = false;
-					  }
-					  if(result.status=="true"||result.status==true){
-						  error.value = "";
-						  checks = true;
-					  }else{
-						  error.value = "验证码错误";
-						  checks = false;
-					  }
-				  },"json");
-	}
-}  */
-
 $(function(){
 
     $("#username2").focus(function(){
@@ -264,175 +343,8 @@ $(function(){
 
     })
 
-
-  /*  //手机短信验证
-    $("#yzm").focus(function(){
-        $("#hqyzmimg").html("")
-    })
-
-    $("#yzm").blur(function(){
-        if($(this).val().length!=6){
-            $("#hqyzmimg").html("<img src='image/unchecked.gif' />");
-        }else{
-            $("#hqyzmimg").html("<img src='image/checked.gif' />");
-        }
-    })*/
 })
-function checkUsername(username){
 
-	var phoneNum = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/; //手机号码
-	var phoneNumCheck = (username.trim()).match(phoneNum);
-
-    $(".sjh").html("");
-    if(username!=""){
-        if(!phoneNumCheck){
-            $(".sjh").html("<img src='image/unchecked.gif' />");
-        }else{
-
-            $.ajax({
-                url:"Reguser/reguserByUsername.do",
-                type:"post",
-                data:"username="+username.trim(),
-                success:function(res){
-                    if(res==true){
-                        $(".sjh").html("<img src='image/checked.gif' />");
-                    }else{
-                        $(".sjh").html("<img src='image/unchecked.gif' />");
-                        layui.use('layer', function(){
-                            var layer = layui.layer;
-                            layer.msg("手机号未注册");
-                        });
-                    }
-                }
-            })
-
-        }
-    }
-
-}
-/*function checkPwd(){
-	if(pwd.value==""||pwd.value.length<6){ 
-		error.value = "密码输入有误";
-		checks = false;
-	}else{
-		error.value = "";
-		checks = true; 
-	}
-}*/
-//获取地址栏
-function GetRequest() {
-	  var url = location.search; //获取url中"?"符后的字串
-	   var theRequest = new Object();
-	   if (url.indexOf("?") != -1) {
-	      var str = url.substr(1);
-	      strs = str.split("&");
-	      for(var i = 0; i < strs.length; i ++) {
-	         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]); 
-	      }
-	   }
-	   return theRequest;
-	}
-
-/**
- * 密码登录
- */
-function loginPwd(){
-
-    if($(".sjh img").attr("src")=="image/unchecked.gif"||$("#username").val()==""){
-        layui.use('layer', function(){
-            var layer = layui.layer;
-            layer.msg("重新输入手机号");
-        });
-
-    }else if($(".pwdimg img").attr("src")=="image/unchecked.gif"||$("#pwd").val()==""){
-        layui.use('layer', function(){
-            var layer = layui.layer;
-            layer.msg("重新输密码");
-        });
-    }else{
-        $.ajax({
-            url:"Reguser/reguserLogin.do",
-            type:"post",
-            data:"username="+$("#username").val()+"&pwd="+$("#pwd").val(),
-            success:function(res){
-
-                layui.use('layer', function(){
-                    var layer = layui.layer;
-                    if(res==0){
-                        layer.msg("成功");
-                        parent.location.reload();
-
-                    }else if(res==1){
-                        layer.msg("密码错误");
-                    }else{
-                        layer.msg("冻结");
-                    }
-                });
-
-            }
-        })
-    }
-
-}
-
-/**
- * 短信登录
- */
-function loginDX(){
-
-    if($(".sjh img:eq(1)").attr("src")=="image/unchecked.gif"||$("#username2").val()==""){
-        layui.use('layer', function(){
-            var layer = layui.layer;
-            layer.msg("重新输入手机号");
-        });
-
-    }else if($("#yzm").val()==""){
-        layui.use('layer', function(){
-            var layer = layui.layer;
-            layer.msg("重新输密码");
-        });
-    }else{
-        $.ajax({
-            url:"Reguser/reguserLoginDX.do",
-            type:"post",
-            data:"username="+$("#username2").val()+"&yzm="+$("#yzm").val()+"&hqyzm="+sjyzm,
-            success:function(res){
-
-                layui.use('layer', function(){
-                    var layer = layui.layer;
-                    if(res==0){
-                        layer.msg("成功");
-                        parent.location.reload();
-
-                    }else if(res==1){
-                        layer.msg("验证码错误");
-                    }else{
-                        layer.msg("账号已冻结");
-                    }
-                });
-
-            }
-        })
-    }
-
-}
-/*
-function countDown(secs,surl){
-	 var loginok = document.getElementById("em");  
-	 loginok.innerHTML ="";
-	 loginok.innerHTML="登录成功！"+secs+"后将跳转到原网页,<a href='javascript:void(0)'  onclick='divshow(0)' style='color: red;'>立即跳转</a>";      
-	 if(--secs>0){       
-	     setTimeout("countDown("+secs+",'"+surl+"')",1000);     
-	     }     
-	 else{       
-	     location.href=surl;      
-	     }     
-	 } 
-function divshow(time){    
-	var url = $("#url").val();
-	document.getElementById("show").style.display="block";
-	countDown(time,url);
-}   */
 </script>
 
 </body>

@@ -10,15 +10,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
-public class PayformonthSerImpl extends SuperServiceImpl<Payformonth,PayformonthExample> implements PayformonthSer {
+public class PayformonthSerImpl  implements PayformonthSer {
 
     @Autowired
     private PayformonthMapper payformonthMapper;
 
 
-   /* public void init(){
-       super.mapper = adminuserMapper;
-    }*/
+    @Override
+    public int countByExample(PayformonthExample example) {
+        return payformonthMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return payformonthMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertSelective(Payformonth record) {
+        return payformonthMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Payformonth> selectByExample(PayformonthExample example) {
+        return payformonthMapper.selectByExample(example);
+    }
+
+    @Override
+    public Payformonth selectByPrimaryKey(Integer id) {
+        return payformonthMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Payformonth record) {
+        return payformonthMapper.updateByPrimaryKeySelective(record);
+    }
 }

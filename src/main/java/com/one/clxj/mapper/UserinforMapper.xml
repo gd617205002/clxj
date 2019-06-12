@@ -77,7 +77,7 @@
     user_id, user_name, user_sex, user_work, user_contact, user_address, user_marriage, 
     user_department, user_employTime, user_password, user_education, user_loginName
   </sql>
-  <select id="selectByExample2" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.UserinforExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.one.clxj.pojo.UserinforExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,18 +94,141 @@
       limit ${currPage},${limit}
     </if>
   </select>
-  <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from userinfor
     where user_id = #{user_id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfor
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </delete>
 
+  <insert id="insertSelective" parameterType="com.one.clxj.pojo.Userinfor" >
+    insert into userinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        user_id,
+      </if>
+      <if test="user_name != null" >
+        user_name,
+      </if>
+      <if test="user_sex != null" >
+        user_sex,
+      </if>
+      <if test="user_work != null" >
+        user_work,
+      </if>
+      <if test="user_contact != null" >
+        user_contact,
+      </if>
+      <if test="user_address != null" >
+        user_address,
+      </if>
+      <if test="user_marriage != null" >
+        user_marriage,
+      </if>
+      <if test="user_department != null" >
+        user_department,
+      </if>
+      <if test="user_employTime != null" >
+        user_employTime,
+      </if>
+      <if test="user_password != null" >
+        user_password,
+      </if>
+      <if test="user_education != null" >
+        user_education,
+      </if>
+      <if test="user_loginName != null" >
+        user_loginName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        #{user_id,jdbcType=INTEGER},
+      </if>
+      <if test="user_name != null" >
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        #{user_sex,jdbcType=BIT},
+      </if>
+      <if test="user_work != null" >
+        #{user_work,jdbcType=VARCHAR},
+      </if>
+      <if test="user_contact != null" >
+        #{user_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        #{user_address,jdbcType=VARCHAR},
+      </if>
+      <if test="user_marriage != null" >
+        #{user_marriage,jdbcType=BIT},
+      </if>
+      <if test="user_department != null" >
+        #{user_department,jdbcType=INTEGER},
+      </if>
+      <if test="user_employTime != null" >
+        #{user_employTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_password != null" >
+        #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_education != null" >
+        #{user_education,jdbcType=VARCHAR},
+      </if>
+      <if test="user_loginName != null" >
+        #{user_loginName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <select id="countByExample" parameterType="com.one.clxj.pojo.UserinforExample" resultType="java.lang.Integer" >
     select count(*) from userinfor
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.one.clxj.pojo.Userinfor" >
+    update userinfor
+    <set >
+      <if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        user_sex = #{user_sex,jdbcType=BIT},
+      </if>
+      <if test="user_work != null" >
+        user_work = #{user_work,jdbcType=VARCHAR},
+      </if>
+      <if test="user_contact != null" >
+        user_contact = #{user_contact,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        user_address = #{user_address,jdbcType=VARCHAR},
+      </if>
+      <if test="user_marriage != null" >
+        user_marriage = #{user_marriage,jdbcType=BIT},
+      </if>
+      <if test="user_department != null" >
+        user_department = #{user_department,jdbcType=INTEGER},
+      </if>
+      <if test="user_employTime != null" >
+        user_employTime = #{user_employTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user_password != null" >
+        user_password = #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_education != null" >
+        user_education = #{user_education,jdbcType=VARCHAR},
+      </if>
+      <if test="user_loginName != null" >
+        user_loginName = #{user_loginName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

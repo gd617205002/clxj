@@ -7,11 +7,17 @@ import com.one.clxj.pojo.AdminuserExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface AdminuserMapper extends Mapper<Adminuser> {
+public interface AdminuserMapper {
     int countByExample(AdminuserExample example);
 
-    List<Adminuser> selectByExample2(AdminuserExample example);
+    int deleteByPrimaryKey(Integer id);
 
-    Adminuser selectByPrimaryKey2(Integer id);
+    int insertSelective(Adminuser record);
+
+    List<Adminuser> selectByExample(AdminuserExample example);
+
+    Adminuser selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Adminuser record);
 
 }

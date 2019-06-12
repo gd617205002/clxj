@@ -8,12 +8,17 @@ import com.one.clxj.pojo.CarcommentExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface CarcommentMapper extends Mapper<Carcomment> {
+public interface CarcommentMapper {
     int countByExample(CarcommentExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Carcomment> selectByExample2(CarcommentExample example);
+    int insertSelective(Carcomment record);
 
-    Carcomment selectByPrimaryKey2(Integer id);
+    List<Carcomment> selectByExample(CarcommentExample example);
+
+    Carcomment selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Carcomment record);
 
 }

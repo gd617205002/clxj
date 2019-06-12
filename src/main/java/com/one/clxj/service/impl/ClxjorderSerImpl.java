@@ -9,17 +9,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @Transactional
-public class ClxjorderSerImpl extends SuperServiceImpl<Clxjorder, ClxjorderExample> implements ClxjorderSer {
+public class ClxjorderSerImpl  implements ClxjorderSer {
     @Autowired
     private ClxjorderMapper clxjorderMapper;
 
-    @PostConstruct
-//    初始化
-    public void init() {
 
-        super.mapper = clxjorderMapper;
+    @Override
+    public int countByExample(ClxjorderExample example) {
+        return clxjorderMapper.countByExample(example);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(String oid) {
+        return clxjorderMapper.deleteByPrimaryKey(oid);
+    }
+
+    @Override
+    public int insertSelective(Clxjorder record) {
+        return clxjorderMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Clxjorder> selectByExample(ClxjorderExample example) {
+        return clxjorderMapper.selectByExample(example);
+    }
+
+    @Override
+    public Clxjorder selectByPrimaryKey(String oid) {
+        return clxjorderMapper.selectByPrimaryKey(oid);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Clxjorder record) {
+        return clxjorderMapper.updateByPrimaryKeySelective(record);
     }
 }

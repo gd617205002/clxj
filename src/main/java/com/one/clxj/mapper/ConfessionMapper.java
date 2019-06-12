@@ -7,12 +7,18 @@ import com.one.clxj.pojo.ConfessionExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface ConfessionMapper  extends Mapper<Confession> {
+public interface ConfessionMapper {
     int countByExample(ConfessionExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Confession> selectByExample2(ConfessionExample example);
 
-    Confession selectByPrimaryKey2(Integer id);
+    int insertSelective(Confession record);
+
+    List<Confession> selectByExample(ConfessionExample example);
+
+    Confession selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Confession record);
 
 }

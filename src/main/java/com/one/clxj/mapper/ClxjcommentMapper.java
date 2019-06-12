@@ -7,13 +7,18 @@ import com.one.clxj.pojo.ClxjcommentExample;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface ClxjcommentMapper extends Mapper<Clxjcomment> {
+public interface ClxjcommentMapper  {
     int countByExample(ClxjcommentExample example);
 
+    int deleteByPrimaryKey(Integer id);
 
-    List<Clxjcomment> selectByExample2(ClxjcommentExample example);
 
-    Clxjcomment selectByPrimaryKey2(Integer id);
+    int insertSelective(Clxjcomment record);
 
+    List<Clxjcomment> selectByExample(ClxjcommentExample example);
+
+    Clxjcomment selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Clxjcomment record);
 
 }
