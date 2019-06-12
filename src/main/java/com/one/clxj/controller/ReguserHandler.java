@@ -75,7 +75,7 @@ public class ReguserHandler {
     public boolean reguserYZM(String phone, String yzm, int num){
         try {
             System.out.println("phone:"+phone+"  yzm="+yzm);
-           // IndustrySMS.execute(phone,yzm,num);
+            IndustrySMS.execute(phone,yzm,num);
             return true;
         }catch (Exception e){
             System.out.println(e.getMessage());
